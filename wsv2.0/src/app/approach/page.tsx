@@ -130,6 +130,8 @@ export default function ApproachPage() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [selectedCard, setSelectedCard] = useState<number | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { scrollYProgress } = useScroll({ target: containerRef });
   const heroY = useTransform(scrollYProgress, [0, 1], [0, -200]);
@@ -163,7 +165,7 @@ export default function ApproachPage() {
   }, []);
 
   return (
-    <main ref={containerRef} className="min-h-screen relative overflow-hidden">
+    <main ref={containerRef} className="min-h-screen relative overflow-hidden premium-gpu">
       {/* Dynamic Scroll Indicator */}
       <div className="fixed top-0 left-0 w-full h-1 bg-neutral-200/20 z-50">
         <motion.div 
@@ -182,7 +184,7 @@ export default function ApproachPage() {
       {/* Dynamic Background Layers */}
       <div className="fixed inset-0 overflow-hidden">
         <motion.div 
-          className="absolute inset-0 noise opacity-20"
+          className="absolute inset-0 noise opacity-20 premium-gpu"
           style={{ y: useTransform(scrollYProgress, [0, 1], [0, 100]) }}
         />
         <motion.div 
@@ -208,7 +210,7 @@ export default function ApproachPage() {
       <Navbar />
       
       {/* Revolutionary Hero - Asymmetrical & Bold */}
-      <section data-section="0" className="relative min-h-screen flex items-center overflow-hidden">
+      <section data-section="0" className="relative min-h-[80vh] flex items-center overflow-hidden">
         <motion.div 
           ref={heroRef}
           className="absolute inset-0 atmosphere-blue"
@@ -218,13 +220,13 @@ export default function ApproachPage() {
         {/* Diagonal Split Layout */}
         <div className="absolute inset-0">
           <motion.div 
-            className="absolute top-0 right-0 w-2/3 h-full premium-gradient-blue transform skew-x-12 origin-top-right"
+            className="absolute top-0 right-0 w-2/3 h-full metallic-gradient-blue transform skew-x-12 origin-top-right"
             initial={{ x: '100%' }}
             animate={{ x: '20%' }}
             transition={{ duration: 1.5, ease: "easeOut" }}
           />
           <motion.div 
-            className="absolute bottom-0 left-0 w-1/2 h-2/3 gradient-blue-deep transform -skew-y-6 origin-bottom-left opacity-80"
+            className="absolute bottom-0 left-0 w-1/2 h-2/3 premium-gradient-blue transform -skew-y-6 origin-bottom-left opacity-80"
             initial={{ y: '100%' }}
             animate={{ y: '0%' }}
             transition={{ delay: 0.3, duration: 1.5, ease: "easeOut" }}
@@ -240,7 +242,7 @@ export default function ApproachPage() {
               transition={{ duration: 1, ease: "easeOut" }}
               className="mb-8"
             >
-              <span className="inline-block px-8 py-4 glass-morphism-dark text-blue-300 roboto-medium rounded-2xl architectural-shadow animate-pulse-glow">
+              <span className="inline-block px-8 py-4 glass-morphism-dark text-blue-300 roboto-medium rounded-2xl architectural-shadow animate-premium-glow">
                 REVOLUTIONARY APPROACH
               </span>
             </motion.div>
@@ -296,11 +298,11 @@ export default function ApproachPage() {
               transition={{ delay: 1, duration: 1 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <button className="group relative px-8 py-4 btn-premium text-lg font-semibold overflow-hidden magnetic">
+              <button className="group relative px-8 py-4 btn-premium text-lg font-semibold overflow-hidden magnetic architectural-shadow-lg">
                 <span className="relative z-10">START THE REVOLUTION</span>
                 <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-700"></div>
               </button>
-              <button className="px-8 py-4 border-2 border-white/30 text-white font-semibold text-lg hover-lift glass-morphism-dark magnetic">
+              <button className="px-8 py-4 border-2 border-white/30 text-white font-semibold text-lg premium-hover-lift glass-morphism-dark magnetic">
                 EXPLORE VENTURES
               </button>
             </motion.div>
@@ -315,32 +317,32 @@ export default function ApproachPage() {
               className="relative"
             >
               {/* Floating Stats Cards */}
-              <div className="space-y-6">
+              <div className="space-y-5">
                 <motion.div
                   animate={{ y: [0, -20, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="card-premium p-6 transform rotate-3 hover-scale magnetic"
+                  className="card-premium p-5 transform rotate-3 hover-scale magnetic scale-[0.85] premium-gpu"
                 >
-                  <div className="text-3xl font-bold text-blue-600 mb-2">25+</div>
-                  <div className="text-sm font-medium text-neutral-800">Years Soccer DNA</div>
+                  <div className="text-2xl font-bold text-blue-600 mb-2">25+</div>
+                  <div className="text-xs font-medium text-neutral-800">Years Soccer DNA</div>
                 </motion.div>
                 
                 <motion.div
                   animate={{ y: [0, 20, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                  className="card-premium p-6 transform -rotate-2 ml-8 hover-scale magnetic"
+                  className="card-premium p-5 transform -rotate-2 ml-6 hover-scale magnetic scale-[0.85] premium-gpu"
                 >
-                  <div className="text-3xl font-bold text-green-600 mb-2">100K+</div>
-                  <div className="text-sm font-medium text-neutral-800">Global Network</div>
+                  <div className="text-2xl font-bold text-green-600 mb-2">100K+</div>
+                  <div className="text-xs font-medium text-neutral-800">Global Network</div>
                 </motion.div>
                 
                 <motion.div
                   animate={{ y: [0, -15, 0] }}
                   transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                  className="card-premium p-6 transform rotate-1 -ml-2 hover-scale magnetic"
+                  className="card-premium p-5 transform rotate-1 -ml-1 hover-scale magnetic scale-[0.85] premium-gpu"
                 >
-                  <div className="text-3xl font-bold text-purple-600 mb-2">1B</div>
-                  <div className="text-sm font-medium text-neutral-800">Views by 2025</div>
+                  <div className="text-2xl font-bold text-purple-600 mb-2">1B</div>
+                  <div className="text-xs font-medium text-neutral-800">Views by 2025</div>
                 </motion.div>
               </div>
             </motion.div>
@@ -361,8 +363,8 @@ export default function ApproachPage() {
       </section>
 
       {/* Revolutionary Stats - Blue Gradient Mastery */}
-      <section data-section="1" className="relative py-32 overflow-hidden gradient-blue-deep">
-        <div className="absolute inset-0 noise opacity-20"></div>
+      <section data-section="1" className="relative py-32 overflow-hidden gradient-blue-deep premium-pattern-subtle">
+        <div className="absolute inset-0 noise opacity-20 premium-gpu"></div>
         
         {/* Blue Gradient Background Elements */}
         <div className="absolute inset-0">
@@ -384,7 +386,7 @@ export default function ApproachPage() {
             transition={{ duration: 1 }}
             className="mb-20"
           >
-            <h2 className="text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight leading-tight">
+            <h2 className="monumental-subhead text-white mb-4 tracking-tight leading-tight">
               BY THE 
               <span className="block gradient-text-light animate-gradient-shift pl-8">
                 NUMBERS
@@ -393,7 +395,7 @@ export default function ApproachPage() {
           </motion.div>
 
           {/* Broken Grid Layout */}
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
+          <div className="grid lg:grid-cols-12 gap-6 lg:gap-8">
             {/* Large Feature Stat - Deepest Blue */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -401,10 +403,10 @@ export default function ApproachPage() {
               transition={{ duration: 1.2 }}
               className="lg:col-span-6 lg:row-span-2"
             >
-              <div className="card-premium h-full p-8 gradient-blue-900 text-white relative overflow-hidden magnetic">
-                <div className="absolute top-0 right-0 w-20 h-20 bg-blue-300/20 rounded-full blur-2xl animate-pulse-glow"></div>
+              <div className="card-premium h-full p-8 premium-gradient-blue text-white relative overflow-hidden magnetic architectural-shadow-lg">
+                <div className="absolute top-0 right-0 w-20 h-20 bg-blue-300/20 rounded-full blur-2xl animate-premium-glow"></div>
                 <div className="relative z-10">
-                  <div className="text-5xl lg:text-6xl font-black mb-4 text-blue-100 animate-premium-shimmer">
+                  <div className="metric-huge mb-4 text-blue-100 animate-premium-shimmer">
                     {stats[0].value}
                   </div>
                   <div className="text-xl font-bold mb-3 text-blue-200">{stats[0].label}</div>
@@ -421,10 +423,10 @@ export default function ApproachPage() {
               transition={{ delay: 0.2, duration: 1 }}
               className="lg:col-span-3"
             >
-              <div className="glass-morphism-dark p-6 h-full border border-blue-400/40 relative overflow-hidden hover-lift">
+              <div className="glass-morphism-dark p-6 h-full border border-blue-400/40 relative overflow-hidden premium-hover architectural-shadow">
                 <div className="absolute inset-0 gradient-blue-600 opacity-20"></div>
                 <div className="relative z-10">
-                  <div className="text-4xl font-bold text-blue-300 mb-3 premium-counter">
+                  <div className="metric-large text-blue-300 mb-3 premium-counter">
                     {stats[1].value}
                   </div>
                   <div className="text-base font-semibold text-white mb-2">{stats[1].label}</div>
@@ -439,10 +441,10 @@ export default function ApproachPage() {
               transition={{ delay: 0.4, duration: 1 }}
               className="lg:col-span-3"
             >
-              <div className="glass-morphism-dark p-6 h-full border border-blue-500/40 relative overflow-hidden hover-lift">
+              <div className="glass-morphism-dark p-6 h-full border border-blue-500/40 relative overflow-hidden premium-hover architectural-shadow">
                 <div className="absolute inset-0 gradient-blue-700 opacity-15"></div>
                 <div className="relative z-10">
-                  <div className="text-4xl font-bold text-blue-400 mb-3 premium-counter">
+                  <div className="metric-large text-blue-400 mb-3 premium-counter">
                     {stats[2].value}
                   </div>
                   <div className="text-base font-semibold text-white mb-2">{stats[2].label}</div>
@@ -458,11 +460,11 @@ export default function ApproachPage() {
               transition={{ delay: 0.6, duration: 1 }}
               className="lg:col-span-6"
             >
-              <div className="relative p-6 border-2 border-blue-300/40 rounded-3xl overflow-hidden hover-scale">
+              <div className="relative p-6 border-2 border-blue-300/40 rounded-3xl overflow-hidden premium-hover architectural-shadow">
                 <div className="absolute inset-0 gradient-blue-flow opacity-10 animate-gradient-shift"></div>
                 <div className="relative z-10 flex items-center justify-between">
                   <div>
-                    <div className="text-4xl font-black text-blue-200 mb-2 premium-counter">
+                    <div className="metric-large text-blue-200 mb-2 premium-counter">
                       {stats[3].value}
                     </div>
                     <div className="text-lg font-bold text-white mb-1">{stats[3].label}</div>
@@ -516,12 +518,12 @@ export default function ApproachPage() {
               className="lg:col-span-1"
             >
               <div className="sticky top-20">
-                <h2 className="text-4xl lg:text-5xl font-black text-neutral-900 leading-tight mb-6">
+                <h2 className="monumental-subhead text-neutral-900 leading-tight mb-6">
                   HOW WE
                   <span className="block gradient-text animate-gradient-shift pl-4">
                     TRANSFORM
                   </span>
-                  <span className="block text-blue-600 text-2xl font-light mt-2">
+                  <span className="block text-blue-600 monumental-subhead font-light mt-2 text-2xl">
                     your vision
                   </span>
                 </h2>
@@ -532,7 +534,7 @@ export default function ApproachPage() {
             </motion.div>
 
             {/* Interactive Process Steps */}
-            <div className="lg:col-span-1 space-y-12">
+            <div className="lg:col-span-1 space-y-8">
               {processSteps.map((step, index) => (
                 <motion.div
                   key={step.step}
@@ -543,7 +545,7 @@ export default function ApproachPage() {
                   className="group relative"
                 >
                   {/* Step Card with Dynamic Layout */}
-                  <div className={`relative p-6 lg:p-8 rounded-3xl overflow-hidden hover-lift premium-focus ${
+                  <div className={`relative p-5 lg:p-7 rounded-3xl overflow-hidden hover-lift premium-focus ${
                     index % 2 === 0 ? 'card-premium mr-0 lg:mr-6' : 'card-premium ml-0 lg:ml-6'
                   }`}>
                     {/* Animated Background */}
@@ -562,7 +564,7 @@ export default function ApproachPage() {
                       index === 1 ? 'gradient-blue-600' :
                       index === 2 ? 'gradient-blue-700' :
                       'gradient-blue-800'
-                    } text-white flex items-center justify-center text-lg font-black architectural-shadow-lg animate-pulse-glow magnetic`}>
+                    } text-white flex items-center justify-center text-lg font-black architectural-shadow-lg animate-premium-glow magnetic`}>
                       {step.step}
                     </div>
 
@@ -643,21 +645,21 @@ export default function ApproachPage() {
             transition={{ delay: 1, duration: 1 }}
             className="text-center mt-24"
           >
-            <button className="group relative px-16 py-8 gradient-blue-600 text-white text-2xl font-bold rounded-full overflow-hidden magnetic architectural-shadow-xl">
+            <button className="group relative px-16 py-8 btn-premium text-white text-2xl font-bold rounded-full overflow-hidden magnetic architectural-shadow-xl animate-premium-glow">
               <span className="relative z-10">Begin Your Transformation</span>
               <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-center duration-700"></div>
-              <div className="absolute -top-1 -left-1 w-4 h-4 bg-blue-200/50 rounded-full animate-float"></div>
-              <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-blue-300/60 rounded-full animate-float" style={{animationDelay: '1s'}}></div>
+              <div className="absolute -top-1 -left-1 w-4 h-4 bg-blue-200/50 rounded-full animate-premium-float"></div>
+              <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-blue-300/60 rounded-full animate-premium-float" style={{animationDelay: '1s'}}></div>
             </button>
           </motion.div>
         </div>
       </section>
 
-      <div className="divider-premium-thick"></div>
+      <div className="divider-premium-thick space-monumental"></div>
 
       {/* Blueprint Architecture - Core Strengths */}
-      <section data-section="3" className="relative py-32 overflow-hidden bg-white">
-        <div className="absolute inset-0 data-texture opacity-10"></div>
+      <section data-section="3" className="relative py-32 overflow-hidden bg-white premium-pattern">
+        <div className="absolute inset-0 data-texture opacity-10 premium-gpu"></div>
         
         {/* Blueprint Grid Background */}
         <div className="absolute inset-0">
@@ -680,7 +682,7 @@ export default function ApproachPage() {
             className="text-center mb-32"
           >
             <div className="relative inline-block">
-              <h2 className="text-8xl lg:text-9xl font-black text-neutral-900 leading-none mb-4 tracking-tighter">
+              <h2 className="monumental-display text-neutral-900 leading-none mb-4">
                 CORE
               </h2>
               <div className="absolute -inset-4 border-4 border-blue-500/30 transform rotate-1 rounded-2xl"></div>
@@ -693,7 +695,7 @@ export default function ApproachPage() {
               transition={{ delay: 0.3, duration: 1 }}
               className="relative"
             >
-              <h3 className="gradient-text text-6xl lg:text-7xl font-light mb-8 animate-gradient-shift">
+              <h3 className="gradient-text monumental-headline font-light mb-8 animate-gradient-shift">
                 ARCHITECTURE
               </h3>
               <p className="text-2xl text-blue-600 max-w-4xl mx-auto leading-relaxed">
@@ -715,16 +717,21 @@ export default function ApproachPage() {
                   transition: { duration: 0.3 }
                 }}
                 transition={{ delay: index * 0.3, duration: 1.2 }}
-                className={`absolute w-full max-w-4xl ${
+                className={`absolute w-full max-w-3xl ${
                   index === 0 ? 'top-0 left-0' :
-                  index === 1 ? 'top-32 right-0' :
-                  index === 2 ? 'top-64 left-8' :
-                  'top-96 right-8'
+                  index === 1 ? 'top-24 right-0' :
+                  index === 2 ? 'top-48 left-8' :
+                  'top-72 right-8'
                 }`}
                 style={{ zIndex: 4 - index }}
               >
                 {/* Blueprint Card */}
-                <div className={`relative p-12 lg:p-16 rounded-3xl border-4 overflow-hidden premium-hover cursor-pointer ${
+                <div 
+                  onClick={() => {
+                    setSelectedCard(index);
+                    setIsModalOpen(true);
+                  }}
+                  className={`relative p-8 lg:p-12 rounded-3xl border-4 overflow-hidden premium-hover cursor-pointer transition-all duration-300 group ${
                   index === 0 ? 'border-blue-300 gradient-blue-50' :
                   index === 1 ? 'border-blue-400 gradient-blue-100' :
                   index === 2 ? 'border-blue-500 gradient-blue-200' :
@@ -743,7 +750,7 @@ export default function ApproachPage() {
                     index === 1 ? 'gradient-blue-600' :
                     index === 2 ? 'gradient-blue-700' :
                     'gradient-blue-800'
-                  } animate-pulse-glow`}>
+                  } animate-premium-glow`}>
                     {String(index + 1).padStart(2, '0')}
                   </div>
 
@@ -814,13 +821,21 @@ export default function ApproachPage() {
                   <div className="absolute bottom-6 right-6 text-xs font-mono text-blue-400/60 uppercase tracking-widest">
                     WSV BLUEPRINT v2.0
                   </div>
+                  
+                  {/* Clickable Indicator */}
+                  <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="flex items-center space-x-2 text-xs font-medium text-blue-600 bg-blue-50/90 px-3 py-1 rounded-full backdrop-blur-sm">
+                      <span>Explore</span>
+                      <div className="w-3 h-3 border-r-2 border-t-2 border-blue-600 transform rotate-45"></div>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             ))}
           </div>
 
           {/* Bottom Spacer for Overlapping Cards */}
-          <div className="h-[800px] lg:h-[1000px]"></div>
+          <div className="h-[600px] lg:h-[750px]"></div>
 
           {/* Blueprint Footer */}
           <motion.div
@@ -844,11 +859,11 @@ export default function ApproachPage() {
         </div>
       </section>
 
-      <div className="divider-premium-thick"></div>
+      <div className="divider-premium-thick space-monumental"></div>
 
       {/* Investment Verticals - Strategic Focus Areas */}
-      <section ref={ref} data-section="4" className="relative py-32 overflow-hidden gradient-blue-deep">
-        <div className="absolute inset-0 noise opacity-30"></div>
+      <section ref={ref} data-section="4" className="relative py-32 overflow-hidden gradient-blue-deep premium-pattern-subtle">
+        <div className="absolute inset-0 noise opacity-30 premium-gpu"></div>
         
         {/* Dynamic Grid Pattern */}
         <div className="absolute inset-0">
@@ -887,7 +902,7 @@ export default function ApproachPage() {
           >
             <div className="relative">
               <motion.h2 
-                className="text-8xl lg:text-9xl font-black text-white leading-none mb-8 tracking-tighter"
+                className="monumental-display text-white leading-none mb-8"
                 animate={{ 
                   textShadow: [
                     '0 0 20px rgba(59, 130, 246, 0.5)',
@@ -931,12 +946,12 @@ export default function ApproachPage() {
                 transition={{ delay: index * 0.2, duration: 1.5 }}
                 className={`relative ${index % 2 === 0 ? '' : 'flex justify-end'}`}
               >
-                <div className={`relative max-w-5xl ${
+                <div className={`relative max-w-4xl ${
                   index % 2 === 0 ? 'pr-0 lg:pr-32' : 'pl-0 lg:pl-32'
                 }`}>
                   
                   {/* Investment Area Container */}
-                  <div className="relative p-12 lg:p-16 glass-morphism-dark rounded-3xl border-2 border-blue-400/40 overflow-hidden hover-lift">
+                  <div className="relative p-12 lg:p-16 glass-morphism-dark rounded-3xl border-2 border-blue-400/40 overflow-hidden premium-hover-lift architectural-shadow-lg">
                     
                     {/* Professional Corner Effects */}
                     <div className="absolute top-0 left-0 w-full h-full">
@@ -1118,7 +1133,7 @@ export default function ApproachPage() {
 
       {/* Partnership Hub - Strategic Alliance */}
       <section data-section="5" className="relative py-32 overflow-hidden gradient-blue-deep">
-        <div className="absolute inset-0 noise opacity-40"></div>
+        <div className="absolute inset-0 noise opacity-40 premium-gpu"></div>
         
         {/* Dynamic Growth Background */}
         <div className="absolute inset-0">
@@ -1135,13 +1150,26 @@ export default function ApproachPage() {
           />
           
           {/* Floating Growth Elements */}
-          {Array.from({ length: 12 }).map((_, i) => (
+          {[
+            { left: '15%', top: '20%' },
+            { left: '85%', top: '15%' },
+            { left: '25%', top: '80%' },
+            { left: '75%', top: '75%' },
+            { left: '45%', top: '30%' },
+            { left: '65%', top: '60%' },
+            { left: '10%', top: '50%' },
+            { left: '90%', top: '40%' },
+            { left: '35%', top: '10%' },
+            { left: '55%', top: '90%' },
+            { left: '20%', top: '65%' },
+            { left: '80%', top: '25%' }
+          ].map((position, i) => (
             <motion.div
               key={i}
               className="absolute w-2 h-2 bg-blue-300 rounded-full"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
+                left: position.left,
+                top: position.top,
               }}
               animate={{
                 y: [0, -100, 0],
@@ -1177,7 +1205,7 @@ export default function ApproachPage() {
                 transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
               />
               
-              <h2 className="text-8xl lg:text-9xl font-black text-white leading-none tracking-tighter relative z-10">
+              <h2 className="monumental-display text-white leading-none tracking-tighter relative z-10">
                 PARTNERSHIP
                 <span className="block gradient-text-light animate-gradient-shift">
                   HUB
@@ -1204,8 +1232,8 @@ export default function ApproachPage() {
               transition={{ duration: 1.2 }}
               className="space-y-8"
             >
-              <div className="glass-morphism-dark p-8 rounded-3xl border border-blue-400/40">
-                <h3 className="text-3xl font-black text-white mb-6 uppercase tracking-tight">
+              <div className="glass-morphism-dark p-8 rounded-3xl border border-blue-400/40 architectural-shadow">
+                <h3 className="monumental-subhead text-white mb-6 uppercase tracking-tight text-3xl">
                   Partnership Infrastructure
                 </h3>
                 
@@ -1249,8 +1277,8 @@ export default function ApproachPage() {
               transition={{ duration: 1.2 }}
               className="space-y-8"
             >
-              <div className="glass-morphism-dark p-8 rounded-3xl border border-blue-400/40">
-                <h3 className="text-3xl font-black text-white mb-6 uppercase tracking-tight">
+              <div className="glass-morphism-dark p-8 rounded-3xl border border-blue-400/40 architectural-shadow">
+                <h3 className="monumental-subhead text-white mb-6 uppercase tracking-tight text-3xl">
                   Partnership Value
                 </h3>
                 
@@ -1282,7 +1310,7 @@ export default function ApproachPage() {
             className="text-center"
           >
             <div className="relative mb-12">
-              <h3 className="text-6xl lg:text-7xl font-black text-white mb-8 leading-none">
+              <h3 className="monumental-headline text-white mb-8 leading-none">
                 READY TO
                 <span className="block gradient-text-light">
                   PARTNER?
@@ -1299,7 +1327,7 @@ export default function ApproachPage() {
               <motion.button
                 whileHover={{ scale: 1.05, y: -5 }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative px-16 py-8 gradient-blue-600 text-white text-2xl font-black rounded-full overflow-hidden magnetic architectural-shadow-xl"
+                className="group relative px-16 py-8 btn-premium text-white text-2xl font-black rounded-full overflow-hidden magnetic architectural-shadow-xl animate-premium-glow"
               >
                 <span className="relative z-10 flex items-center space-x-4">
                   <span>START PARTNERSHIP</span>
@@ -1325,7 +1353,7 @@ export default function ApproachPage() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-16 py-8 border-4 border-blue-400/50 text-blue-200 text-2xl font-bold rounded-full glass-morphism-dark hover-lift magnetic"
+                className="px-16 py-8 border-4 border-blue-400/50 text-blue-200 text-2xl font-bold rounded-full glass-morphism-dark premium-hover-lift magnetic"
               >
                 EXPLORE PORTFOLIO
               </motion.button>
@@ -1357,6 +1385,159 @@ export default function ApproachPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Revolutionary Modal System */}
+      <AnimatePresence>
+        {isModalOpen && selectedCard !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            onClick={() => setIsModalOpen(false)}
+          >
+            {/* Modal Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 premium-modal-backdrop"
+            />
+            
+            {/* Modal Content */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 50 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 50 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative max-w-4xl w-full max-h-[90vh] overflow-y-auto premium-modal"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-neutral-600 hover:bg-white/30 transition-all z-10"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              {/* Modal Header */}
+              <div className="p-8 lg:p-12 border-b border-neutral-200">
+                <div className="flex items-center space-x-4 mb-6">
+                  <div className={`w-16 h-16 rounded-full flex items-center justify-center text-white text-2xl font-black ${
+                    selectedCard === 0 ? 'gradient-blue-500' :
+                    selectedCard === 1 ? 'gradient-blue-600' :
+                    selectedCard === 2 ? 'gradient-blue-700' :
+                    'gradient-blue-800'
+                  }`}>
+                    {String(selectedCard + 1).padStart(2, '0')}
+                  </div>
+                  <div>
+                    <h2 className="text-4xl font-black text-neutral-900 uppercase tracking-tight">
+                      {approachSections[selectedCard].title}
+                    </h2>
+                    <div className="text-sm font-mono text-blue-600 uppercase tracking-widest mt-2">
+                      DETAILED SPECIFICATION
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Modal Body */}
+              <div className="p-8 lg:p-12">
+                {/* Description */}
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold text-neutral-800 mb-4">Overview</h3>
+                  <p className="text-lg text-neutral-700 leading-relaxed mb-6">
+                    {approachSections[selectedCard].description}
+                  </p>
+                  
+                  {/* Highlight Box */}
+                  <div className={`p-6 rounded-2xl border-l-8 ${
+                    selectedCard === 0 ? 'border-blue-400 bg-blue-50/50' :
+                    selectedCard === 1 ? 'border-blue-500 bg-blue-100/50' :
+                    selectedCard === 2 ? 'border-blue-600 bg-blue-200/50' :
+                    'border-blue-700 bg-blue-300/50'
+                  } backdrop-blur-sm mb-8`}>
+                    <h4 className="text-lg font-bold text-neutral-800 mb-3">Key Insight</h4>
+                    <p className="text-base text-neutral-700 leading-relaxed">
+                      {approachSections[selectedCard].highlight}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Metrics Grid */}
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold text-neutral-800 mb-6">Core Capabilities</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {approachSections[selectedCard].metrics.map((metric, metricIndex) => (
+                      <motion.div
+                        key={metric}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: metricIndex * 0.1 }}
+                        className={`p-6 rounded-xl border-2 backdrop-blur-sm hover-scale ${
+                          selectedCard === 0 ? 'border-blue-300/50 bg-blue-50/30' :
+                          selectedCard === 1 ? 'border-blue-400/50 bg-blue-100/30' :
+                          selectedCard === 2 ? 'border-blue-500/50 bg-blue-200/30' :
+                          'border-blue-600/50 bg-blue-300/30'
+                        }`}
+                      >
+                        <div className="flex items-center space-x-3">
+                          <div className={`w-4 h-4 rounded-full ${
+                            selectedCard === 0 ? 'bg-blue-400' :
+                            selectedCard === 1 ? 'bg-blue-500' :
+                            selectedCard === 2 ? 'bg-blue-600' :
+                            'bg-blue-700'
+                          } animate-pulse`}></div>
+                          <span className="text-sm font-bold text-neutral-800 uppercase tracking-wide">
+                            {metric}
+                          </span>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Navigation */}
+                <div className="flex justify-between items-center pt-8 border-t border-neutral-200">
+                  <button
+                    onClick={() => {
+                      if (selectedCard > 0) {
+                        setSelectedCard(selectedCard - 1);
+                      }
+                    }}
+                    disabled={selectedCard === 0}
+                    className="flex items-center space-x-2 px-6 py-3 rounded-lg border border-neutral-300 text-neutral-600 hover:bg-neutral-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                  >
+                    <div className="w-4 h-4 border-l-2 border-t-2 border-neutral-600 transform -rotate-45"></div>
+                    <span>Previous</span>
+                  </button>
+                  
+                  <div className="text-sm text-neutral-500 font-medium">
+                    {selectedCard + 1} of {approachSections.length}
+                  </div>
+                  
+                  <button
+                    onClick={() => {
+                      if (selectedCard < approachSections.length - 1) {
+                        setSelectedCard(selectedCard + 1);
+                      }
+                    }}
+                    disabled={selectedCard === approachSections.length - 1}
+                    className="flex items-center space-x-2 px-6 py-3 rounded-lg border border-neutral-300 text-neutral-600 hover:bg-neutral-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                  >
+                    <span>Next</span>
+                    <div className="w-4 h-4 border-r-2 border-t-2 border-neutral-600 transform rotate-45"></div>
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
