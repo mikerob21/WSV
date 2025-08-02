@@ -4,7 +4,7 @@ import AboutSection from '@/components/AboutSection';
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen atmosphere-blue">
       <Navbar />
       <HeroSection />
       <AboutSection />

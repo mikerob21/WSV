@@ -22,15 +22,15 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-white to-emerald-50">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden atmosphere-blue">
       {/* Animated Background Grid */}
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        <div className="absolute inset-0 data-texture"></div>
       </div>
 
       {/* Floating Orbs */}
       <motion.div
-        className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-emerald-400/20 to-teal-400/20 rounded-full blur-3xl"
+        className="absolute top-20 left-20 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl"
         animate={{
           x: mousePosition.x * 0.02,
           y: mousePosition.y * 0.02,
@@ -38,7 +38,7 @@ export default function HeroSection() {
         transition={{ type: "spring", stiffness: 50, damping: 20 }}
       />
       <motion.div
-        className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-blue-400/20 to-indigo-400/20 rounded-full blur-3xl"
+        className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"
         animate={{
           x: mousePosition.x * -0.02,
           y: mousePosition.y * -0.02,
@@ -55,18 +55,18 @@ export default function HeroSection() {
           className="mb-8"
         >
           <motion.h1 
-            className="text-6xl lg:text-8xl font-black tracking-tight mb-6"
+            className="roboto-thin tracking-tight mb-6"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
             <span className="block">
-              <span className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent">
+              <span className="text-neutral-900">
                 Transforming
               </span>
             </span>
             <motion.span 
-              className="block bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 bg-clip-text text-transparent"
+              className="block gradient-text"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
@@ -81,10 +81,10 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="text-xl lg:text-2xl text-slate-600 max-w-4xl mx-auto mb-12 leading-relaxed"
+          className="roboto-light text-neutral-600 max-w-4xl mx-auto mb-12 leading-relaxed"
         >
           Elite soccer venture capital led by{' '}
-          <span className="font-semibold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+          <span className="font-semibold gradient-text">
             Jeremiah White III
           </span>
           , former USMNT player. Strategic investments in technology, clubs, and media transforming the soccer ecosystem.
@@ -100,9 +100,9 @@ export default function HeroSection() {
           <motion.button
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
-            className="group relative px-10 py-5 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold text-lg rounded-2xl overflow-hidden shadow-xl shadow-emerald-500/25"
+            className="group relative px-10 py-5 gradient-blue-500 text-white font-bold text-lg rounded-2xl overflow-hidden card-shadow"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-700 to-teal-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 gradient-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <span className="relative flex items-center justify-center space-x-2">
               <span>View Investment Approach</span>
               <motion.svg
@@ -122,7 +122,7 @@ export default function HeroSection() {
           <motion.button
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
-            className="group px-10 py-5 border-2 border-slate-300 text-slate-700 font-bold text-lg rounded-2xl hover:border-emerald-500 hover:text-emerald-600 transition-all duration-300 backdrop-blur-sm bg-white/50"
+            className="group px-10 py-5 border-2 border-neutral-300 text-neutral-700 font-bold text-lg rounded-2xl hover:border-blue-500 hover:text-blue-600 transition-all duration-300 backdrop-blur-sm bg-white/50"
           >
             <span className="flex items-center justify-center space-x-2">
               <span>Portfolio Companies</span>
@@ -155,14 +155,14 @@ export default function HeroSection() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: stat.delay + 0.9, duration: 0.6, type: "spring" }}
               whileHover={{ scale: 1.1, y: -10 }}
-              className="group relative p-6 bg-white/70 backdrop-blur-sm rounded-2xl border border-slate-200/50 hover:border-emerald-200 transition-all duration-300 shadow-lg shadow-slate-900/5"
+              className="group relative p-6 bg-white/70 backdrop-blur-sm rounded-2xl border border-neutral-200/50 hover:border-blue-200 transition-all duration-300 card-shadow"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/50 to-teal-50/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-blue-50/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative">
-                <div className="text-3xl lg:text-4xl font-black bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent mb-2">
+                <div className="text-3xl lg:text-4xl font-black gradient-text mb-2">
                   {stat.value}
                 </div>
-                <div className="text-slate-600 font-medium text-sm lg:text-base">
+                <div className="text-neutral-600 font-medium text-sm lg:text-base">
                   {stat.label}
                 </div>
               </div>
@@ -181,12 +181,12 @@ export default function HeroSection() {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-slate-400 rounded-full flex justify-center"
+          className="w-6 h-10 border-2 border-neutral-400 rounded-full flex justify-center"
         >
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-1 h-3 bg-slate-400 rounded-full mt-2"
+            className="w-1 h-3 bg-neutral-400 rounded-full mt-2"
           />
         </motion.div>
       </motion.div>
