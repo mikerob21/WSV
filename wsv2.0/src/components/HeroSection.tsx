@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 const statistics = [
-  { value: '25+', label: 'Years Experience', delay: 0.2 },
-  { value: '$50M+', label: 'Portfolio Value', delay: 0.4 },
-  { value: '100K+', label: 'Community Reach', delay: 0.6 },
-  { value: 'Global', label: 'Soccer Network', delay: 0.8 },
+  { value: '200M+', label: 'Total Video Views', delay: 0.2 },
+  { value: '380K+', label: 'Social Followers', delay: 0.4 },
+  { value: '6', label: 'Portfolio Companies', delay: 0.6 },
+  { value: '25+', label: 'Key Partnerships', delay: 0.8 },
 ];
 
 export default function HeroSection() {

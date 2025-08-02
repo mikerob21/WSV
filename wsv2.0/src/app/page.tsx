@@ -1,6 +1,9 @@
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
+import PortfolioSection from '@/components/PortfolioSection';
+import MetricsSection from '@/components/MetricsSection';
+import FeaturedAchievements from '@/components/FeaturedAchievements';
 
 export default function Home() {
   return (
@@ -8,6 +11,9 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <AboutSection />
+      <PortfolioSection />
+      <FeaturedAchievements />
+      <MetricsSection />
     </main>
   );
 }
