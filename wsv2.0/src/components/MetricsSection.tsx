@@ -10,10 +10,9 @@ interface MetricCardProps {
   description: string;
   icon: string;
   delay: number;
-  color: string;
 }
 
-const MetricCard = ({ value, label, description, icon, delay, color }: MetricCardProps) => {
+const MetricCard = ({ value, label, description, icon, delay }: MetricCardProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const [displayValue, setDisplayValue] = useState('0');
@@ -34,21 +33,18 @@ const MetricCard = ({ value, label, description, icon, delay, color }: MetricCar
       initial={{ opacity: 0, scale: 0.8, y: 50 }}
       animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.8, y: 50 }}
       transition={{ duration: 0.8, delay: delay, type: "spring", stiffness: 100 }}
-      whileHover={{ scale: 1.05, y: -10 }}
-      className="group relative bg-white/80 backdrop-blur-sm p-8 rounded-3xl border border-slate-200/50 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden"
+      whileHover={{ scale: 1.02, y: -5 }}
+      className="group relative bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-neutral-200/50 shadow-lg hover:shadow-xl transition-all duration-500 overflow-hidden"
     >
       {/* Background Gradient */}
-      <div 
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"
-        style={{ background: `linear-gradient(135deg, ${color}15, ${color}05)` }}
-      />
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl bg-blue-50/50" />
       
       {/* Icon */}
-      <div className="relative mb-6">
+      <div className="relative mb-4">
         <motion.div
           animate={isInView ? { rotate: [0, 10, -10, 0] } : {}}
           transition={{ duration: 2, delay: delay + 0.5 }}
-          className="text-6xl mb-4"
+          className="text-3xl mb-2"
         >
           {icon}
         </motion.div>
@@ -59,19 +55,18 @@ const MetricCard = ({ value, label, description, icon, delay, color }: MetricCar
         initial={{ scale: 0 }}
         animate={isInView ? { scale: 1 } : { scale: 0 }}
         transition={{ duration: 0.8, delay: delay + 0.3, type: "spring" }}
-        className="text-5xl lg:text-6xl font-black mb-4"
-        style={{ color }}
+        className="text-2xl lg:text-3xl font-black mb-3 text-blue-600"
       >
         {displayValue}
       </motion.div>
 
       {/* Label */}
-      <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-slate-800 transition-colors">
+      <h3 className="text-lg font-bold text-neutral-900 mb-2 group-hover:text-neutral-800 transition-colors">
         {label}
       </h3>
 
       {/* Description */}
-      <p className="text-slate-600 leading-relaxed group-hover:text-slate-700 transition-colors">
+      <p className="text-sm text-neutral-600 leading-relaxed group-hover:text-neutral-700 transition-colors">
         {description}
       </p>
 
@@ -86,8 +81,7 @@ const MetricCard = ({ value, label, description, icon, delay, color }: MetricCar
           repeat: Infinity,
           delay: delay 
         }}
-        className="absolute top-4 right-4 w-2 h-2 rounded-full"
-        style={{ backgroundColor: color }}
+        className="absolute top-4 right-4 w-2 h-2 rounded-full bg-blue-400"
       />
       <motion.div
         animate={{ 
@@ -99,8 +93,7 @@ const MetricCard = ({ value, label, description, icon, delay, color }: MetricCar
           repeat: Infinity,
           delay: delay + 1 
         }}
-        className="absolute bottom-8 right-8 w-1 h-1 rounded-full"
-        style={{ backgroundColor: color }}
+        className="absolute bottom-6 right-6 w-1 h-1 rounded-full bg-blue-300"
       />
     </motion.div>
   );
@@ -117,36 +110,32 @@ export default function MetricsSection() {
       label: "Total Video Views",
       description: "Combined reach across all media platforms, establishing WSV as a dominant force in soccer content.",
       icon: "📱",
-      color: "#00A651"
     },
     {
       value: "380K+",
       label: "Social Media Followers",
       description: "Engaged community across Instagram, TikTok, Twitter, and other platforms driving cultural influence.",
       icon: "👥",
-      color: "#4A90E2"
     },
     {
       value: "6",
       label: "Portfolio Companies",
       description: "Strategic investments spanning media, technology, clubs, and cultural brands transforming soccer.",
       icon: "🏢",
-      color: "#6A4C93"
     },
     {
       value: "15+",
       label: "Key Partnerships",
       description: "Major collaborations with MLS clubs, tech giants, and industry leaders amplifying our ecosystem impact.",
       icon: "🤝",
-      color: "#00CED1"
     }
   ];
 
   return (
-    <section ref={ref} className="relative py-24 px-6 lg:px-8 overflow-hidden">
+    <section ref={ref} className="relative py-16 px-6 lg:px-8 overflow-hidden bg-neutral-900">
       {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900">
-        <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.03)_50%,transparent_75%)] bg-[length:60px_60px] animate-pulse" />
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(59,130,246,0.03)_50%,transparent_75%)] bg-[length:60px_60px] animate-pulse" />
       </div>
 
       {/* Floating Orbs */}
@@ -160,7 +149,7 @@ export default function MetricsSection() {
           repeat: Infinity,
           ease: "linear"
         }}
-        className="absolute top-20 left-20 w-32 h-32 bg-gradient-to-r from-emerald-400/20 to-teal-400/20 rounded-full blur-xl"
+        className="absolute top-20 left-20 w-32 h-32 bg-blue-400/20 rounded-full blur-xl"
       />
       <motion.div
         animate={{
@@ -172,7 +161,7 @@ export default function MetricsSection() {
           repeat: Infinity,
           ease: "linear"
         }}
-        className="absolute bottom-20 right-20 w-40 h-40 bg-gradient-to-r from-blue-400/20 to-indigo-400/20 rounded-full blur-xl"
+        className="absolute bottom-20 right-20 w-40 h-40 bg-blue-500/20 rounded-full blur-xl"
       />
 
       <div className="relative z-10 max-w-7xl mx-auto">
@@ -181,15 +170,15 @@ export default function MetricsSection() {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-12"
         >
           <motion.h2 
-            className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight"
+            className="text-2xl lg:text-3xl font-black text-white mb-6 leading-tight"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="gradient-text-light">
               Portfolio Impact
             </span>
           </motion.h2>
@@ -197,7 +186,7 @@ export default function MetricsSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed"
+            className="text-lg text-neutral-300 max-w-4xl mx-auto leading-relaxed"
           >
             Our strategic investments are reshaping the global soccer landscape through innovation, 
             community building, and technological advancement.
@@ -205,7 +194,7 @@ export default function MetricsSection() {
         </motion.div>
 
         {/* Metrics Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {combinedMetrics.map((metric, index) => (
             <MetricCard
               key={metric.label}
@@ -214,7 +203,6 @@ export default function MetricsSection() {
               description={metric.description}
               icon={metric.icon}
               delay={index * 0.2}
-              color={metric.color}
             />
           ))}
         </div>
@@ -224,18 +212,18 @@ export default function MetricsSection() {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ delay: 1.2, duration: 0.8 }}
-          className="text-center mt-20"
+          className="text-center mt-12"
         >
           <motion.button
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
-            className="group relative px-12 py-6 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold text-lg rounded-2xl overflow-hidden shadow-2xl shadow-emerald-500/25"
+            className="group relative px-8 py-4 gradient-blue-500 text-white font-bold text-base rounded-2xl overflow-hidden shadow-xl shadow-blue-500/25"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <span className="relative flex items-center justify-center space-x-3">
+            <div className="absolute inset-0 gradient-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <span className="relative flex items-center justify-center space-x-2">
               <span>Explore Our Investment Approach</span>
               <motion.svg
-                className="w-6 h-6"
+                className="w-5 h-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

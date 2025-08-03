@@ -190,17 +190,72 @@ export default function About() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto text-center">
-          <div className="text-2xl font-bold gradient-text mb-4">White Sports Ventures</div>
-          <p className="text-gray-400 mb-6">Powering the Future of Soccer in America</p>
-          <div className="flex justify-center space-x-6">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">LinkedIn</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">Twitter</a>
-            <a href="mailto:jeremiah@whitesportsventures.com" className="text-gray-400 hover:text-white transition-colors">Email</a>
+      {/* Expertise Section */}
+      <section className="py-12 px-6 lg:px-8 bg-blue-50">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-lg lg:text-xl font-bold mb-4 text-neutral-900">
+              Areas of Expertise
+            </h2>
+            <p className="text-sm lg:text-base text-neutral-600 max-w-3xl mx-auto">
+              Multidisciplinary expertise spanning athletics, finance, and entrepreneurship
+            </p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-3 gap-6">
+            {expertise.map((area, index) => (
+              <motion.div
+                key={area.category}
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ delay: index * 0.2, duration: 0.8 }}
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="group relative p-6 bg-white rounded-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 shadow-md hover:shadow-lg"
+              >
+                <div className="relative">
+                  <div className="inline-flex items-center px-3 py-1 bg-blue-600 text-white text-xs font-medium rounded-full mb-4">
+                    {area.category}
+                  </div>
+                  
+                  <div className="space-y-2">
+                    {area.skills.map((skill, skillIndex) => (
+                      <motion.div
+                        key={skill}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: (index * 0.2) + (skillIndex * 0.1) + 0.5 }}
+                        className="flex items-center space-x-2 group/skill"
+                      >
+                        <div className="w-2 h-2 bg-blue-600 rounded-full group-hover/skill:scale-125 transition-transform duration-200"></div>
+                        <span className="text-neutral-700 font-medium text-sm group-hover/skill:text-neutral-900 transition-colors">
+                          {skill}
+                        </span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
-          <div className="mt-8 pt-8 border-t border-gray-800 text-gray-500 text-sm">
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-blue-900 text-white py-8">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <div className="text-lg font-bold text-blue-100 mb-3">White Sports Ventures</div>
+          <p className="text-blue-200 mb-4 text-sm">Powering the Future of Soccer in America</p>
+          <div className="flex justify-center space-x-6 mb-6">
+            <a href="#" className="text-blue-200 hover:text-white transition-colors text-sm">LinkedIn</a>
+            <a href="#" className="text-blue-200 hover:text-white transition-colors text-sm">Twitter</a>
+            <a href="mailto:jeremiah@whitesportsventures.com" className="text-blue-200 hover:text-white transition-colors text-sm">Email</a>
+          </div>
+          <div className="pt-4 border-t border-blue-800 text-blue-300 text-xs">
             © 2025 White Sports Ventures. All rights reserved.
           </div>
         </div>

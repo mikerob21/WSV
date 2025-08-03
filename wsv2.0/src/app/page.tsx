@@ -7,7 +7,7 @@ import FeaturedAchievements from '@/components/FeaturedAchievements';
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-white">
       <Navbar />
       <HeroSection />
       <AboutSection />
