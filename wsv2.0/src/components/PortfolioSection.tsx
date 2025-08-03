@@ -12,7 +12,7 @@ export default function PortfolioSection() {
   return (
     <section 
       ref={ref} 
-      className="bg-gradient-to-br from-slate-50 via-white to-emerald-50 py-24 px-6 lg:px-8"
+      className="bg-white py-12 px-6 lg:px-8"
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
@@ -20,20 +20,20 @@ export default function PortfolioSection() {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-4xl lg:text-6xl font-black text-slate-900 mb-6 leading-tight tracking-tight">
+          <h2 className="text-lg lg:text-xl font-bold text-neutral-900 mb-4 leading-tight tracking-tight">
             Elite Portfolio
           </h2>
-          <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-sm lg:text-base text-neutral-600 max-w-3xl mx-auto leading-relaxed">
             Strategic investments transforming the soccer ecosystem through innovation, culture, and technology.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid lg:grid-cols-3 gap-6 mb-8">
           {/* Company Selection */}
           <div className="lg:col-span-1">
-            <div className="space-y-4">
+            <div className="space-y-3">
               {portfolioData.map((company, index) => (
                 <motion.div
                   key={company.name}
@@ -41,30 +41,30 @@ export default function PortfolioSection() {
                   animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   onClick={() => setSelectedCompany(company)}
-                  className={`cursor-pointer p-6 rounded-2xl border transition-all duration-300 ${
+                  className={`cursor-pointer p-4 rounded-xl border transition-all duration-300 ${
                     selectedCompany.name === company.name
-                      ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white border-emerald-500 shadow-xl shadow-emerald-500/25'
-                      : 'bg-white/80 backdrop-blur-sm hover:bg-white border-slate-200 hover:border-emerald-200 shadow-lg hover:shadow-xl'
+                      ? 'bg-blue-600 text-white border-blue-600 shadow-lg'
+                      : 'bg-white/80 backdrop-blur-sm hover:bg-white border-neutral-200 hover:border-blue-200 shadow-md hover:shadow-lg'
                   }`}
-                  whileHover={{ scale: 1.02, y: -5 }}
+                  whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-3">
                     <div 
-                      className={`text-2xl p-3 rounded-xl ${
-                        selectedCompany.name === company.name ? 'bg-white/20' : 'bg-slate-100'
+                      className={`text-lg p-2 rounded-lg ${
+                        selectedCompany.name === company.name ? 'bg-white/20' : 'bg-neutral-100'
                       }`}
                     >
                       {getCompanyIcon(company.type)}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className={`text-lg font-bold mb-1 truncate ${
-                        selectedCompany.name === company.name ? 'text-white' : 'text-slate-900'
+                      <h3 className={`text-base font-bold mb-1 truncate ${
+                        selectedCompany.name === company.name ? 'text-white' : 'text-neutral-900'
                       }`}>
                         {company.name}
                       </h3>
                       <p className={`text-sm font-medium truncate ${
-                        selectedCompany.name === company.name ? 'text-white/90' : 'text-slate-600'
+                        selectedCompany.name === company.name ? 'text-white/90' : 'text-neutral-600'
                       }`}>
                         {company.competitiveAdvantage}
                       </p>
@@ -83,40 +83,40 @@ export default function PortfolioSection() {
             transition={{ duration: 0.4 }}
             className="lg:col-span-2"
           >
-            <div className="bg-white/90 backdrop-blur-sm p-8 lg:p-10 rounded-3xl border border-slate-200/50 shadow-2xl">
+            <div className="bg-white/90 backdrop-blur-sm p-6 lg:p-8 rounded-2xl border border-neutral-200/50 shadow-xl">
               {/* Header */}
-              <div className="mb-8">
-                <div className="flex items-start justify-between mb-6">
-                  <div className="flex items-center gap-4">
+              <div className="mb-6">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-center gap-3">
                     <div 
-                      className="text-white text-4xl p-4 rounded-2xl shadow-lg"
+                      className="text-white text-2xl p-3 rounded-xl shadow-md"
                       style={{ backgroundColor: getPrimaryColor(selectedCompany.primaryBrandColors) }}
                     >
                       {getCompanyIcon(selectedCompany.type)}
                     </div>
                     <div>
-                      <h3 className="text-3xl font-black text-slate-900 mb-2">
+                      <h3 className="text-xl font-black text-neutral-900 mb-1">
                         {selectedCompany.name}
                       </h3>
-                      <p className="text-lg font-semibold text-slate-600">
+                      <p className="text-base font-semibold text-neutral-600">
                         {selectedCompany.type}
                       </p>
                       {selectedCompany.foundedYear && (
-                        <p className="text-sm text-slate-500 mt-1">
+                        <p className="text-sm text-neutral-500 mt-1">
                           Founded {selectedCompany.foundedYear}
                         </p>
                       )}
                     </div>
                   </div>
                   <div 
-                    className="text-white font-bold px-6 py-3 rounded-full text-sm shadow-lg"
+                    className="text-white font-bold px-4 py-2 rounded-full text-sm shadow-md"
                     style={{ backgroundColor: getPrimaryColor(selectedCompany.primaryBrandColors) }}
                   >
                     {selectedCompany.competitiveAdvantage}
                   </div>
                 </div>
                 
-                <p className="text-lg text-slate-700 leading-relaxed mb-6">
+                <p className="text-base text-neutral-700 leading-relaxed mb-4">
                   {selectedCompany.description}
                 </p>
 
@@ -125,7 +125,7 @@ export default function PortfolioSection() {
                   href={selectedCompany.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 text-emerald-600 hover:text-emerald-700 font-medium transition-colors"
+                  className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-700 font-medium transition-colors text-sm"
                 >
                   <span>Visit Website</span>
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -135,7 +135,7 @@ export default function PortfolioSection() {
               </div>
 
               {/* Metrics */}
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
                 {selectedCompany.metrics.map((metric, index) => (
                   <motion.div
                     key={metric.label}
@@ -143,14 +143,14 @@ export default function PortfolioSection() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 + (index * 0.1) }}
                     whileHover={{ scale: 1.05, y: -2 }}
-                    className="text-center bg-slate-50/70 hover:bg-slate-100/70 p-4 lg:p-6 rounded-xl border border-slate-200/50 transition-all duration-300 backdrop-blur-sm"
+                    className="text-center bg-neutral-50/70 hover:bg-neutral-100/70 p-3 lg:p-4 rounded-lg border border-neutral-200/50 transition-all duration-300 backdrop-blur-sm"
                   >
-                    <div className="text-2xl lg:text-3xl font-black mb-2"
+                    <div className="text-lg lg:text-xl font-black mb-1"
                       style={{ color: getPrimaryColor(selectedCompany.primaryBrandColors) }}
                     >
                       {metric.value}
                     </div>
-                    <div className="text-xs lg:text-sm font-medium text-slate-600 leading-tight">
+                    <div className="text-xs lg:text-sm font-medium text-neutral-600 leading-tight">
                       {metric.label}
                     </div>
                   </motion.div>
@@ -158,8 +158,8 @@ export default function PortfolioSection() {
               </div>
 
               {/* Recent Achievements */}
-              <div className="mb-8">
-                <h4 className="text-lg font-bold text-slate-900 mb-4">Recent Achievements</h4>
+              <div className="mb-6">
+                <h4 className="text-base font-bold text-neutral-900 mb-3">Recent Achievements</h4>
                 <div className="space-y-2">
                   {selectedCompany.recentAchievements.slice(0, 3).map((achievement, index) => (
                     <motion.div
@@ -167,13 +167,13 @@ export default function PortfolioSection() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.1 + (index * 0.1) }}
-                      className="flex items-center space-x-3"
+                      className="flex items-start space-x-2"
                     >
                       <div 
-                        className="w-2 h-2 rounded-full"
+                        className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
                         style={{ backgroundColor: getPrimaryColor(selectedCompany.primaryBrandColors) }}
                       />
-                      <span className="text-slate-700 text-sm">{achievement}</span>
+                      <span className="text-sm text-neutral-700 leading-relaxed">{achievement}</span>
                     </motion.div>
                   ))}
                 </div>
@@ -184,7 +184,7 @@ export default function PortfolioSection() {
                 {selectedCompany.industryTags.map((tag) => (
                   <span
                     key={tag}
-                    className="font-medium bg-slate-100/70 text-slate-700 px-3 py-1 text-sm rounded-full border border-slate-200/50 backdrop-blur-sm"
+                    className="font-medium bg-neutral-100/70 text-neutral-700 px-3 py-1 text-xs rounded-full border border-neutral-200/50 backdrop-blur-sm"
                   >
                     {tag}
                   </span>

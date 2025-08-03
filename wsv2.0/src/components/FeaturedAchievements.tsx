@@ -23,42 +23,42 @@ export default function FeaturedAchievements() {
       text: "Partnership with New York City FC Academy (December 2024)",
       company: "Footy Access",
       companyType: "Soccer Media Platform",
-      color: "#00A651",
+      color: "#3B82F6",
       icon: "🎥"
     },
     {
       text: "EU Commission backing and Sony Global partnership",
       company: "Innovosens",
       companyType: "Health Technology",
-      color: "#4A90E2",
+      color: "#3B82F6",
       icon: "🏥"
     },
     {
       text: "Jeremiah White III joins investor group (November 2024)",
       company: "The Town FC",
       companyType: "Professional Soccer Club",
-      color: "#000000",
+      color: "#3B82F6",
       icon: "⚽"
     },
     {
       text: "Partnership with The Town FC (November 2024)",
       company: "Drip FC",
       companyType: "Soccer Culture Brand",
-      color: "#4A90E2",
+      color: "#3B82F6",
       icon: "✨"
     },
     {
       text: "Projected 1 billion views by end of 2025",
       company: "Footy Access",
       companyType: "Soccer Media Platform",
-      color: "#00A651",
+      color: "#3B82F6",
       icon: "🎥"
     },
     {
       text: "Multiple investor funding rounds completed",
       company: "Replica AI",
       companyType: "E-commerce Technology",
-      color: "#4A90E2",
+      color: "#3B82F6",
       icon: "🛒"
     }
   ];
@@ -72,10 +72,10 @@ export default function FeaturedAchievements() {
   }, [featuredAchievements.length]);
 
   return (
-    <section ref={ref} className="relative py-24 px-6 lg:px-8 overflow-hidden">
+    <section ref={ref} className="relative py-16 px-6 lg:px-8 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-white to-teal-50">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(16,185,129,0.1),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(20,184,166,0.1),transparent_50%)]" />
+      <div className="absolute inset-0 bg-neutral-50">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.1),transparent_50%)]" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
@@ -84,15 +84,15 @@ export default function FeaturedAchievements() {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-4xl lg:text-6xl font-black text-slate-900 mb-6 leading-tight">
+          <h2 className="text-2xl lg:text-3xl font-black text-neutral-900 mb-4 leading-tight">
             Recent 
-            <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent ml-4">
+            <span className="gradient-text ml-2">
               Victories
             </span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-neutral-600 max-w-3xl mx-auto leading-relaxed">
             Our portfolio companies are hitting major milestones and forging game-changing partnerships.
           </p>
         </motion.div>
@@ -102,7 +102,7 @@ export default function FeaturedAchievements() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-4xl mx-auto mb-16"
+          className="max-w-4xl mx-auto mb-12"
         >
           <div className="relative">
             {/* Current Achievement */}
@@ -111,32 +111,32 @@ export default function FeaturedAchievements() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="bg-white/90 backdrop-blur-sm p-8 lg:p-12 rounded-3xl border border-slate-200/50 shadow-2xl"
+              className="bg-white/90 backdrop-blur-sm p-6 lg:p-8 rounded-2xl border border-neutral-200/50 shadow-xl"
             >
-              <div className="flex items-start gap-6">
+              <div className="flex items-start gap-4">
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: 360 }}
                   transition={{ duration: 0.5 }}
-                  className="flex-shrink-0 text-white text-4xl p-4 rounded-2xl shadow-lg"
+                  className="flex-shrink-0 text-white text-2xl p-3 rounded-xl shadow-md"
                   style={{ backgroundColor: featuredAchievements[currentIndex].color }}
                 >
                   {featuredAchievements[currentIndex].icon}
                 </motion.div>
                 
                 <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-4">
-                    <h3 className="text-2xl font-bold text-slate-900">
+                  <div className="flex items-center gap-3 mb-3">
+                    <h3 className="text-xl font-bold text-neutral-900">
                       {featuredAchievements[currentIndex].company}
                     </h3>
                     <span 
-                      className="text-white font-medium px-4 py-1 rounded-full text-sm"
+                      className="text-white font-medium px-3 py-1 rounded-full text-sm"
                       style={{ backgroundColor: featuredAchievements[currentIndex].color }}
                     >
                       {featuredAchievements[currentIndex].companyType}
                     </span>
                   </div>
                   
-                  <p className="text-xl text-slate-700 leading-relaxed">
+                  <p className="text-base text-neutral-700 leading-relaxed">
                     {featuredAchievements[currentIndex].text}
                   </p>
                 </div>
@@ -144,19 +144,14 @@ export default function FeaturedAchievements() {
             </motion.div>
 
             {/* Progress Indicators */}
-            <div className="flex justify-center space-x-3 mt-8">
+            <div className="flex justify-center space-x-2 mt-6">
               {featuredAchievements.map((_, index) => (
                 <motion.button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentIndex ? 'scale-125' : 'scale-100 opacity-50'
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === currentIndex ? 'scale-125 bg-blue-500' : 'scale-100 opacity-50 bg-neutral-400'
                   }`}
-                  style={{ 
-                    backgroundColor: index === currentIndex 
-                      ? featuredAchievements[currentIndex].color 
-                      : '#94a3b8' 
-                  }}
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}
                 />
@@ -170,7 +165,7 @@ export default function FeaturedAchievements() {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-4"
         >
           {portfolioData.slice(0, 3).map((company, index) => (
             <motion.div
@@ -178,19 +173,19 @@ export default function FeaturedAchievements() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, delay: 0.6 + (index * 0.1) }}
-              whileHover={{ scale: 1.02, y: -5 }}
-              className="bg-white/70 backdrop-blur-sm p-6 rounded-2xl border border-slate-200/50 shadow-lg hover:shadow-xl transition-all duration-300"
+              whileHover={{ scale: 1.02, y: -3 }}
+              className="bg-white/70 backdrop-blur-sm p-5 rounded-xl border border-neutral-200/50 shadow-md hover:shadow-lg transition-all duration-300"
             >
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-3 mb-3">
                 <div 
-                  className="text-white text-2xl p-3 rounded-xl shadow-lg"
+                  className="text-white text-lg p-2 rounded-lg shadow-md"
                   style={{ backgroundColor: getPrimaryColor(company.primaryBrandColors) }}
                 >
                   {getCompanyIcon(company.type)}
                 </div>
                 <div>
-                  <h4 className="text-lg font-bold text-slate-900">{company.name}</h4>
-                  <p className="text-sm text-slate-600">{company.type}</p>
+                  <h4 className="text-base font-bold text-neutral-900">{company.name}</h4>
+                  <p className="text-sm text-neutral-600">{company.type}</p>
                 </div>
               </div>
               
@@ -198,10 +193,10 @@ export default function FeaturedAchievements() {
                 {company.recentAchievements.slice(0, 2).map((achievement, achIndex) => (
                   <div key={achIndex} className="flex items-start space-x-2">
                     <div 
-                      className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
+                      className="w-1 h-1 rounded-full mt-2 flex-shrink-0"
                       style={{ backgroundColor: getPrimaryColor(company.primaryBrandColors) }}
                     />
-                    <span className="text-sm text-slate-700 leading-relaxed">{achievement}</span>
+                    <span className="text-sm text-neutral-700 leading-relaxed">{achievement}</span>
                   </div>
                 ))}
               </div>
@@ -214,14 +209,14 @@ export default function FeaturedAchievements() {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-center mt-16"
+          className="text-center mt-12"
         >
           <motion.button
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
-            className="group relative px-10 py-5 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold text-lg rounded-2xl overflow-hidden shadow-xl shadow-emerald-500/25"
+            className="group relative px-8 py-4 gradient-blue-500 text-white font-bold text-base rounded-2xl overflow-hidden shadow-xl shadow-blue-500/25"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-700 to-teal-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 gradient-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <span className="relative flex items-center justify-center space-x-2">
               <span>View Complete Portfolio</span>
               <motion.svg
