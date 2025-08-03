@@ -1539,6 +1539,5 @@ export default function ApproachPage() {
         )}
       </AnimatePresence>
     </main>
->>>>>>> d26798b19e70a3ff682eec8e5827e6bd5caf9bc7
   );
 }
