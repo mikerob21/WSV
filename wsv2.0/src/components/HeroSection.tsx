@@ -55,18 +55,18 @@ export default function HeroSection() {
           className="mb-8"
         >
           <motion.h1 
-            className="text-xl lg:text-2xl font-bold tracking-tight mb-6"
+            className="display-hero mb-6"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
             <span className="block">
-              <span className="text-blue-900">
+              <span className="text-brand-dark">
                 Transforming
               </span>
             </span>
             <motion.span 
-              className="block text-blue-600"
+              className="block text-brand"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
@@ -81,10 +81,10 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="text-sm lg:text-base text-neutral-600 max-w-3xl mx-auto mb-12 leading-relaxed"
+          className="body-large max-w-3xl mx-auto mb-12"
         >
           Elite soccer venture capital led by{' '}
-          <span className="font-semibold gradient-text">
+          <span className="text-emphasis gradient-text">
             Jeremiah White III
           </span>
           , former USMNT player. Strategic investments in technology, clubs, and media transforming the soccer ecosystem.
@@ -100,7 +100,7 @@ export default function HeroSection() {
           <motion.button
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
-            className="group relative px-6 py-3 bg-blue-600 text-white font-medium text-sm rounded-xl overflow-hidden shadow-lg hover:bg-blue-700 transition-colors duration-300"
+            className="group relative px-6 py-3 bg-blue-600 text-white label rounded-xl overflow-hidden shadow-lg hover:bg-blue-700 transition-colors duration-300"
           >
             <span className="relative flex items-center justify-center space-x-2">
               <span>View Investment Approach</span>
@@ -121,7 +121,7 @@ export default function HeroSection() {
           <motion.button
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
-            className="group px-6 py-3 border-2 border-blue-600 text-blue-600 font-medium text-sm rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 bg-white"
+            className="group px-6 py-3 border-2 border-blue-600 text-blue-600 label rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 bg-white"
           >
             <span className="flex items-center justify-center space-x-2">
               <span>Portfolio Companies</span>
@@ -157,10 +157,10 @@ export default function HeroSection() {
               className="group relative p-4 bg-white rounded-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 shadow-md hover:shadow-xl hover:scale-105"
             >
               <div className="relative">
-                <div className="text-lg lg:text-xl font-bold text-blue-600 mb-2">
+                <div className="mono-large text-brand mb-2 font-numeric">
                   {stat.value}
                 </div>
-                <div className="text-neutral-700 font-medium text-xs lg:text-sm">
+                <div className="body-small text-secondary">
                   {stat.label}
                 </div>
               </div>

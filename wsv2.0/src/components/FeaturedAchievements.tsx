@@ -86,13 +86,13 @@ export default function FeaturedAchievements() {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h2 className="text-2xl lg:text-3xl font-black text-neutral-900 mb-4 leading-tight">
+          <h2 className="display-section mb-4">
             Recent 
             <span className="gradient-text ml-2">
               Victories
             </span>
           </h2>
-          <p className="text-lg text-neutral-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="body-large max-w-3xl mx-auto">
             Our portfolio companies are hitting major milestones and forging game-changing partnerships.
           </p>
         </motion.div>
@@ -125,18 +125,18 @@ export default function FeaturedAchievements() {
                 
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-3">
-                    <h3 className="text-xl font-bold text-neutral-900">
+                    <h3 className="heading-secondary text-emphasis">
                       {featuredAchievements[currentIndex].company}
                     </h3>
                     <span 
-                      className="text-white font-medium px-3 py-1 rounded-full text-sm"
+                      className="text-white label px-3 py-1 rounded-full"
                       style={{ backgroundColor: featuredAchievements[currentIndex].color }}
                     >
                       {featuredAchievements[currentIndex].companyType}
                     </span>
                   </div>
                   
-                  <p className="text-base text-neutral-700 leading-relaxed">
+                  <p className="body-default text-secondary">
                     {featuredAchievements[currentIndex].text}
                   </p>
                 </div>

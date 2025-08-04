@@ -55,18 +55,18 @@ const MetricCard = ({ value, label, description, icon, delay }: MetricCardProps)
         initial={{ scale: 0 }}
         animate={isInView ? { scale: 1 } : { scale: 0 }}
         transition={{ duration: 0.8, delay: delay + 0.3, type: "spring" }}
-        className="text-2xl lg:text-3xl font-black mb-3 text-blue-600"
+        className="mono-large mb-3 text-brand font-numeric"
       >
         {displayValue}
       </motion.div>
 
       {/* Label */}
-      <h3 className="text-lg font-bold text-neutral-900 mb-2 group-hover:text-neutral-800 transition-colors">
+      <h3 className="heading-secondary text-emphasis mb-2 group-hover:text-emphasis transition-colors">
         {label}
       </h3>
 
       {/* Description */}
-      <p className="text-sm text-neutral-600 leading-relaxed group-hover:text-neutral-700 transition-colors">
+      <p className="body-default text-secondary group-hover:text-secondary transition-colors">
         {description}
       </p>
 
@@ -173,7 +173,7 @@ export default function MetricsSection() {
           className="text-center mb-12"
         >
           <motion.h2 
-            className="text-2xl lg:text-3xl font-black text-white mb-6 leading-tight"
+            className="display-section text-inverse mb-6"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
             transition={{ duration: 1, delay: 0.2 }}
@@ -186,7 +186,7 @@ export default function MetricsSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-lg text-neutral-300 max-w-4xl mx-auto leading-relaxed"
+            className="body-large text-inverse-secondary max-w-4xl mx-auto"
           >
             Our strategic investments are reshaping the global soccer landscape through innovation, 
             community building, and technological advancement.
@@ -217,7 +217,7 @@ export default function MetricsSection() {
           <motion.button
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
-            className="group relative px-8 py-4 gradient-blue-500 text-white font-bold text-base rounded-2xl overflow-hidden shadow-xl shadow-blue-500/25"
+            className="group relative px-8 py-4 gradient-blue-500 text-white label rounded-2xl overflow-hidden shadow-xl shadow-blue-500/25"
           >
             <div className="absolute inset-0 gradient-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <span className="relative flex items-center justify-center space-x-2">

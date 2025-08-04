@@ -22,10 +22,10 @@ export default function PortfolioSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h2 className="text-lg lg:text-xl font-bold text-neutral-900 mb-4 leading-tight tracking-tight">
+          <h2 className="display-section text-emphasis mb-4">
             Elite Portfolio
           </h2>
-          <p className="text-sm lg:text-base text-neutral-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="body-large text-secondary max-w-3xl mx-auto">
             Strategic investments transforming the soccer ecosystem through innovation, culture, and technology.
           </p>
         </motion.div>
@@ -58,13 +58,13 @@ export default function PortfolioSection() {
                       {getCompanyIcon(company.type)}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className={`text-base font-bold mb-1 truncate ${
-                        selectedCompany.name === company.name ? 'text-white' : 'text-neutral-900'
+                      <h3 className={`label mb-1 truncate ${
+                        selectedCompany.name === company.name ? 'text-white' : 'text-emphasis'
                       }`}>
                         {company.name}
                       </h3>
-                      <p className={`text-sm font-medium truncate ${
-                        selectedCompany.name === company.name ? 'text-white/90' : 'text-neutral-600'
+                      <p className={`body-small truncate ${
+                        selectedCompany.name === company.name ? 'text-white/90' : 'text-secondary'
                       }`}>
                         {company.competitiveAdvantage}
                       </p>
@@ -95,28 +95,28 @@ export default function PortfolioSection() {
                       {getCompanyIcon(selectedCompany.type)}
                     </div>
                     <div>
-                      <h3 className="text-xl font-black text-neutral-900 mb-1">
+                      <h3 className="heading-primary text-emphasis mb-1">
                         {selectedCompany.name}
                       </h3>
-                      <p className="text-base font-semibold text-neutral-600">
+                      <p className="label text-secondary">
                         {selectedCompany.type}
                       </p>
                       {selectedCompany.foundedYear && (
-                        <p className="text-sm text-neutral-500 mt-1">
+                        <p className="caption text-muted mt-1">
                           Founded {selectedCompany.foundedYear}
                         </p>
                       )}
                     </div>
                   </div>
                   <div 
-                    className="text-white font-bold px-4 py-2 rounded-full text-sm shadow-md"
+                    className="text-white label px-4 py-2 rounded-full shadow-md"
                     style={{ backgroundColor: getPrimaryColor(selectedCompany.primaryBrandColors) }}
                   >
                     {selectedCompany.competitiveAdvantage}
                   </div>
                 </div>
                 
-                <p className="text-base text-neutral-700 leading-relaxed mb-4">
+                <p className="body-default text-secondary mb-4">
                   {selectedCompany.description}
                 </p>
 
@@ -125,7 +125,7 @@ export default function PortfolioSection() {
                   href={selectedCompany.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-700 font-medium transition-colors text-sm"
+                  className="inline-flex items-center space-x-2 text-brand hover:text-brand-dark label transition-colors"
                 >
                   <span>Visit Website</span>
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -145,12 +145,12 @@ export default function PortfolioSection() {
                     whileHover={{ scale: 1.05, y: -2 }}
                     className="text-center bg-neutral-50/70 hover:bg-neutral-100/70 p-3 lg:p-4 rounded-lg border border-neutral-200/50 transition-all duration-300 backdrop-blur-sm"
                   >
-                    <div className="text-lg lg:text-xl font-black mb-1"
+                    <div className="mono-large mb-1 font-numeric"
                       style={{ color: getPrimaryColor(selectedCompany.primaryBrandColors) }}
                     >
                       {metric.value}
                     </div>
-                    <div className="text-xs lg:text-sm font-medium text-neutral-600 leading-tight">
+                    <div className="body-small text-secondary">
                       {metric.label}
                     </div>
                   </motion.div>
@@ -159,7 +159,7 @@ export default function PortfolioSection() {
 
               {/* Recent Achievements */}
               <div className="mb-6">
-                <h4 className="text-base font-bold text-neutral-900 mb-3">Recent Achievements</h4>
+                <h4 className="heading-tertiary text-emphasis mb-3">Recent Achievements</h4>
                 <div className="space-y-2">
                   {selectedCompany.recentAchievements.slice(0, 3).map((achievement, index) => (
                     <motion.div
@@ -173,7 +173,7 @@ export default function PortfolioSection() {
                         className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
                         style={{ backgroundColor: getPrimaryColor(selectedCompany.primaryBrandColors) }}
                       />
-                      <span className="text-sm text-neutral-700 leading-relaxed">{achievement}</span>
+                      <span className="body-default text-secondary">{achievement}</span>
                     </motion.div>
                   ))}
                 </div>
@@ -184,7 +184,7 @@ export default function PortfolioSection() {
                 {selectedCompany.industryTags.map((tag) => (
                   <span
                     key={tag}
-                    className="font-medium bg-neutral-100/70 text-neutral-700 px-3 py-1 text-xs rounded-full border border-neutral-200/50 backdrop-blur-sm"
+                    className="caption bg-neutral-100/70 text-muted px-3 py-1 rounded-full border border-neutral-200/50 backdrop-blur-sm"
                   >
                     {tag}
                   </span>
