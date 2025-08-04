@@ -1,0 +1,151 @@
+/* ==========================================================================
+   COLOR DESIGN TOKENS
+   ========================================================================== */
+
+:root {
+  /* ===== BLUE SPECTRUM ===== */
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-200: #bfdbfe;
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-800: #1e40af;
+  --blue-900: #1e3a8a;
+  --blue-950: #172554;
+
+  /* ===== NEUTRAL SPECTRUM ===== */
+  --neutral-0: #ffffff;
+  --neutral-50: #fafbfc;
+  --neutral-100: #f4f6f8;
+  --neutral-200: #e5e7eb;
+  --neutral-300: #d1d5db;
+  --neutral-400: #9ca3af;
+  --neutral-500: #6b7280;
+  --neutral-600: #4b5563;
+  --neutral-700: #374151;
+  --neutral-800: #1f2937;
+  --neutral-900: #111827;
+  --neutral-950: #030712;
+
+  /* ===== SEMANTIC COLORS ===== */
+  --success-50: #ecfdf5;
+  --success-100: #d1fae5;
+  --success-500: #10b981;
+  --success-600: #059669;
+  --success-700: #047857;
+
+  --error-50: #fef2f2;
+  --error-100: #fee2e2;
+  --error-500: #ef4444;
+  --error-600: #dc2626;
+  --error-700: #b91c1c;
+
+  --warning-50: #fffbeb;
+  --warning-100: #fef3c7;
+  --warning-500: #f59e0b;
+  --warning-600: #d97706;
+  --warning-700: #b45309;
+
+  /* ===== THEME COLORS ===== */
+  --color-background: var(--neutral-50);
+  --color-foreground: var(--neutral-900);
+  --color-primary: var(--blue-500);
+  --color-primary-dark: var(--blue-700);
+  --color-secondary: var(--neutral-800);
+  --color-accent: var(--blue-50);
+  --color-border: var(--neutral-200);
+  --color-muted: var(--neutral-500);
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--neutral-900);
+    --color-foreground: var(--neutral-50);
+    --color-accent: var(--neutral-800);
+    --color-border: var(--neutral-700);
+    --color-muted: var(--neutral-400);
+  }
+}
+
+/* ===== COLOR UTILITY CLASSES ===== */
+
+/* Background Colors */
+.bg-blue-50 { background-color: var(--blue-50); }
+.bg-blue-100 { background-color: var(--blue-100); }
+.bg-blue-200 { background-color: var(--blue-200); }
+.bg-blue-300 { background-color: var(--blue-300); }
+.bg-blue-400 { background-color: var(--blue-400); }
+.bg-blue-500 { background-color: var(--blue-500); }
+.bg-blue-600 { background-color: var(--blue-600); }
+.bg-blue-700 { background-color: var(--blue-700); }
+.bg-blue-800 { background-color: var(--blue-800); }
+.bg-blue-900 { background-color: var(--blue-900); }
+.bg-blue-950 { background-color: var(--blue-950); }
+
+.bg-neutral-0 { background-color: var(--neutral-0); }
+.bg-neutral-50 { background-color: var(--neutral-50); }
+.bg-neutral-100 { background-color: var(--neutral-100); }
+.bg-neutral-200 { background-color: var(--neutral-200); }
+.bg-neutral-300 { background-color: var(--neutral-300); }
+.bg-neutral-400 { background-color: var(--neutral-400); }
+.bg-neutral-500 { background-color: var(--neutral-500); }
+.bg-neutral-600 { background-color: var(--neutral-600); }
+.bg-neutral-700 { background-color: var(--neutral-700); }
+.bg-neutral-800 { background-color: var(--neutral-800); }
+.bg-neutral-900 { background-color: var(--neutral-900); }
+.bg-neutral-950 { background-color: var(--neutral-950); }
+
+/* Text Colors */
+.text-blue-50 { color: var(--blue-50); }
+.text-blue-100 { color: var(--blue-100); }
+.text-blue-200 { color: var(--blue-200); }
+.text-blue-300 { color: var(--blue-300); }
+.text-blue-400 { color: var(--blue-400); }
+.text-blue-500 { color: var(--blue-500); }
+.text-blue-600 { color: var(--blue-600); }
+.text-blue-700 { color: var(--blue-700); }
+.text-blue-800 { color: var(--blue-800); }
+.text-blue-900 { color: var(--blue-900); }
+.text-blue-950 { color: var(--blue-950); }
+
+.text-neutral-0 { color: var(--neutral-0); }
+.text-neutral-50 { color: var(--neutral-50); }
+.text-neutral-100 { color: var(--neutral-100); }
+.text-neutral-200 { color: var(--neutral-200); }
+.text-neutral-300 { color: var(--neutral-300); }
+.text-neutral-400 { color: var(--neutral-400); }
+.text-neutral-500 { color: var(--neutral-500); }
+.text-neutral-600 { color: var(--neutral-600); }
+.text-neutral-700 { color: var(--neutral-700); }
+.text-neutral-800 { color: var(--neutral-800); }
+.text-neutral-900 { color: var(--neutral-900); }
+.text-neutral-950 { color: var(--neutral-950); }
+
+/* Semantic Text Colors */
+.text-success { color: var(--success-500); }
+.text-error { color: var(--error-500); }
+.text-warning { color: var(--warning-500); }
+
+.bg-success { background-color: var(--success-500); }
+.bg-error { background-color: var(--error-500); }
+.bg-warning { background-color: var(--warning-500); }
+
+/* Brand Context Colors */
+.text-brand { color: var(--blue-600) !important; }
+.text-brand-light { color: var(--blue-500) !important; }
+.text-brand-dark { color: var(--blue-700) !important; }
+
+/* Emphasis Levels */
+.text-emphasis { color: var(--neutral-900) !important; font-weight: var(--weight-semibold); }
+.text-secondary { color: var(--neutral-600) !important; }
+.text-muted { color: var(--neutral-500) !important; }
+.text-subtle { color: var(--neutral-400) !important; }
+
+/* Inverse Colors - For Dark Backgrounds */
+.text-inverse { color: var(--neutral-0) !important; }
+.text-inverse-secondary { color: var(--neutral-200) !important; }
+.text-inverse-muted { color: var(--neutral-300) !important; }

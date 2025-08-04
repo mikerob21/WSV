@@ -1,0 +1,310 @@
+/* ==========================================================================
+   ANIMATION DESIGN TOKENS
+   ========================================================================== */
+
+:root {
+  /* ===== ANIMATION DURATIONS ===== */
+  --duration-75: 75ms;
+  --duration-100: 100ms;
+  --duration-150: 150ms;
+  --duration-200: 200ms;
+  --duration-300: 300ms;
+  --duration-500: 500ms;
+  --duration-700: 700ms;
+  --duration-1000: 1000ms;
+
+  /* ===== ANIMATION EASING ===== */
+  --ease-linear: linear;
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* ===== SHADOW SYSTEM ===== */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* ==========================================================================
+   ANIMATION KEYFRAMES
+   ========================================================================== */
+
+/* Core Animation Keyframes */
+@keyframes pulse-blue {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes flow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(1.5deg); }
+  66% { transform: translateY(5px) rotate(-1deg); }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6); }
+}
+
+/* Advanced Animation Keyframes */
+@keyframes signature-rise {
+  0% { 
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+  }
+  60% { 
+    opacity: 0.8;
+    transform: translateY(-8px) scale(1.01);
+  }
+  100% { 
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes elastic-entrance {
+  0% { 
+    opacity: 0;
+    transform: scale(0.3) rotate(-10deg);
+  }
+  50% { 
+    opacity: 0.8;
+    transform: scale(1.05) rotate(2deg);
+  }
+  70% { 
+    opacity: 0.9;
+    transform: scale(0.98) rotate(-1deg);
+  }
+  100% { 
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes sophisticated-float {
+  0%, 100% { 
+    transform: translateY(0px) translateX(0px) rotate(0deg); 
+    box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+  }
+  25% { 
+    transform: translateY(-12px) translateX(3px) rotate(0.5deg); 
+    box-shadow: 0 35px 70px rgba(0,0,0,0.12);
+  }
+  50% { 
+    transform: translateY(-8px) translateX(-2px) rotate(-0.3deg); 
+    box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+  }
+  75% { 
+    transform: translateY(-15px) translateX(1px) rotate(0.2deg); 
+    box-shadow: 0 38px 75px rgba(0,0,0,0.14);
+  }
+}
+
+@keyframes premium-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ==========================================================================
+   ANIMATION UTILITY CLASSES
+   ========================================================================== */
+
+/* Core Animations */
+.animate-pulse { animation: pulse-blue 2s ease-in-out infinite; }
+.animate-flow { animation: flow 3s linear infinite; }
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-gradient-shift { 
+  background-size: 400% 400%; 
+  animation: gradient-shift 8s ease infinite; 
+}
+.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+
+/* Advanced Animations */
+.animate-signature-rise { 
+  animation: signature-rise 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-elastic-entrance { 
+  animation: elastic-entrance 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.animate-sophisticated-float { 
+  animation: sophisticated-float 12s ease-in-out infinite;
+}
+
+.animate-premium-shimmer { 
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background-size: 200% 100%;
+  animation: premium-shimmer 2s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   INTERACTION STATES
+   ========================================================================== */
+
+/* Hover Effects */
+.hover-scale:hover {
+  transform: scale(1.05);
+  transition: transform var(--duration-200) var(--ease-out);
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  transition: transform var(--duration-200) var(--ease-out);
+}
+
+.hover-depth {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateZ(0);
+}
+
+.hover-depth:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 40px 80px rgba(0,0,0,0.12),
+    0 20px 40px rgba(0,0,0,0.08),
+    0 10px 20px rgba(0,0,0,0.04);
+}
+
+.magnetic {
+  transition: transform var(--duration-200) var(--ease-bounce);
+}
+
+.magnetic:hover {
+  transform: scale(1.05) translateZ(0);
+}
+
+/* Focus States */
+.focus\:outline-none:focus { outline: none; }
+.focus\:ring:focus { 
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); 
+}
+
+/* ==========================================================================
+   SHADOW UTILITY CLASSES
+   ========================================================================== */
+
+.shadow-none { box-shadow: none; }
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow { box-shadow: var(--shadow-base); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-xl { box-shadow: var(--shadow-xl); }
+.shadow-2xl { box-shadow: var(--shadow-2xl); }
+.shadow-inner { box-shadow: var(--shadow-inner); }
+
+/* Card Shadow with Hover */
+.card-shadow {
+  box-shadow: var(--shadow-md);
+  transition: box-shadow var(--duration-300) var(--ease-in-out);
+}
+
+.card-shadow:hover {
+  box-shadow: var(--shadow-xl);
+}
+
+/* ==========================================================================
+   SCROLL ANIMATIONS
+   ========================================================================== */
+
+/* Scroll-Triggered Animation Classes */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-reveal-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal-left.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal-right.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger Animation Utilities */
+.stagger-container > * {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: signature-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.stagger-container > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-container > *:nth-child(2) { animation-delay: 100ms; }
+.stagger-container > *:nth-child(3) { animation-delay: 200ms; }
+.stagger-container > *:nth-child(4) { animation-delay: 300ms; }
+.stagger-container > *:nth-child(5) { animation-delay: 400ms; }
+.stagger-container > *:nth-child(6) { animation-delay: 500ms; }
+
+/* ==========================================================================
+   PERFORMANCE OPTIMIZATIONS
+   ========================================================================== */
+
+/* GPU Acceleration */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse,
+  .animate-flow,
+  .animate-float,
+  .animate-gradient-shift,
+  .animate-pulse-glow,
+  .animate-signature-rise,
+  .animate-elastic-entrance,
+  .animate-sophisticated-float,
+  .animate-premium-shimmer {
+    animation: none !important;
+  }
+  
+  .hover-scale:hover,
+  .hover-lift:hover,
+  .hover-depth:hover,
+  .magnetic:hover {
+    transform: none !important;
+  }
+  
+  .scroll-reveal,
+  .scroll-reveal-left,
+  .scroll-reveal-right {
+    transition: none !important;
+  }
+}
