@@ -32,10 +32,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <div className="text-xl font-bold">
-            <span className="text-blue-600">
-              WSV
-            </span>
+          <div className="heading-tertiary text-brand">
+            WSV
           </div>
 
           {/* Desktop Navigation - Always Visible */}
@@ -44,14 +42,14 @@ export default function Navbar() {
               <a
                 key={item.name}
                 href={item.href}
-                className="px-3 py-2 text-neutral-700 font-medium hover:text-blue-600 transition-colors text-sm"
+                className="px-3 py-2 label text-secondary hover:text-brand transition-colors"
               >
                 {item.name}
               </a>
             ))}
             
             {/* CTA Button */}
-            <button className="ml-4 px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors text-sm">
+            <button className="ml-4 px-4 py-2 bg-blue-600 text-white label rounded-lg hover:bg-blue-700 transition-colors">
               Partner With Us
             </button>
           </div>
@@ -76,13 +74,13 @@ export default function Navbar() {
               <a
                 key={item.name}
                 href={item.href}
-                className="block text-neutral-700 font-medium py-2 hover:text-blue-600 text-sm"
+                className="block label text-secondary py-2 hover:text-brand"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
               </a>
             ))}
-            <button className="w-full mt-4 px-4 py-2 bg-blue-600 text-white font-medium rounded-lg text-sm">
+            <button className="w-full mt-4 px-4 py-2 bg-blue-600 text-white label rounded-lg">
               Partner With Us
             </button>
           </div>
