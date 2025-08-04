@@ -1,0 +1,260 @@
+/* ==========================================================================
+   TYPOGRAPHY DESIGN TOKENS
+   ========================================================================== */
+
+:root {
+  /* ===== FONT FAMILIES ===== */
+  --font-display: 'Sohne', 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-interface: 'Maison Neue', 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  --font-system: 'Basis Grotesque Pro', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+  
+  /* Legacy Support */
+  --font-primary: var(--font-interface);
+  --font-secondary: var(--font-system);
+  --font-mono: var(--font-system);
+  --font-editorial: var(--font-display);
+
+  /* ===== FONT WEIGHTS ===== */
+  --weight-thin: 100;
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-black: 900;
+
+  /* ===== FONT SIZES ===== */
+  --text-xs: clamp(0.7rem, 1vw, 0.8rem);
+  --text-sm: clamp(0.9rem, 1.2vw, 1rem);
+  --text-base: clamp(1.2rem, 1.5vw, 1.4rem);
+  --text-lg: clamp(1.5rem, 2.5vw, 2rem);
+  --text-xl: clamp(2rem, 3vw, 2.5rem);
+  --text-2xl: clamp(2.5rem, 4vw, 3rem);
+  --text-3xl: clamp(3rem, 6vw, 4rem);
+  --text-4xl: clamp(4rem, 8vw, 6rem);
+  --text-5xl: clamp(5rem, 12vw, 8rem);
+
+  /* ===== LINE HEIGHTS ===== */
+  --leading-none: 1;
+  --leading-tight: 1.1;
+  --leading-snug: 1.2;
+  --leading-normal: 1.4;
+  --leading-relaxed: 1.6;
+  --leading-loose: 1.8;
+
+  /* ===== LETTER SPACING ===== */
+  --tracking-tighter: -0.1em;
+  --tracking-tight: -0.05em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.1em;
+}
+
+/* ==========================================================================
+   SEMANTIC TYPOGRAPHY CLASSES
+   ========================================================================== */
+
+/* Display Typography - Hero and Major Headlines */
+.display-hero {
+  font-family: var(--font-display);
+  font-weight: var(--weight-black);
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tighter);
+  color: var(--neutral-900);
+  text-wrap: balance;
+}
+
+.display-section {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--neutral-900);
+  text-wrap: balance;
+}
+
+/* Heading Typography - Content Structure */
+.heading-primary {
+  font-family: var(--font-interface);
+  font-weight: var(--weight-bold);
+  font-size: clamp(1.875rem, 4vw, 2.5rem);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--neutral-900);
+  text-wrap: balance;
+}
+
+.heading-secondary {
+  font-family: var(--font-interface);
+  font-weight: var(--weight-semibold);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
+  color: var(--neutral-800);
+  text-wrap: balance;
+}
+
+.heading-tertiary {
+  font-family: var(--font-interface);
+  font-weight: var(--weight-medium);
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
+  color: var(--neutral-700);
+}
+
+/* Body Typography - Content Reading */
+.body-large {
+  font-family: var(--font-interface);
+  font-weight: var(--weight-regular);
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  line-height: var(--leading-relaxed);
+  letter-spacing: var(--tracking-normal);
+  color: var(--neutral-700);
+  text-wrap: pretty;
+}
+
+.body-default {
+  font-family: var(--font-interface);
+  font-weight: var(--weight-regular);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  letter-spacing: var(--tracking-normal);
+  color: var(--neutral-600);
+  text-wrap: pretty;
+}
+
+.body-small {
+  font-family: var(--font-interface);
+  font-weight: var(--weight-regular);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
+  color: var(--neutral-500);
+}
+
+/* Utility Typography - UI Elements */
+.caption {
+  font-family: var(--font-system);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-xs);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-wide);
+  color: var(--neutral-500);
+  text-transform: uppercase;
+}
+
+.label {
+  font-family: var(--font-interface);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
+  color: var(--neutral-700);
+}
+
+/* Monospace Typography - Code and Data */
+.mono-large {
+  font-family: var(--font-system);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-lg);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
+  color: var(--neutral-800);
+  font-variant-numeric: tabular-nums;
+}
+
+.mono-default {
+  font-family: var(--font-system);
+  font-weight: var(--weight-regular);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  letter-spacing: var(--tracking-normal);
+  color: var(--neutral-700);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY UTILITY CLASSES
+   ========================================================================== */
+
+/* Font Size Utilities */
+.text-xs { font-size: var(--text-xs); }
+.text-sm { font-size: var(--text-sm); }
+.text-base { font-size: var(--text-base); }
+.text-lg { font-size: var(--text-lg); }
+.text-xl { font-size: var(--text-xl); }
+.text-2xl { font-size: var(--text-2xl); }
+.text-3xl { font-size: var(--text-3xl); }
+.text-4xl { font-size: var(--text-4xl); }
+.text-5xl { font-size: var(--text-5xl); }
+
+/* Font Weight Utilities */
+.font-thin { font-weight: var(--weight-thin); }
+.font-light { font-weight: var(--weight-light); }
+.font-normal { font-weight: var(--weight-regular); }
+.font-medium { font-weight: var(--weight-medium); }
+.font-semibold { font-weight: var(--weight-semibold); }
+.font-bold { font-weight: var(--weight-bold); }
+.font-black { font-weight: var(--weight-black); }
+
+/* Line Height Utilities */
+.leading-none { line-height: var(--leading-none); }
+.leading-tight { line-height: var(--leading-tight); }
+.leading-snug { line-height: var(--leading-snug); }
+.leading-normal { line-height: var(--leading-normal); }
+.leading-relaxed { line-height: var(--leading-relaxed); }
+.leading-loose { line-height: var(--leading-loose); }
+
+/* Letter Spacing Utilities */
+.tracking-tighter { letter-spacing: var(--tracking-tighter); }
+.tracking-tight { letter-spacing: var(--tracking-tight); }
+.tracking-normal { letter-spacing: var(--tracking-normal); }
+.tracking-wide { letter-spacing: var(--tracking-wide); }
+.tracking-wider { letter-spacing: var(--tracking-wider); }
+.tracking-widest { letter-spacing: var(--tracking-widest); }
+
+/* Text Alignment */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-justify { text-align: justify; }
+
+/* Text Transform */
+.uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+.capitalize { text-transform: capitalize; }
+.normal-case { text-transform: none; }
+
+/* Font Family Utilities */
+.font-display { font-family: var(--font-display); }
+.font-interface { font-family: var(--font-interface); }
+.font-system { font-family: var(--font-system); }
+.font-mono { font-family: var(--font-mono); }
+
+/* Special Typography Effects */
+.font-numeric { 
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+.text-balance { text-wrap: balance; }
+.text-pretty { text-wrap: pretty; }
+
+/* Gradient Text Effects */
+.gradient-text {
+  background: linear-gradient(135deg, var(--blue-500) 0%, var(--blue-600) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-light {
+  background: linear-gradient(135deg, var(--blue-300) 0%, var(--blue-400) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
