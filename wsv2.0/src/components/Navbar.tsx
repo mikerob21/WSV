@@ -2,12 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 
 const navItems = [
   { name: 'About', href: '/about' },
   { name: 'Approach', href: '/approach' },
-  { name: 'Portfolio', href: '#portfolio' },
-  { name: 'Insights', href: '#insights' },
+  { name: 'Portfolio', href: '/portfolio' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar() {
@@ -32,11 +33,9 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <div className="text-xl font-bold">
-            <span className="text-blue-600">
-              WSV
-            </span>
-          </div>
+          <Link href="/" className="heading-tertiary text-brand hover:text-blue-700 transition-colors duration-200">
+            WSV
+          </Link>
 
           {/* Desktop Navigation - Always Visible */}
           <div className="flex items-center space-x-6">
@@ -44,16 +43,22 @@ export default function Navbar() {
               <a
                 key={item.name}
                 href={item.href}
-                className="px-3 py-2 text-neutral-700 font-medium hover:text-blue-600 transition-colors text-sm"
+                className="px-3 py-2 label text-secondary hover:text-brand transition-colors"
               >
                 {item.name}
               </a>
             ))}
             
             {/* CTA Button */}
-            <button className="ml-4 px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors text-sm">
-              Partner With Us
-            </button>
+            <Link 
+              href="/contact"
+              className="ml-4 btn-premium inline-flex items-center justify-center space-x-2 hover-magnetic cursor-magnetic"
+            >
+              <span>Partner With Us</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
           </div>
 
           {/* Mobile Menu Button - Hidden on Desktop */}
@@ -76,13 +81,13 @@ export default function Navbar() {
               <a
                 key={item.name}
                 href={item.href}
-                className="block text-neutral-700 font-medium py-2 hover:text-blue-600 text-sm"
+                className="block label text-secondary py-2 hover:text-brand"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
               </a>
             ))}
-            <button className="w-full mt-4 px-4 py-2 bg-blue-600 text-white font-medium rounded-lg text-sm">
+            <button className="w-full mt-4 px-4 py-2 bg-blue-600 text-white label rounded-lg">
               Partner With Us
             </button>
           </div>

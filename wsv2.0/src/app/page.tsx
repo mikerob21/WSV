@@ -1,19 +1,23 @@
-import Navbar from '@/components/Navbar';
-import HeroSection from '@/components/HeroSection';
-import AboutSection from '@/components/AboutSection';
-import PortfolioSection from '@/components/PortfolioSection';
-import MetricsSection from '@/components/MetricsSection';
-import FeaturedAchievements from '@/components/FeaturedAchievements';
+import { Navigation, ErrorBoundary } from '@/components';
+import { 
+  OptimizedHeroSection,
+  OptimizedAboutSection,
+  OptimizedPortfolioSection,
+  OptimizedFeaturedAchievements,
+  OptimizedMetricsSection,
+} from '@/components/optimized';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white">
-      <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <PortfolioSection />
-      <FeaturedAchievements />
-      <MetricsSection />
-    </main>
+    <ErrorBoundary>
+      <main className="min-h-screen bg-white">
+        <Navigation />
+        <OptimizedHeroSection />
+        <OptimizedAboutSection />
+        <OptimizedPortfolioSection />
+        <OptimizedFeaturedAchievements />
+        <OptimizedMetricsSection />
+      </main>
+    </ErrorBoundary>
   );
 }

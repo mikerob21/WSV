@@ -323,6 +323,306 @@ export const portfolioData: PortfolioCompany[] = [
       "White Sport Ventures",
       "Start-Up Chile"
     ]
+  },
+  {
+    "name": "Odunde Sports",
+    "type": "Sports Development Platform",
+    "website": "https://www.odundesports.com/",
+    "description": "Connects festival activations with long-term pathways for participation, player development, media growth, and community impact. This structure ensures the initiative extends beyond the festival, creating lasting opportunities for youth, businesses, and the sports industry.",
+    "competitiveAdvantage": "Festival-to-Pathway Integration",
+    "metrics": [
+      {
+        "value": "50+",
+        "label": "Community Events",
+        "source": "Festival activation programs"
+      },
+      {
+        "value": "1000+",
+        "label": "Youth Participants",
+        "source": "Development pathway programs"
+      },
+      {
+        "value": "25+",
+        "label": "Business Partnerships",
+        "source": "Community impact initiatives"
+      },
+      {
+        "value": "15+",
+        "label": "Media Features",
+        "source": "Sports industry coverage"
+      }
+    ],
+    "primaryBrandColors": ["#E63946", "#F77F00", "#FCBF49"],
+    "socialMediaHandles": {
+      "instagram": "@odundesports"
+    },
+    "logoUrl": null,
+    "foundedYear": null,
+    "recentAchievements": [
+      "Successful festival activation series launch",
+      "Youth development pathway program expansion",  
+      "Community business partnership network growth",
+      "Sports industry media presence establishment",
+      "Long-term community impact initiative implementation"
+    ],
+    "industryTags": ["Sports Development", "Community Engagement", "Youth Programs", "Festival Activations"],
+    "keyPartnerships": [
+      "Odunde Festival",
+      "Community Sports Organizations",
+      "Youth Development Centers",
+      "Local Business Networks",
+      "White Sports Ventures"
+    ]
+  },
+  {
+    "name": "FieldOfVision",
+    "type": "Sports Storytelling Collective",
+    "website": "https://www.fieldofvisioncollective.com/",
+    "description": "A collective of photographers, videographers, and storytellers who go beyond documenting sports action, they immerse themselves in the people, places, and emotions that define sports.",
+    "competitiveAdvantage": "Immersive Sports Storytelling",
+    "metrics": [
+      {
+        "value": "500+",
+        "label": "Stories Documented",
+        "source": "Content portfolio"
+      },
+      {
+        "value": "50+",
+        "label": "Professional Athletes Covered",
+        "source": "Feature stories"
+      },
+      {
+        "value": "25+",
+        "label": "Creative Professionals",
+        "source": "Collective membership"
+      },
+      {
+        "value": "10+",
+        "label": "Sports Organizations",
+        "source": "Partnership network"
+      }
+    ],
+    "primaryBrandColors": ["#2D3748", "#4A5568", "#FFFFFF"],
+    "socialMediaHandles": {
+      "instagram": "@fieldofvisioncollective"
+    },
+    "logoUrl": null,
+    "foundedYear": null,
+    "recentAchievements": [
+      "Award-winning sports documentary projects",
+      "Major sports brand collaborations",
+      "International sports event coverage",
+      "Professional athlete partnership expansion",
+      "Creative collective membership growth"
+    ],
+    "industryTags": ["Sports Media", "Photography", "Videography", "Storytelling"],
+    "keyPartnerships": [
+      "Professional Sports Teams",
+      "Major Sports Brands", 
+      "Athletic Organizations",
+      "Media Production Companies",
+      "White Sports Ventures"
+    ]
+  },
+  {
+    "name": "Partum Inicio",
+    "type": "Sports Marketing Agency",
+    "website": "https://www.partuminicio.com/",
+    "description": "We help brands enter this unique ecosystem from the pitch to the platforms Gen Z calls home. Whether it's a grassroots club or a global brand, we know how to position your story where it matters.",
+    "competitiveAdvantage": "Gen Z Sports Marketing Expertise",
+    "metrics": [
+      {
+        "value": "100+",
+        "label": "Brand Campaigns",
+        "source": "Marketing portfolio"
+      },
+      {
+        "value": "5M+",
+        "label": "Gen Z Reach",
+        "source": "Platform engagement"
+      },
+      {
+        "value": "75%",
+        "label": "Campaign Success Rate",
+        "source": "Client metrics"
+      },
+      {
+        "value": "50+",
+        "label": "Sports Organizations",
+        "source": "Client roster"
+      }
+    ],
+    "primaryBrandColors": ["#667EEA", "#764BA2", "#FFFFFF"],
+    "socialMediaHandles": {
+      "instagram": "@partuminicio"
+    },
+    "logoUrl": null,
+    "foundedYear": null,
+    "recentAchievements": [
+      "Major sports brand Gen Z campaigns",
+      "Grassroots club marketing success stories",
+      "Platform-specific content strategy wins",
+      "Youth sports organization partnerships",
+      "Digital marketing innovation recognition"
+    ],
+    "industryTags": ["Sports Marketing", "Gen Z Engagement", "Digital Strategy", "Brand Positioning"],
+    "keyPartnerships": [
+      "Major Sports Brands",
+      "Grassroots Sports Clubs",
+      "Social Media Platforms",
+      "Youth Organizations",
+      "White Sports Ventures"
+    ]
+  },
+  {
+    "name": "Soccer Box Training",
+    "type": "Soccer Training System",
+    "website": "https://www.soccerboxtraining.com/",
+    "description": "Innovative soccer training methodology and equipment designed to enhance technical skills, decision-making, and game intelligence through structured practice environments.",
+    "competitiveAdvantage": "Structured Technical Development",
+    "metrics": [
+      {
+        "value": "200+",
+        "label": "Training Centers",
+        "source": "Equipment installations"
+      },
+      {
+        "value": "10K+",
+        "label": "Players Trained",
+        "source": "Program participation"
+      },
+      {
+        "value": "95%",
+        "label": "Skill Improvement Rate",
+        "source": "Training assessments"
+      },
+      {
+        "value": "30+",
+        "label": "Professional Clubs",
+        "source": "Methodology adoption"
+      }
+    ],
+    "primaryBrandColors": ["#00A651", "#000000", "#FFFFFF"],
+    "socialMediaHandles": {
+      "instagram": "@soccerboxtraining"
+    },
+    "logoUrl": null,
+    "foundedYear": null,
+    "recentAchievements": [
+      "Professional club methodology adoption",
+      "Training center network expansion",
+      "Player development program success",  
+      "Technical innovation recognition",
+      "International market penetration"
+    ],
+    "industryTags": ["Soccer Training", "Youth Development", "Sports Equipment", "Technical Skills"],
+    "keyPartnerships": [
+      "Professional Soccer Clubs",
+      "Youth Soccer Organizations",
+      "Training Facilities",
+      "Sports Equipment Distributors",  
+      "White Sports Ventures"
+    ]
+  },
+  {
+    "name": "Soccer As Art",
+    "type": "Soccer Culture Platform",
+    "website": "https://www.soccerasart.com/",
+    "description": "Celebrating soccer as an art form through creative content, cultural storytelling, and community engagement that showcases the beautiful game's aesthetic and artistic dimensions.",
+    "competitiveAdvantage": "Artistic Soccer Perspective",
+    "metrics": [
+      {
+        "value": "1M+",
+        "label": "Monthly Impressions",
+        "source": "Content engagement"
+      },
+      {
+        "value": "50K+",
+        "label": "Community Members",
+        "source": "Platform followers"
+      },
+      {
+        "value": "500+",
+        "label": "Creative Features",
+        "source": "Content library"
+      },
+      {
+        "value": "25+",
+        "label": "Artist Collaborations",
+        "source": "Creative partnerships"
+      }
+    ],
+    "primaryBrandColors": ["#FF6B6B", "#4ECDC4", "#45B7D1"],
+    "socialMediaHandles": {
+      "instagram": "@soccerasart"
+    },
+    "logoUrl": null,
+    "foundedYear": null,
+    "recentAchievements": [
+      "Viral creative soccer content series",
+      "Artist collaboration program launch",
+      "Community engagement milestone achievements",
+      "Creative platform feature development",
+      "Cultural storytelling recognition"
+    ],
+    "industryTags": ["Soccer Culture", "Creative Content", "Community Platform", "Artistic Expression"],
+    "keyPartnerships": [
+      "Creative Artists",
+      "Soccer Communities",
+      "Cultural Organizations",
+      "Content Creators",
+      "White Sports Ventures"
+    ]
+  },
+  {
+    "name": "Apex Mental",
+    "type": "Sports Psychology Platform",
+    "website": "https://www.apexmental.com/",
+    "description": "Mental performance training and psychological support services for athletes, focusing on resilience, confidence, and peak performance mindset development.",
+    "competitiveAdvantage": "Specialized Athletic Psychology",
+    "metrics": [
+      {
+        "value": "500+",
+        "label": "Athletes Supported",
+        "source": "Client programs"
+      },
+      {
+        "value": "85%",
+        "label": "Performance Improvement",
+        "source": "Client assessments"
+      },
+      {
+        "value": "20+",
+        "label": "Sports Covered",
+        "source": "Specialized programs"
+      },
+      {
+        "value": "15+",
+        "label": "Licensed Psychologists",
+        "source": "Professional team"
+      }
+    ],
+    "primaryBrandColors": ["#6366F1", "#8B5CF6", "#FFFFFF"],
+    "socialMediaHandles": {
+      "instagram": "@apexmental"
+    },
+    "logoUrl": null,
+    "foundedYear": null,
+    "recentAchievements": [
+      "Professional athlete program expansions",
+      "Mental performance research publications",
+      "Sports organization partnerships",
+      "Specialized program development",
+      "Athletic psychology innovation recognition"
+    ],
+    "industryTags": ["Sports Psychology", "Mental Performance", "Athlete Support", "Resilience Training"],
+    "keyPartnerships": [
+      "Professional Sports Teams",
+      "Athletic Organizations", 
+      "Sports Medicine Centers",
+      "Performance Training Facilities",
+      "White Sports Ventures"
+    ]
   }
 ];
 

@@ -1,18 +1,9 @@
 import type { Metadata } from "next";
-import { Roboto, Inter } from "next/font/google";
 import "./globals.css";
 
-const roboto = Roboto({
-  variable: "--font-primary",
-  subsets: ["latin"],
-  weight: ["100", "300", "400", "500", "700", "900"],
-});
-
-const inter = Inter({
-  variable: "--font-secondary",
-  subsets: ["latin"],
-  weight: ["100", "300", "400", "500", "700", "900"],
-});
+// Enterprise Typography: Premium fonts with high-quality fallbacks
+// Sohne (Editorial), Maison Neue (Interface), Basis Grotesque Pro (System)
+// Fallbacks: Inter, Plus Jakarta Sans, JetBrains Mono for optimal performance
 
 export const metadata: Metadata = {
   title: "White Sports Ventures | Elite Soccer Venture Capital",
@@ -27,13 +18,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Font Loading - Optimized for Performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Inter:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
+        
+        {/* Premium Fallback Fonts - Always Available */}
+        <link 
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" 
+          rel="stylesheet" 
+        />
+        
+        {/* Premium Fonts - Enterprise Grade Typography */}
+        {/* Note: Premium fonts (Sohne, Maison Neue, Basis Grotesque Pro) would be loaded here */}
+        {/* For demo purposes, we use high-quality fallbacks that match the premium font characteristics */}
       </head>
-      <body
-        className={`${roboto.variable} ${inter.variable} antialiased`}
-      >
+      <body className="antialiased">
         {children}
       </body>
     </html>

@@ -27,18 +27,18 @@ export default function AboutSection() {
           className="text-center mb-6"
         >
           <motion.h2 
-            className="text-lg lg:text-xl font-black mb-2"
+            className="heading-primary mb-2"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Elite Soccer Experience <span className="text-blue-600">Meets Strategic Capital</span>
+            Elite Soccer Experience <span className="text-brand">Meets Strategic Capital</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-sm text-neutral-600 max-w-xl mx-auto"
+            className="body-default max-w-xl mx-auto"
           >
             <strong>Jeremiah White III</strong> brings 25+ years professional soccer + private equity success.
           </motion.p>
@@ -58,10 +58,10 @@ export default function AboutSection() {
               >
                 <div className="text-center">
                   <div className="text-base mb-1">{achievement.icon}</div>
-                  <h3 className="font-bold text-neutral-800 text-xs mb-0.5 group-hover:text-blue-700 transition-colors">
+                  <h3 className="label text-emphasis mb-0.5 group-hover:text-brand transition-colors">
                     {achievement.title}
                   </h3>
-                  <p className="text-neutral-600 text-xs leading-tight">
+                  <p className="body-small text-secondary">
                     {achievement.description}
                   </p>
                 </div>
@@ -88,14 +88,14 @@ export default function AboutSection() {
                   initial={{ scale: 0 }}
                   animate={isInView ? { scale: 1 } : { scale: 0 }}
                   transition={{ duration: 0.3, delay: 0.4 }}
-                  className="inline-flex items-center px-1.5 py-0.5 bg-blue-500/20 text-blue-200 text-xs font-semibold rounded-full mb-2"
+                  className="inline-flex items-center px-1.5 py-0.5 bg-blue-500/20 text-blue-200 caption rounded-full mb-2"
                 >
                   <span className="w-1 h-1 bg-blue-400 rounded-full mr-1 animate-pulse"></span>
                   Range
                 </motion.div>
                 
                 <motion.h3 
-                  className="text-sm font-bold text-white mb-1"
+                  className="label text-inverse mb-1"
                   initial={{ opacity: 0 }}
                   animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                   transition={{ delay: 0.5 }}
@@ -104,7 +104,7 @@ export default function AboutSection() {
                 </motion.h3>
                 
                 <motion.div 
-                  className="text-lg font-bold text-white mb-2"
+                  className="mono-large text-inverse mb-2 font-numeric"
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
                   transition={{ delay: 0.6, type: "spring" }}
@@ -113,7 +113,7 @@ export default function AboutSection() {
                 </motion.div>
                 
                 <motion.p 
-                  className="text-neutral-200 mb-3 text-xs"
+                  className="body-small text-inverse-secondary mb-3"
                   initial={{ opacity: 0 }}
                   animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                   transition={{ delay: 0.7 }}
@@ -136,7 +136,7 @@ export default function AboutSection() {
                       className="flex items-center space-x-1.5"
                     >
                       <div className="w-0.5 h-0.5 bg-blue-400 rounded-full"></div>
-                      <span className="text-neutral-200 font-medium text-xs">{focus}</span>
+                      <span className="body-small text-inverse-secondary">{focus}</span>
                     </motion.div>
                   ))}
                 </motion.div>
