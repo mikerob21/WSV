@@ -63,6 +63,21 @@ wsv2.0/
 - Global styles are defined in `src/app/globals.css`
 - Component-specific styles can be added using CSS modules or styled-components if needed
 
+<<<<<<< HEAD
+=======
+## Animation System
+- **Comprehensive CSS Animations**: Use the extensive animation system in `globals.css`
+- **Available Animations**: `animate-pulse`, `animate-flow`, `animate-float`, `animate-gradient-shift`, `animate-pulse-glow`, `animate-premium-float`, `animate-premium-glow`, `animate-premium-shimmer`
+- **Premium Keyframes**: `@keyframes pulse-blue`, `@keyframes flow`, `@keyframes float`, `@keyframes gradient-shift`, `@keyframes pulse-glow`, `@keyframes premium-float`, `@keyframes premium-glow`, `@keyframes premium-shimmer`
+- **Hover Effects**: Use utility classes like `hover-scale`, `hover-lift`, `magnetic`, `premium-hover`, `premium-hover-lift`
+- **Interactive States**: `premium-focus`, `premium-selection`, `card-shadow` with hover transitions
+- **Animation Guidelines**: 
+  - NEVER create component-specific animations
+  - ALWAYS use existing animation classes from the global design system
+  - Search `globals.css` for available animations before creating new ones
+  - Follow the established animation patterns and naming conventions
+
+>>>>>>> 400faee4cc93fdd6ce603d2e1e2efdb950d8c481
 ## TypeScript Configuration
 - Strict mode enabled for better type safety
 - Path mapping configured for clean imports

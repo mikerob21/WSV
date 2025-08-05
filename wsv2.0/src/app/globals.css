@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import "tailwindcss";
 
 :root {
@@ -24,3 +25,10 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+=======
+/* ==========================================================================
+   WSV DESIGN SYSTEM - ENTERPRISE GRADE MODULAR ARCHITECTURE
+   ========================================================================== */
+
+@import "../styles/tokens/index.css";
+>>>>>>> 400faee4cc93fdd6ce603d2e1e2efdb950d8c481

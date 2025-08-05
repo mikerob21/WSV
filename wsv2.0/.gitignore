@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+<<<<<<< HEAD
+=======
+
+# large video
+public/videos/hero.mp4
+>>>>>>> 400faee4cc93fdd6ce603d2e1e2efdb950d8c481
