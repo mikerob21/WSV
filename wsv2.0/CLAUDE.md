@@ -114,13 +114,45 @@ Component.displayName = 'Component';
 - **USE** generic types for reusable components
 - **IMPLEMENT** discriminated unions for variant props
 
-### Animation Standards
-- **USE** centralized animation presets from design system tokens
-- **IMPLEMENT** proper animation cleanup in useEffect
-- **USE** Framer Motion's optimized imports: `from 'framer-motion/dist/framer-motion'`
-- **IMPLEMENT** reduced motion support with `@media (prefers-reduced-motion: reduce)`
-- **NEVER** block main thread with animations
-- **USE** GPU acceleration with `transform: translateZ(0)` for complex animations
+### Unified Design System Standards
+
+### Typography Hierarchy (Professional Dominance)
+- **Heading Primary**: `text-3xl lg:text-4xl font-black text-emphasis leading-tight` for section headers
+- **Heading Secondary**: `text-2xl font-bold text-emphasis` for subsection titles  
+- **Body Text**: `text-base text-secondary leading-relaxed` for descriptions
+- **Labels**: `text-sm font-medium text-secondary` for categories and tags
+- **Metrics**: `text-2xl font-black text-emphasis` for statistical displays
+- **Captions**: `text-xs font-medium text-muted` for supplementary information
+
+### Interactive Component Patterns (From Approach Page Excellence)
+- **Numbered Cards**: Use ApproachBlueprint pattern with `absolute top-3 right-3 w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold text-xs`
+- **Progressive Disclosure**: Implement ApproachBlueprint's expand/collapse with `AnimatePresence` and height animations
+- **Sliding Tab System**: Apply ApproachVerticals' sliding indicator pattern with `motion.div` positioned absolutely
+- **Hover States**: Use sophisticated micro-interactions: `whileHover={{ y: -2, scale: 1.01 }}` with spring transitions
+- **Tab Indicators**: Sliding backgrounds with `animate={{ width: tabDimensions.width, x: tabDimensions.left }}`
+
+### Professional Color & Visual Standards
+- **Primary Blue**: `bg-blue-600` for active states and primary actions
+- **Gradient Accents**: `bg-gradient-to-br from-blue-500 to-indigo-600` for visual hierarchy
+- **Background Layers**: `bg-neutral-50` for cards, `bg-neutral-0` for elevated content
+- **Border System**: `border border-neutral-200 hover:border-blue-300` for interactive elements
+- **Shadow Hierarchy**: `shadow-sm hover:shadow-md` for elevation feedback
+
+### Animation Standards (Refined Excellence)
+- **USE** sophisticated spring animations: `type: "spring", stiffness: 200, damping: 30`
+- **IMPLEMENT** staggered animations with calculated delays: `delay: index * 0.1`
+- **USE** progressive reveal patterns from ApproachVerticals
+- **APPLY** elegant micro-interactions for professional polish
+- **NEVER** use decorative SVG icons - focus on typography and layout
+- **USE** subtle pulse animations for active indicators: `animate={{ scale: [1, 1.2, 1] }}`
+
+### About + Approach Page Ecosystem Standards
+- **NEVER** use decorative SVG icons in about sections - use numbered systems instead
+- **APPLY** ApproachBlueprint's numbered card pattern across AboutExpertise offerings
+- **USE** ApproachVerticals' sliding tab system for AboutEcosystem pillars
+- **IMPLEMENT** consistent progressive disclosure for complex content
+- **MAINTAIN** professional dominance through clean, sophisticated design
+- **UNIFY** animation patterns across both pages for ecosystem coherence
 
 ### State Management Standards
 - **USE** Context API for global state with proper provider patterns

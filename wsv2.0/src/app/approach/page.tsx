@@ -4,30 +4,23 @@ import { memo } from 'react';
 import Navbar from '@/components/Navbar';
 import {
   ApproachHero,
-  ApproachStats,
-  ApproachProcess,
+  ApproachPhilosophy,
   ApproachBlueprint,
-  ApproachVerticals,
-  ApproachPartnership
+  ApproachVerticals
 } from '@/components/sections/approach';
 
 const ApproachPage = memo(() => {
-
   return (
     <main className="min-h-screen relative overflow-hidden">
       <Navbar />
       
       <ApproachHero />
 
-      <ApproachStats />
-
-      <ApproachProcess />
+      <ApproachPhilosophy />
 
       <ApproachBlueprint />
 
       <ApproachVerticals />
-
-      <ApproachPartnership />
     </main>
   );
 });

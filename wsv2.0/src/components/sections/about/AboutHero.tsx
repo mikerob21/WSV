@@ -1,164 +1,158 @@
 'use client';
 
-import { memo, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { memo, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import { ComponentProps } from '@/types/components';
 
 interface AboutHeroProps extends ComponentProps {}
 
 const AboutHero = memo<AboutHeroProps>(() => {
-  const heroRef = useRef(null);
-  const isHeroInView = useInView(heroRef, { once: true, amount: 0.3 });
-
-  const credentials = [
+  const credentials = useMemo(() => [
     { label: "USMNT PLAYER", description: "International Soccer" },
     { label: "PRIVATE EQUITY", description: "Investment Management" },
     { label: "SOCCER ENTREPRENEUR", description: "Venture Builder" }
-  ];
+  ], []);
 
   return (
-    <section 
-      ref={heroRef}
-      className="relative py-32 lg:py-40 overflow-hidden bg-gradient-to-br from-neutral-0 via-blue-50/30 to-neutral-100"
-    >
-      {/* Executive Background Pattern */}
-      <div className="absolute inset-0 opacity-20">
+    <section className="relative py-16 lg:py-20 overflow-hidden bg-gradient-to-br from-neutral-0 via-neutral-50/30 to-neutral-100">
+      
+      {/* Refined Background Pattern */}
+      <div className="absolute inset-0 opacity-[0.02]">
         <svg width="100%" height="100%" className="absolute inset-0">
           <defs>
-            <pattern id="executiveGrid" width="120" height="120" patternUnits="userSpaceOnUse">
-              <path d="M 120 0 L 0 0 0 120" fill="none" stroke="#d1d5db" strokeWidth="1" opacity="0.4"/>
-              <circle cx="0" cy="0" r="2" fill="#3b82f6" opacity="0.15"/>
+            <pattern id="aboutGrid" width="120" height="120" patternUnits="userSpaceOnUse">
+              <path d="M 120 0 L 0 0 0 120" fill="none" stroke="#3b82f6" strokeWidth="1"/>
+              <circle cx="0" cy="0" r="1" fill="#3b82f6" opacity="0.3"/>
             </pattern>
           </defs>
-          <rect width="100%" height="100%" fill="url(#executiveGrid)" />
+          <rect width="100%" height="100%" fill="url(#aboutGrid)" />
         </svg>
       </div>
 
-      {/* Subtle floating elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-100/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-50/30 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }} />
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-12 gap-12 items-center min-h-[70vh]">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           
-          {/* Left Side - Typography Portrait */}
-          <div className="lg:col-span-7">
+          {/* Professional Introduction */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            {/* Badge */}
             <motion.div
-              initial={{ opacity: 0, x: -100 }}
-              animate={isHeroInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
-              transition={{ duration: 1.2, ease: "easeOut" }}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="mb-6"
             >
-              {/* Vision Badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="mb-8"
-              >
-                <span className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-full text-sm tracking-wide">
-                  TRANSFORMING US SOCCER
+              <div className="inline-flex items-center px-3 py-1.5 bg-neutral-0 border border-neutral-200 rounded-full shadow-sm">
+                <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 animate-pulse"></div>
+                <span className="text-xs font-medium text-secondary">Leadership Profile</span>
+              </div>
+            </motion.div>
+
+            {/* Professional Typography */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="mb-6"
+            >
+              <h1 className="text-3xl lg:text-4xl font-black text-emphasis leading-tight mb-4">
+                Jeremiah White III
+                <span className="block text-xl lg:text-2xl text-secondary font-medium mt-2">
+                  Founder & Managing Partner
                 </span>
+              </h1>
+              <div className="w-16 h-0.5 bg-blue-600 rounded-full"></div>
+            </motion.div>
+
+            {/* Professional Summary */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="mb-8"
+            >
+              <p className="text-base text-secondary leading-relaxed">
+                Former USMNT player and private equity professional building the future of soccer through strategic investments and ecosystem development.
+              </p>
+            </motion.div>
+
+            {/* Inline Credentials */}
+            <motion.div 
+              className="flex flex-wrap gap-3"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              {credentials.map((credential, index) => (
+                <motion.div
+                  key={credential.label}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ 
+                    duration: 0.4, 
+                    delay: 0.6 + (index * 0.1),
+                    type: "spring",
+                    stiffness: 150
+                  }}
+                  className="group"
+                >
+                  <div className="px-4 py-2 bg-neutral-50 border border-neutral-200 rounded-lg hover:border-blue-300 hover:shadow-sm transition-all duration-300">
+                    <div className="text-xs font-bold text-blue-600 mb-1">
+                      {credential.label}
+                    </div>
+                    <div className="text-xs text-muted">
+                      {credential.description}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* Professional Metrics */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:justify-self-end"
+          >
+            <div className="bg-neutral-50 p-6 rounded-xl border border-neutral-200">
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.7 }}
+                className="mb-6"
+              >
+                <h3 className="text-lg font-bold text-emphasis mb-2">Leadership Impact</h3>
+                <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
               </motion.div>
 
-              {/* Typographic Name Treatment */}
-              <div className="mb-8">
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-                  transition={{ duration: 1, delay: 0.5 }}
-                  className="relative"
-                >
-                  <h1 className="text-7xl lg:text-8xl font-black text-emphasis leading-[0.85] tracking-tight mb-4">
-                    <span className="block">JEREMIAH</span>
-                    <span className="block text-right">
-                      <span className="text-blue-600">WHITE</span>
-                    </span>
-                    <span className="block text-right text-5xl lg:text-6xl text-secondary font-light tracking-wider">
-                      III
-                    </span>
-                  </h1>
-                  
-                  {/* Signature Line */}
+              <div className="space-y-4">
+                {[
+                  { metric: "12+", label: "Portfolio Companies", desc: "Strategic investments" },
+                  { metric: "10+", label: "Years Professional", desc: "International soccer" },
+                  { metric: "$1M+", label: "Capital Deployed", desc: "Soccer ventures" }
+                ].map((item, index) => (
                   <motion.div
-                    initial={{ width: 0 }}
-                    animate={isHeroInView ? { width: '200px' } : { width: 0 }}
-                    transition={{ duration: 1, delay: 1.2 }}
-                    className="h-1 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full ml-auto"
-                  />
-                </motion.div>
-              </div>
-
-              {/* Executive Statement */}
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-                className="text-xl lg:text-2xl text-secondary leading-relaxed mb-8 max-w-2xl"
-              >
-                Leading soccer's transformation through strategic investments, 
-                innovative technology, and community impact.
-              </motion.p>
-            </motion.div>
-          </div>
-
-          {/* Right Side - Credentials & Monogram */}
-          <div className="lg:col-span-5">
-            <motion.div
-              initial={{ opacity: 0, x: 100 }}
-              animate={isHeroInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
-              transition={{ duration: 1.2, delay: 0.4 }}
-              className="relative"
-            >
-              {/* JW Monogram */}
-              <div className="absolute top-0 right-0 opacity-10">
-                <div className="text-[200px] lg:text-[250px] font-black text-blue-600 leading-none select-none">
-                  JW
-                </div>
-              </div>
-
-              {/* Floating Credentials */}
-              <div className="relative z-10 space-y-6">
-                {credentials.map((credential, index) => (
-                  <motion.div
-                    key={credential.label}
-                    initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                    animate={isHeroInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 30, scale: 0.9 }}
-                    transition={{ duration: 0.8, delay: 1 + (index * 0.2) }}
-                    className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-white/40 shadow-lg hover:shadow-xl transition-all duration-300"
+                    key={item.metric}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4, delay: 0.8 + (index * 0.1) }}
+                    className="flex items-center gap-4 p-3 bg-neutral-0 rounded-lg border border-neutral-200"
                   >
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <h3 className="text-lg font-black text-emphasis mb-1">
-                          {credential.label}
-                        </h3>
-                        <p className="text-secondary font-medium">
-                          {credential.description}
-                        </p>
-                      </div>
-                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                        <div className="w-6 h-6 bg-blue-600 rounded-full"></div>
-                      </div>
+                    <div className="text-2xl font-black text-emphasis">{item.metric}</div>
+                    <div>
+                      <div className="text-sm font-semibold text-secondary">{item.label}</div>
+                      <div className="text-xs text-muted">{item.desc}</div>
                     </div>
                   </motion.div>
                 ))}
               </div>
-
-              {/* Mission Statement Card */}
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-                transition={{ duration: 0.8, delay: 1.8 }}
-                className="mt-8 bg-gradient-to-br from-blue-600 to-blue-700 p-6 rounded-2xl text-white shadow-xl"
-              >
-                <p className="font-semibold text-lg leading-relaxed">
-                  "We combine elite soccer expertise with entrepreneurial acumen to deliver 
-                  exceptional value through strategic investments and transformative partnerships."
-                </p>
-              </motion.div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

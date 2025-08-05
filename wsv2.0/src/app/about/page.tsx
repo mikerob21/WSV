@@ -4,10 +4,8 @@ import { memo } from 'react';
 import Navbar from '@/components/Navbar';
 import {
   AboutHero,
-  AboutLeadership,
-  AboutOfferings,
-  AboutEcosystem,
-  AboutPartnership
+  AboutExpertise,
+  AboutEcosystem
 } from '@/components/sections/about';
 
 const AboutPage = memo(() => {
@@ -17,13 +15,9 @@ const AboutPage = memo(() => {
       
       <AboutHero />
 
-      <AboutLeadership />
-
-      <AboutOfferings />
+      <AboutExpertise />
 
       <AboutEcosystem />
-
-      <AboutPartnership />
     </main>
   );
 });

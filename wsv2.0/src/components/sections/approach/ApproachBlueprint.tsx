@@ -8,243 +8,138 @@ import { ComponentProps } from '@/types/components';
 interface ApproachBlueprintProps extends ComponentProps {}
 
 const ApproachBlueprint = memo<ApproachBlueprintProps>(() => {
-  const [selectedCard, setSelectedCard] = useState<number | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeCard, setActiveCard] = useState<number | null>(null);
 
-  const sectionsWithColors = useMemo(() => 
+  const coreValues = useMemo(() => 
     approachSections.map((section, index) => ({
-      ...section,
-      borderColor: 'border-neutral-200',
-      bgColor: 'bg-neutral-50',
-      numberBg: 'bg-gradient-to-r from-neutral-800 to-neutral-900'
+      id: index,
+      title: section.title,
+      description: section.description,
+      highlight: section.highlight,
+      metrics: section.metrics
     })), []);
 
   return (
-    <section className="relative py-24 overflow-hidden bg-neutral-50">
-      {/* Blueprint grid background */}
-      <div className="absolute inset-0">
-        <svg width="100%" height="100%" className="absolute inset-0 opacity-10">
-          <defs>
-            <pattern id="subtleGrid" width="50" height="50" patternUnits="userSpaceOnUse">
-              <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#d1d5db" strokeWidth="1" opacity="0.4"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#subtleGrid)" />
-        </svg>
-      </div>
-
+    <section className="relative py-12 lg:py-16 overflow-hidden bg-neutral-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        {/* Header */}
+        
+        {/* Refined Header */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2 }}
-          className="text-center mb-32"
+          transition={{ duration: 0.6 }}
+          className="mb-10"
         >
-          <div className="relative inline-block">
-            <h2 className="text-7xl lg:text-8xl font-black text-emphasis leading-none mb-4">
-              CORE
-            </h2>
-            <div className="absolute -inset-4 border-2 border-neutral-300 transform rotate-1 rounded-2xl"></div>
-          </div>
-          
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3, duration: 1 }}
-            className="relative"
-          >
-            <h3 className="text-4xl lg:text-5xl font-light text-secondary mb-6">
-              ARCHITECTURE
-            </h3>
-            <p className="text-xl text-muted max-w-4xl mx-auto leading-relaxed">
-              Four foundational pillars engineered to build soccer's future
-            </p>
-          </motion.div>
+          <h2 className="text-3xl lg:text-4xl font-black text-emphasis mb-3 leading-tight">
+            Core Values
+          </h2>
+          <div className="w-12 h-0.5 bg-blue-600 rounded-full mb-4"></div>
+          <p className="text-base text-muted max-w-2xl leading-relaxed">
+            The fundamental principles that guide our strategic investment approach
+          </p>
         </motion.div>
 
-        {/* Core Architecture Cards */}
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
-          {sectionsWithColors.map((section, index) => (
+        {/* Enhanced Values Grid */}
+        <div className="grid md:grid-cols-2 gap-4">
+          {coreValues.map((value, index) => (
             <motion.div
-              key={section.title}
-              initial={{ opacity: 0, y: 50 }}
+              key={value.id}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ 
-                y: -4,
-                transition: { duration: 0.2 }
-              }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-              className="relative"
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              className="group relative"
+              onMouseEnter={() => setActiveCard(value.id)}
+              onMouseLeave={() => setActiveCard(null)}
             >
-              {/* Blueprint Card */}
-              <div 
-                onClick={() => {
-                  setSelectedCard(index);
-                  setIsModalOpen(true);
-                }}
-                className={`relative p-6 lg:p-8 rounded-2xl border-2 overflow-hidden hover:shadow-xl cursor-pointer transition-all duration-300 group ${
-                  section.borderColor
-                } ${section.bgColor} shadow-sm`}
+              <motion.div 
+                className="relative p-5 lg:p-6 bg-neutral-0 rounded-xl border border-neutral-200 cursor-pointer overflow-hidden"
+                whileHover={{ y: -2, scale: 1.01 }}
+                transition={{ duration: 0.2 }}
               >
                 
-                {/* Card Number */}
-                <div className={`absolute -top-4 -left-4 w-12 h-12 rounded-full flex items-center justify-center text-white text-lg font-bold shadow-lg ${section.numberBg}`}>
+                {/* Value Number */}
+                <div className="absolute top-3 right-3 w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold text-xs">
                   {String(index + 1).padStart(2, '0')}
                 </div>
 
-                {/* Header */}
-                <div className="mb-6 border-b border-neutral-200 pb-4">
-                  <h3 className="text-2xl lg:text-3xl font-bold text-emphasis mb-2">
-                    {section.title}
+                {/* Content */}
+                <div className="pr-12">
+                  <h3 className="text-lg font-bold text-emphasis mb-3 leading-tight">
+                    {value.title}
                   </h3>
-                  <div className="text-sm text-muted uppercase tracking-wide">
-                    Core Architecture #{String(index + 1).padStart(2, '0')}
-                  </div>
-                </div>
-
-                {/* Description */}
-                <div className="relative mb-6">
-                  <p className="text-base text-secondary leading-relaxed mb-4">
-                    {section.description}
-                  </p>
                   
-                  {/* Highlight Box */}
-                  <div className="relative p-4 rounded-lg border-l-4 border-blue-600 bg-neutral-100">
-                    <p className="text-sm font-medium text-emphasis leading-relaxed">
-                      {section.highlight}
-                    </p>
-                  </div>
+                  <p className="text-sm text-secondary leading-relaxed mb-4">
+                    {value.description}
+                  </p>
+
+                  {/* Progressive Disclosure */}
+                  <AnimatePresence>
+                    {activeCard === value.id && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.25, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="border-t border-neutral-200 pt-3">
+                          <p className="text-xs font-medium text-emphasis mb-2">
+                            {value.highlight}
+                          </p>
+                          <div className="flex flex-wrap gap-1.5">
+                            {value.metrics.map((metric, metricIndex) => (
+                              <motion.span
+                                key={metricIndex}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: metricIndex * 0.05 }}
+                                className="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded border border-blue-200"
+                              >
+                                {metric}
+                              </motion.span>
+                            ))}
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
 
-                {/* Metrics Grid */}
-                <div className="grid grid-cols-1 gap-3">
-                  {section.metrics.map((metric, metricIndex) => (
-                    <div
-                      key={metric}
-                      className="relative p-3 rounded-lg border border-neutral-200 bg-neutral-0 hover:shadow-sm transition-shadow"
-                    >
-                      <div className="flex items-center space-x-3">
-                        <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-                        <span className="text-sm font-medium text-secondary">
-                          {metric}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                {/* Refined Hover Indicator */}
+                <motion.div
+                  className="absolute bottom-3 left-5 h-0.5 bg-blue-600 rounded-full"
+                  initial={{ width: 0 }}
+                  animate={{ width: activeCard === value.id ? 20 : 0 }}
+                  transition={{ duration: 0.25 }}
+                />
 
-                {/* Clickable Indicator */}
-                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="flex items-center space-x-2 text-xs font-medium text-muted bg-neutral-100 px-2 py-1 rounded">
-                    <span>View Details</span>
-                  </div>
-                </div>
-              </div>
+                {/* Subtle Hover Background */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-blue-50/0 to-blue-50/30 rounded-xl"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: activeCard === value.id ? 1 : 0 }}
+                  transition={{ duration: 0.25 }}
+                />
+              </motion.div>
             </motion.div>
           ))}
         </div>
 
-        {/* Bottom Summary */}
+        {/* Compact Summary */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mt-16"
+          transition={{ duration: 0.6 }}
+          className="mt-10 text-center"
         >
-          <div className="relative inline-block p-6 border border-neutral-200 rounded-2xl bg-neutral-0 shadow-sm">
-            <h4 className="text-2xl font-bold text-emphasis mb-3">
-              Architecture Complete
-            </h4>
-            <p className="text-base text-secondary">
-              Ready to build your soccer empire on this foundation?
+          <div className="max-w-2xl mx-auto p-5 bg-neutral-0 rounded-lg border border-neutral-200">
+            <p className="text-sm text-secondary leading-relaxed">
+              These core values form the foundation of every partnership, ensuring alignment between our expertise and your vision.
             </p>
           </div>
         </motion.div>
+
       </div>
-
-      {/* Detail Modal */}
-      <AnimatePresence>
-        {isModalOpen && selectedCard !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
-            onClick={() => setIsModalOpen(false)}
-          >
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-black/60"
-            />
-            
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ duration: 0.3 }}
-              className="relative max-w-4xl w-full max-h-[90vh] overflow-y-auto bg-neutral-0 rounded-2xl shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center text-muted transition-all z-10"
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-
-              <div className="p-6 lg:p-8">
-                <div className="flex items-center space-x-4 mb-6">
-                  <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white text-lg font-bold ${sectionsWithColors[selectedCard].numberBg}`}>
-                    {String(selectedCard + 1).padStart(2, '0')}
-                  </div>
-                  <div>
-                    <h2 className="text-3xl font-bold text-emphasis">
-                      {sectionsWithColors[selectedCard].title}
-                    </h2>
-                    <div className="text-sm text-muted mt-1">
-                      Detailed Overview
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mb-6">
-                  <p className="text-base text-secondary leading-relaxed mb-4">
-                    {sectionsWithColors[selectedCard].description}
-                  </p>
-                  
-                  <div className="p-4 rounded-lg border-l-4 border-blue-600 bg-neutral-100 mb-6">
-                    <h4 className="text-base font-semibold text-emphasis mb-2">Key Insight</h4>
-                    <p className="text-sm text-secondary leading-relaxed">
-                      {sectionsWithColors[selectedCard].highlight}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                  {sectionsWithColors[selectedCard].metrics.map((metric, metricIndex) => (
-                    <div
-                      key={metric}
-                      className="p-4 rounded-lg border border-neutral-200 bg-neutral-0"
-                    >
-                      <div className="flex items-center space-x-3">
-                        <div className="w-3 h-3 rounded-full bg-blue-600"></div>
-                        <span className="text-sm font-medium text-secondary">
-                          {metric}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 });
