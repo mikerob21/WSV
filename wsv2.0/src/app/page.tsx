@@ -1,22 +1,21 @@
-import { Navigation, ErrorBoundary } from '@/components';
-import { 
-  OptimizedHeroSection,
-  OptimizedAboutSection,
-  OptimizedPortfolioSection,
-  OptimizedFeaturedAchievements,
-  OptimizedMetricsSection,
-} from '@/components/optimized';
+import { ErrorBoundary } from '@/components';
+import Navbar from '@/components/Navbar';
+import { VideoHeroSection } from '@/components/sections/HeroSection/VideoHeroSection';
+import AboutSection from '@/components/AboutSection';
+import PortfolioSection from '@/components/PortfolioSection';
+import FeaturedAchievements from '@/components/FeaturedAchievements';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
     <ErrorBoundary>
       <main className="min-h-screen bg-white">
-        <Navigation />
-        <OptimizedHeroSection />
-        <OptimizedAboutSection />
-        <OptimizedPortfolioSection />
-        <OptimizedFeaturedAchievements />
-        <OptimizedMetricsSection />
+        <Navbar />
+        <VideoHeroSection />
+        <AboutSection />
+        <PortfolioSection />
+        <FeaturedAchievements />
+        <Footer />
       </main>
     </ErrorBoundary>
   );

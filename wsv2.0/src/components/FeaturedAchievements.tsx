@@ -2,237 +2,259 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
-import { portfolioData, getCompanyIcon, getPrimaryColor } from '@/data/portfolio';
+import Image from 'next/image';
 
-interface Achievement {
-  text: string;
-  company: string;
-  companyType: string;
-  color: string;
+interface ImpactMetric {
+  value: string;
+  label: string;
+  change: string;
   icon: string;
+  description: string;
 }
+
 
 export default function FeaturedAchievements() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [animatedValues, setAnimatedValues] = useState([0, 0, 0, 0]);
 
-  // Extract and enhance key achievements
-  const featuredAchievements: Achievement[] = [
+  // Key investment impact metrics
+  const impactMetrics: ImpactMetric[] = [
     {
-      text: "Partnership with New York City FC Academy (December 2024)",
-      company: "Footy Access",
-      companyType: "Soccer Media Platform",
-      color: "#3B82F6",
-      icon: "🎥"
+      value: "12",
+      label: "Portfolio Companies",
+      change: "+3 in 2024",
+      icon: "",
+      description: "Active investments across soccer ecosystem"
     },
     {
-      text: "EU Commission backing and Sony Global partnership",
-      company: "Innovosens",
-      companyType: "Health Technology",
-      color: "#3B82F6",
-      icon: "🏥"
+      value: "200M+",
+      label: "Total Video Views",
+      change: "+150M YoY",
+      icon: "",
+      description: "Combined reach across media platforms"
     },
     {
-      text: "Jeremiah White III joins investor group (November 2024)",
-      company: "The Town FC",
-      companyType: "Professional Soccer Club",
-      color: "#3B82F6",
-      icon: "⚽"
+      value: "$7.5M",
+      label: "Revenue Impact",
+      change: "+85% growth",
+      icon: "",
+      description: "Additional revenue generated for partners"
     },
     {
-      text: "Partnership with The Town FC (November 2024)",
-      company: "Drip FC",
-      companyType: "Soccer Culture Brand",
-      color: "#3B82F6",
-      icon: "✨"
-    },
-    {
-      text: "Projected 1 billion views by end of 2025",
-      company: "Footy Access",
-      companyType: "Soccer Media Platform",
-      color: "#3B82F6",
-      icon: "🎥"
-    },
-    {
-      text: "Multiple investor funding rounds completed",
-      company: "Replica AI",
-      companyType: "E-commerce Technology",
-      color: "#3B82F6",
-      icon: "🛒"
+      value: "25+",
+      label: "Strategic Partnerships",
+      change: "+12 in 2024",
+      icon: "",
+      description: "Major brand and club collaborations"
     }
   ];
 
-  // Auto-rotate achievements
+  // Animate counter values
   useEffect(() => {
+    if (!isInView) return;
+    
+    const targetValues = [12, 200, 7.5, 25];
+    const duration = 2000;
+    const steps = 60;
+    const stepDuration = duration / steps;
+    
+    let currentStep = 0;
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % featuredAchievements.length);
-    }, 4000);
+      currentStep++;
+      const progress = currentStep / steps;
+      
+      setAnimatedValues(targetValues.map(target => 
+        Math.floor(target * progress)
+      ));
+      
+      if (currentStep >= steps) {
+        clearInterval(interval);
+        setAnimatedValues(targetValues);
+      }
+    }, stepDuration);
+    
     return () => clearInterval(interval);
-  }, [featuredAchievements.length]);
+  }, [isInView]);
+  
 
   return (
-    <section ref={ref} className="relative py-16 px-6 lg:px-8 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-neutral-50">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.1),transparent_50%)]" />
-      </div>
+    <section ref={ref} className="relative py-8 pb-12 px-6 lg:px-8 bg-blue-50 overflow-hidden">
 
-      <div className="relative z-10 max-w-7xl mx-auto">
+      <div className="relative z-10 max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-8"
         >
-          <h2 className="display-section mb-4">
-            Recent 
-            <span className="gradient-text ml-2">
-              Victories
-            </span>
+          <h2 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-2">
+            Investment Impact
           </h2>
-          <p className="body-large max-w-3xl mx-auto">
-            Our portfolio companies are hitting major milestones and forging game-changing partnerships.
+          <p className="text-base text-neutral-600 max-w-2xl mx-auto">
+            Measurable growth and success across our portfolio ecosystem.
           </p>
         </motion.div>
 
-        {/* Main Achievement Display */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-4xl mx-auto mb-12"
-        >
-          <div className="relative">
-            {/* Current Achievement */}
+        {/* Impact Metrics Grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          {impactMetrics.map((metric, index) => (
             <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="bg-white/90 backdrop-blur-sm p-6 lg:p-8 rounded-2xl border border-neutral-200/50 shadow-xl"
+              key={metric.label}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              className="relative group"
             >
-              <div className="flex items-start gap-4">
-                <motion.div
-                  whileHover={{ scale: 1.1, rotate: 360 }}
-                  transition={{ duration: 0.5 }}
-                  className="flex-shrink-0 text-white text-2xl p-3 rounded-xl shadow-md"
-                  style={{ backgroundColor: featuredAchievements[currentIndex].color }}
-                >
-                  {featuredAchievements[currentIndex].icon}
-                </motion.div>
+              <div className="bg-white border border-neutral-200 rounded-lg p-4 hover:shadow-md transition-all duration-300">
+                {/* Value with Animation */}
+                <div className="mb-3">
+                  <motion.div className="text-xl md:text-2xl font-bold text-neutral-900 mb-1 leading-tight">
+                    {index === 0 ? animatedValues[0] : 
+                     index === 1 ? `${animatedValues[1]}M+` :
+                     index === 2 ? `$${animatedValues[2]}M` :
+                     `${animatedValues[3]}+`}
+                  </motion.div>
+                  <div className="text-xs font-semibold text-neutral-500 uppercase tracking-wider">{metric.label}</div>
+                </div>
                 
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-3">
-                    <h3 className="heading-secondary text-emphasis">
-                      {featuredAchievements[currentIndex].company}
-                    </h3>
-                    <span 
-                      className="text-white label px-3 py-1 rounded-full"
-                      style={{ backgroundColor: featuredAchievements[currentIndex].color }}
-                    >
-                      {featuredAchievements[currentIndex].companyType}
-                    </span>
-                  </div>
-                  
-                  <p className="body-default text-secondary">
-                    {featuredAchievements[currentIndex].text}
-                  </p>
+                {/* Change Indicator */}
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                  <span className="text-xs text-blue-600 font-medium">{metric.change}</span>
                 </div>
-              </div>
-            </motion.div>
-
-            {/* Progress Indicators */}
-            <div className="flex justify-center space-x-2 mt-6">
-              {featuredAchievements.map((_, index) => (
-                <motion.button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === currentIndex ? 'scale-125 bg-blue-500' : 'scale-100 opacity-50 bg-neutral-400'
-                  }`}
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.9 }}
-                />
-              ))}
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Achievement Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-4"
-        >
-          {portfolioData.slice(0, 3).map((company, index) => (
-            <motion.div
-              key={company.name}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.6, delay: 0.6 + (index * 0.1) }}
-              whileHover={{ scale: 1.02, y: -3 }}
-              className="bg-white/70 backdrop-blur-sm p-5 rounded-xl border border-neutral-200/50 shadow-md hover:shadow-lg transition-all duration-300"
-            >
-              <div className="flex items-center gap-3 mb-3">
-                <div 
-                  className="text-white text-lg p-2 rounded-lg shadow-md"
-                  style={{ backgroundColor: getPrimaryColor(company.primaryBrandColors) }}
-                >
-                  {getCompanyIcon(company.type)}
-                </div>
-                <div>
-                  <h4 className="text-base font-bold text-neutral-900">{company.name}</h4>
-                  <p className="text-sm text-neutral-600">{company.type}</p>
-                </div>
-              </div>
-              
-              <div className="space-y-2">
-                {company.recentAchievements.slice(0, 2).map((achievement, achIndex) => (
-                  <div key={achIndex} className="flex items-start space-x-2">
-                    <div 
-                      className="w-1 h-1 rounded-full mt-2 flex-shrink-0"
-                      style={{ backgroundColor: getPrimaryColor(company.primaryBrandColors) }}
-                    />
-                    <span className="text-sm text-neutral-700 leading-relaxed">{achievement}</span>
-                  </div>
-                ))}
+                
+                {/* Description */}
+                <p className="text-xs text-neutral-600 leading-relaxed">{metric.description}</p>
               </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* Key Highlights */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
+          className="grid md:grid-cols-3 gap-6"
+        >
+          <div className="bg-white border border-neutral-200 rounded-lg p-4">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+                <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              </div>
+              <h3 className="text-base font-bold text-neutral-900">Rapid Growth</h3>
+            </div>
+            <p className="text-sm text-neutral-600">Portfolio companies achieving 85%+ average growth rates</p>
+          </div>
+
+          <div className="bg-white border border-neutral-200 rounded-lg p-4">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+                <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-base font-bold text-neutral-900">Strategic Focus</h3>
+            </div>
+            <p className="text-sm text-neutral-600">Targeted investments in soccer technology and media</p>
+          </div>
+
+          <div className="bg-white border border-neutral-200 rounded-lg p-4">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+                <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+              </div>
+              <h3 className="text-base font-bold text-neutral-900">Market Leaders</h3>
+            </div>
+            <p className="text-sm text-neutral-600">Companies becoming recognized industry leaders</p>
+          </div>
         </motion.div>
 
-        {/* Call to Action */}
+        {/* Gallery Section */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-center mt-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.4, delay: 0.5 }}
+          className="mt-8 pt-6 border-t border-neutral-200"
         >
-          <motion.button
-            whileHover={{ scale: 1.05, y: -5 }}
-            whileTap={{ scale: 0.95 }}
-            className="group relative px-8 py-4 gradient-blue-500 text-white font-bold text-base rounded-2xl overflow-hidden shadow-xl shadow-blue-500/25"
-          >
-            <div className="absolute inset-0 gradient-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <span className="relative flex items-center justify-center space-x-2">
-              <span>View Complete Portfolio</span>
-              <motion.svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                animate={{ x: 0 }}
-                whileHover={{ x: 5 }}
-                transition={{ duration: 0.3 }}
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </motion.svg>
-            </span>
-          </motion.button>
+          <div className="text-center mb-4">
+            <h3 className="text-lg font-bold text-neutral-900 mb-1">
+              Gallery
+            </h3>
+            <p className="text-sm text-neutral-600">
+              Behind the scenes with our portfolio companies
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.4, delay: 0.6 }}
+              className="relative aspect-video rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+            >
+              <Image
+                src="/images/gallery/drip-fc.webp"
+                alt="Drip FC - Soccer Culture Brand"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-300"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              <div className="absolute bottom-3 left-3 text-white">
+                <p className="text-sm font-semibold">Drip FC</p>
+                <p className="text-xs opacity-90">Soccer Culture Brand</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.4, delay: 0.7 }}
+              className="relative aspect-video rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+            >
+              <Image
+                src="/images/gallery/the-town.webp"
+                alt="The Town FC - Professional Soccer Club"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-300"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              <div className="absolute bottom-3 left-3 text-white">
+                <p className="text-sm font-semibold">The Town FC</p>
+                <p className="text-xs opacity-90">Professional Soccer Club</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.4, delay: 0.8 }}
+              className="relative aspect-video rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+            >
+              <Image
+                src="/images/gallery/dunde.webp"
+                alt="Odunde Sports - Sports Development Platform"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-300"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              <div className="absolute bottom-3 left-3 text-white">
+                <p className="text-sm font-semibold">Odunde Sports</p>
+                <p className="text-xs opacity-90">Sports Development Platform</p>
+              </div>
+            </motion.div>
+          </div>
         </motion.div>
+
       </div>
     </section>
   );

@@ -3,14 +3,49 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import Image from 'next/image';
 
 const achievements = [
-  { icon: '🇺🇸', title: 'USMNT Player', description: 'International level' },
-  { icon: '🌍', title: 'Global Career', description: 'European & Saudi Pro' },
-  { icon: '💼', title: 'Private Equity', description: 'Hedge fund success' },
-  { icon: '🚀', title: 'Entrepreneur', description: 'Scaled JaySocial LLC' },
-  { icon: '📖', title: 'Published Author', description: '"The Athlete\'s War"' },
-  { icon: '🎯', title: 'Techstars Mentor', description: 'Strategic advisor' },
+  { 
+    icon: '🇺🇸', 
+    title: 'USMNT Player', 
+    description: 'International level',
+    image: '/images/about/USMNT.png',
+    hasImage: true
+  },
+  { 
+    icon: '🌍', 
+    title: 'Global Career', 
+    description: 'European & Saudi Pro',
+    image: '/images/about/global-career.webp',
+    hasImage: true
+  },
+  { 
+    icon: '💼', 
+    title: 'Private Equity', 
+    description: 'Hedge fund success',
+    hasImage: false
+  },
+  { 
+    icon: '🚀', 
+    title: 'Entrepreneur', 
+    description: 'Scaled JaySocial LLC',
+    hasImage: false
+  },
+  { 
+    icon: '📖', 
+    title: 'Published Author', 
+    description: '"The Athlete\'s War"',
+    image: '/images/about/the-athletes-war.jpg',
+    hasImage: true
+  },
+  { 
+    icon: '🎯', 
+    title: 'Techstars Mentor', 
+    description: 'Strategic advisor',
+    image: '/images/about/techstars.png',
+    hasImage: true
+  },
 ];
 
 export default function AboutSection() {
@@ -46,7 +81,7 @@ export default function AboutSection() {
 
         <div className="grid lg:grid-cols-4 gap-4 items-start">
           {/* Achievements Grid */}
-          <div className="lg:col-span-3 grid grid-cols-3 gap-2">
+          <div className="lg:col-span-3 grid grid-cols-2 md:grid-cols-3 gap-3">
             {achievements.map((achievement, index) => (
               <motion.div
                 key={achievement.title}
@@ -54,10 +89,26 @@ export default function AboutSection() {
                 animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ duration: 0.3, delay: 0.2 + (index * 0.03) }}
                 whileHover={{ scale: 1.02 }}
-                className="group p-3 bg-white rounded-lg border border-blue-200 hover:border-blue-400 transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105"
+                className="group p-4 bg-white rounded-xl border border-blue-200 hover:border-blue-400 transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105 overflow-hidden"
               >
                 <div className="text-center">
-                  <div className="text-base mb-1">{achievement.icon}</div>
+                  {achievement.hasImage ? (
+                    <div className="relative w-16 h-16 mx-auto mb-3 rounded-xl overflow-hidden shadow-sm">
+                      <Image
+                        src={achievement.image}
+                        alt={achievement.title}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-300"
+                        sizes="64px"
+                        priority={index < 2} // Prioritize first two images
+                        quality={85}
+                        placeholder="blur"
+                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkrHB0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R+Kic6LKcVaVhBWkjbBEgaehkVgcNSjzjJJgqUWlSvRQBJrrcnNyYMnOVL4JJiHKGpGAaykQcE+OZEBxkdOvhrzCKiqUKKa4kcgHnYaQnMn7kZhLnBNCiAo+qm4rO1+PmAhPmHZnI4jQ7JMBJjPzP7UPJYvJpbD3KjsHWAHf2fM1h/sLr2IECw7hZhEhsGcFjgfCRhRPg=="
+                      />
+                    </div>
+                  ) : (
+                    <div className="text-2xl mb-3">{achievement.icon}</div>
+                  )}
                   <h3 className="label text-emphasis mb-0.5 group-hover:text-brand transition-colors">
                     {achievement.title}
                   </h3>

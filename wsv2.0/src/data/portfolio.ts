@@ -47,7 +47,7 @@ export const portfolioData: PortfolioCompany[] = [
         "source": "Official partnership announcements from MLS clubs"
       }
     ],
-    "primaryBrandColors": ["#00A651", "#FFFFFF"],
+    "primaryBrandColors": ["#000000", "#FFFFFF"],
     "socialMediaHandles": {
       "instagram": "@footyaccess",
       "tiktok": "@footyaccess",
@@ -55,7 +55,7 @@ export const portfolioData: PortfolioCompany[] = [
       "youtube": "@footyaccess",
       "threads": "@footyaccess"
     },
-    "logoUrl": null,
+    "logoUrl": "/images/portfolio/footyaccess.webp",
     "foundedYear": 2022,
     "recentAchievements": [
       "Partnership with New York City FC Academy (December 2024)",
@@ -108,7 +108,7 @@ export const portfolioData: PortfolioCompany[] = [
       "twitter": "@dripfc",
       "facebook": "Drip FC"
     },
-    "logoUrl": null,
+    "logoUrl": "/images/portfolio/TheDripFC.webp",
     "foundedYear": null,
     "recentAchievements": [
       "Partnership with The Town FC (November 2024)",
@@ -159,7 +159,7 @@ export const portfolioData: PortfolioCompany[] = [
       "tiktok": "@thetown_fc",
       "youtube": "The Town FC"
     },
-    "logoUrl": null,
+    "logoUrl": "/images/portfolio/TheTownFC.webp",
     "foundedYear": 2021,
     "recentAchievements": [
       "Partnership with Drip FC (November 2024)",
@@ -209,7 +209,7 @@ export const portfolioData: PortfolioCompany[] = [
     "socialMediaHandles": {
       "instagram": "@innovosens.inc"
     },
-    "logoUrl": null,
+    "logoUrl": "/images/portfolio/Innovosens.webp",
     "foundedYear": null,
     "recentAchievements": [
       "EU Commission backing and support",
@@ -260,7 +260,7 @@ export const portfolioData: PortfolioCompany[] = [
       "twitter": "@AtlanticCityFC",
       "facebook": "Atlantic City Football Club"
     },
-    "logoUrl": null,
+    "logoUrl": "/images/portfolio/Atlantic City FC.webp",
     "foundedYear": 2017,
     "recentAchievements": [
       "New team store opening at Caesars Atlantic City",
@@ -308,7 +308,7 @@ export const portfolioData: PortfolioCompany[] = [
     ],
     "primaryBrandColors": ["#4A90E2", "#000000"],
     "socialMediaHandles": {},
-    "logoUrl": null,
+    "logoUrl": "/images/portfolio/Replica AI.webp",
     "foundedYear": null,
     "recentAchievements": [
       "Multiple investor funding rounds completed",
@@ -356,7 +356,7 @@ export const portfolioData: PortfolioCompany[] = [
     "socialMediaHandles": {
       "instagram": "@odundesports"
     },
-    "logoUrl": null,
+    "logoUrl": "/images/portfolio/OdundeSports.webp",
     "foundedYear": null,
     "recentAchievements": [
       "Successful festival activation series launch",
@@ -406,7 +406,7 @@ export const portfolioData: PortfolioCompany[] = [
     "socialMediaHandles": {
       "instagram": "@fieldofvisioncollective"
     },
-    "logoUrl": null,
+    "logoUrl": "/images/portfolio/FieldOfVision.webp",
     "foundedYear": null,
     "recentAchievements": [
       "Award-winning sports documentary projects",
@@ -456,7 +456,7 @@ export const portfolioData: PortfolioCompany[] = [
     "socialMediaHandles": {
       "instagram": "@partuminicio"
     },
-    "logoUrl": null,
+    "logoUrl": "/images/portfolio/Partum Inicio.webp",
     "foundedYear": null,
     "recentAchievements": [
       "Major sports brand Gen Z campaigns",
@@ -506,7 +506,7 @@ export const portfolioData: PortfolioCompany[] = [
     "socialMediaHandles": {
       "instagram": "@soccerboxtraining"
     },
-    "logoUrl": null,
+    "logoUrl": "/images/portfolio/Soccer Box training.webp",
     "foundedYear": null,
     "recentAchievements": [
       "Professional club methodology adoption",
@@ -556,7 +556,7 @@ export const portfolioData: PortfolioCompany[] = [
     "socialMediaHandles": {
       "instagram": "@soccerasart"
     },
-    "logoUrl": null,
+    "logoUrl": "/images/portfolio/Soccer As Art.webp",
     "foundedYear": null,
     "recentAchievements": [
       "Viral creative soccer content series",
@@ -606,7 +606,7 @@ export const portfolioData: PortfolioCompany[] = [
     "socialMediaHandles": {
       "instagram": "@apexmental"
     },
-    "logoUrl": null,
+    "logoUrl": "/images/portfolio/Apex Mental.webp",
     "foundedYear": null,
     "recentAchievements": [
       "Professional athlete program expansions",
