@@ -4,7 +4,9 @@ import { memo, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { ComponentProps } from '@/types/components';
 
-interface AboutHeroProps extends ComponentProps {}
+interface AboutHeroProps extends ComponentProps {
+  // Additional props can be added here as needed
+}
 
 const AboutHero = memo<AboutHeroProps>(() => {
   const credentials = useMemo(() => [

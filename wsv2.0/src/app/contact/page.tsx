@@ -2,7 +2,6 @@
 
 import { memo, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import Navbar from '@/components/Navbar';
 
 interface FormData {
   name: string;
@@ -82,18 +81,12 @@ const Contact = memo(() => {
     hidden: { opacity: 0, y: 60 },
     visible: {
       opacity: 1,
-      y: 0,
-      transition: {
-        duration: 1,
-        ease: [0.16, 1, 0.3, 1]
-      }
+      y: 0
     }
   };
 
   return (
     <div className="min-h-screen bg-neutral-50">
-      <Navbar />
-      
       {/* Clean Hero Section */}
       <section 
         ref={heroRef}
@@ -173,12 +166,12 @@ const Contact = memo(() => {
             {/* Form Introduction */}
             <motion.div variants={itemVariants} className="text-center mb-12 spacing-fibonacci-3">
               <h2 className="text-4xl font-black mb-6 text-emphasis">
-                Let's Build Something
+                Let&apos;s Build Something
                 <span className="block text-brand">Extraordinary</span>
               </h2>
               
               <p className="text-secondary leading-relaxed max-w-lg mx-auto">
-                Tell us about your vision, and let's explore how we can bring it to life together.
+                Tell us about your vision, and let&apos;s explore how we can bring it to life together.
               </p>
             </motion.div>
 
@@ -312,7 +305,7 @@ const Contact = memo(() => {
                       className="text-center p-6 bg-green-50 border border-green-200 rounded-xl"
                     >
                       <p className="text-green-700 font-semibold mb-1">Thank you for reaching out!</p>
-                      <p className="text-green-600 text-sm">We'll get back to you within 24 hours.</p>
+                      <p className="text-green-600 text-sm">We&apos;ll get back to you within 24 hours.</p>
                     </motion.div>
                   )}
                 </form>

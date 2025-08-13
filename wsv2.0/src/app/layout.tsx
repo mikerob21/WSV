@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { PremiumNavbar } from "@/components/navigation";
+import { ErrorBoundary } from "@/components/ui";
 
 // Enterprise Typography: Premium fonts with high-quality fallbacks
 // Sohne (Editorial), Maison Neue (Interface), Basis Grotesque Pro (System)
@@ -33,7 +35,15 @@ export default function RootLayout({
         {/* For demo purposes, we use high-quality fallbacks that match the premium font characteristics */}
       </head>
       <body className="antialiased">
-        {children}
+        <ErrorBoundary>
+          {/* Premium Navigation - Sophisticated and elegant */}
+          <PremiumNavbar />
+          
+          {/* Page Content */}
+          <main>
+            {children}
+          </main>
+        </ErrorBoundary>
       </body>
     </html>
   );

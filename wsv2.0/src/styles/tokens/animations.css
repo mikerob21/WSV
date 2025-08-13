@@ -271,6 +271,87 @@
 .stagger-container > *:nth-child(6) { animation-delay: 500ms; }
 
 /* ==========================================================================
+   NAVBAR MICRO-INTERACTIONS
+   ========================================================================== */
+
+/* Liquid underline animation */
+@keyframes liquid-underline {
+  0% { 
+    transform: scaleX(0);
+    transform-origin: center;
+  }
+  100% { 
+    transform: scaleX(1);
+    transform-origin: center;
+  }
+}
+
+/* Letter spacing expansion */
+@keyframes letter-expand {
+  0% { 
+    letter-spacing: normal; 
+  }
+  100% { 
+    letter-spacing: 0.05em; 
+  }
+}
+
+/* Depth pulse for active states */
+@keyframes depth-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 0 0px rgba(59, 130, 246, 0);
+  }
+  50% { 
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+  }
+}
+
+/* Smooth slide for mobile menu */
+@keyframes slide-in-right {
+  0% { 
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% { 
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Nav item reveal */
+@keyframes nav-item-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Navbar Utility Classes */
+.animate-liquid-underline {
+  animation: liquid-underline 0.3s ease-out forwards;
+}
+
+.animate-letter-expand {
+  animation: letter-expand 0.2s ease-out forwards;
+}
+
+.animate-depth-pulse {
+  animation: depth-pulse 2s ease-in-out infinite;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.animate-nav-item-reveal {
+  animation: nav-item-reveal 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+/* ==========================================================================
    PERFORMANCE OPTIMIZATIONS
    ========================================================================== */
 

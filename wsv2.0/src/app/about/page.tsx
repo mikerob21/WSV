@@ -1,7 +1,6 @@
 'use client';
 
 import { memo } from 'react';
-import Navbar from '@/components/Navbar';
 import {
   AboutHero,
   AboutExpertise,
@@ -10,15 +9,11 @@ import {
 
 const AboutPage = memo(() => {
   return (
-    <main className="min-h-screen relative overflow-hidden">
-      <Navbar />
-      
+    <div className="min-h-screen relative overflow-hidden">
       <AboutHero />
-
       <AboutExpertise />
-
       <AboutEcosystem />
-    </main>
+    </div>
   );
 });
 

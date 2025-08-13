@@ -1,22 +1,15 @@
 'use client';
 
 import { memo } from 'react';
-import Navbar from '@/components/Navbar';
 import {
-  PortfolioHero,
   PortfolioGrid,
   PortfolioStats
 } from '@/components/sections/portfolio';
 
 const PortfolioPage = memo(() => {
   return (
-    <main className="min-h-screen relative overflow-hidden">
-      <Navbar />
-      
-      {/* Interactive Hero with Floating Company Orbs */}
-      <PortfolioHero />
-
-      {/* Portfolio Impact Statistics */}
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Data-Driven Hero Section */}
       <PortfolioStats />
 
       {/* Complete Portfolio Grid with Filtering */}
@@ -33,7 +26,7 @@ const PortfolioPage = memo(() => {
             
             <p className="body-large text-secondary mb-12 max-w-3xl mx-auto text-balance">
               Are you building the next generation of soccer technology or community-focused ventures? 
-              We'd love to explore potential partnership opportunities.
+              We&apos;d love to explore potential partnership opportunities.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -53,14 +46,14 @@ const PortfolioPage = memo(() => {
               >
                 <span>Learn Our Approach</span>
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
               </a>
             </div>
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 });
 

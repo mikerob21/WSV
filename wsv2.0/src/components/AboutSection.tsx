@@ -95,7 +95,7 @@ export default function AboutSection() {
                   {achievement.hasImage ? (
                     <div className="relative w-16 h-16 mx-auto mb-3 rounded-xl overflow-hidden shadow-sm">
                       <Image
-                        src={achievement.image}
+                        src={achievement.image || '/images/placeholder.webp'}
                         alt={achievement.title}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-300"

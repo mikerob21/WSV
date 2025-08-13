@@ -30,7 +30,7 @@ const StatCard = memo<{ stat: Statistic; index: number; animated: boolean }>(({
     transition: { 
       delay: stat.delay, 
       duration: 0.6, 
-      type: "spring",
+      type: "spring" as const,
       stiffness: 100,
       damping: 10 
     },

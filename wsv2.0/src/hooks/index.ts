@@ -5,8 +5,8 @@ export { useScrollPosition, useInViewport } from './useScrollPosition';
 export { useAnimationSequence, useStaggerAnimation } from './useAnimationSequence';
 export { usePortfolioData, usePortfolioCompany, usePortfolioMetrics } from './usePortfolioData';
 export {
-  useStableCallback,
-  useExpensiveCalculation,
+  useStableCallback as useStableCallbackPerf,
+  useExpensiveCalculation as useExpensiveCalculationPerf,
   useDebounce,
   useRenderTracker,
   useLazyImage,
@@ -14,3 +14,8 @@ export {
   useDeepMemo,
   useBatchedState,
 } from './usePerformanceOptimization';
+
+// Enhanced Performance Hooks
+export { useStableCallback, useEventHandler, useAsyncClickHandler } from './useStableCallback';
+export { useResizeObserver, useElementBreakpoints } from './useResizeObserver';
+export { useExpensiveCalculation, useAdvancedMemo, useThrottledOperation } from './useExpensiveCalculation';

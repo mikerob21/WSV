@@ -1,7 +1,6 @@
 'use client';
 
 import { memo } from 'react';
-import Navbar from '@/components/Navbar';
 import {
   ApproachHero,
   ApproachPhilosophy,
@@ -11,17 +10,12 @@ import {
 
 const ApproachPage = memo(() => {
   return (
-    <main className="min-h-screen relative overflow-hidden">
-      <Navbar />
-      
+    <div className="min-h-screen relative overflow-hidden">
       <ApproachHero />
-
       <ApproachPhilosophy />
-
       <ApproachBlueprint />
-
       <ApproachVerticals />
-    </main>
+    </div>
   );
 });
 

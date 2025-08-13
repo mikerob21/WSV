@@ -3,6 +3,7 @@
 import { memo, useRef, useState, useEffect, useMemo } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { portfolioData } from '@/data/portfolio';
+import InteractiveSectorChart from './InteractiveSectorChart';
 
 interface AnimatedCounterProps {
   value: number;
@@ -32,7 +33,7 @@ const AnimatedCounter = memo<AnimatedCounterProps>(({
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
       
-      // Easing function for smooth animation
+      // Sophisticated spring easing
       const easeOutQuart = 1 - Math.pow(1 - progress, 4);
       const currentValue = Math.floor(easeOutQuart * value);
       
@@ -51,7 +52,7 @@ const AnimatedCounter = memo<AnimatedCounterProps>(({
   }, [isInView, value, duration]);
 
   return (
-    <span ref={counterRef}>
+    <span ref={counterRef} className="font-numeric">
       {prefix}{displayValue.toLocaleString()}{suffix}
     </span>
   );
@@ -61,223 +62,221 @@ AnimatedCounter.displayName = 'AnimatedCounter';
 
 const PortfolioStats = memo(() => {
   const statsRef = useRef(null);
-  const isInView = useInView(statsRef, { once: true, amount: 0.3 });
+  const isInView = useInView(statsRef, { once: true, amount: 0.1 });
+  const [selectedSector, setSelectedSector] = useState<string | null>(null);
 
-  // Calculate portfolio statistics
-  const stats = useMemo(() => ({
-    totalCompanies: portfolioData.length,
-    totalFollowers: portfolioData.reduce((sum, company) => {
-      const instagramMetric = company.metrics?.find(m => 
-        m.label.toLowerCase().includes('instagram') || 
-        m.label.toLowerCase().includes('followers')
+  // Enhanced portfolio statistics calculation
+  const stats = useMemo(() => {
+    const totalViews = portfolioData.reduce((sum, company) => {
+      const viewMetric = company.metrics?.find(m => 
+        m.label.toLowerCase().includes('views') || 
+        m.label.toLowerCase().includes('video')
       );
-      if (instagramMetric) {
-        const value = instagramMetric.value.replace(/[^\d.]/g, '');
+      if (viewMetric) {
+        const value = viewMetric.value.replace(/[^\d.]/g, '');
         const num = parseFloat(value);
-        if (instagramMetric.value.includes('K')) return sum + (num * 1000);
-        if (instagramMetric.value.includes('M')) return sum + (num * 1000000);
+        if (viewMetric.value.includes('M')) return sum + (num * 1000000);
+        if (viewMetric.value.includes('K')) return sum + (num * 1000);
         return sum + num;
       }
       return sum;
-    }, 0),
-    sectors: new Set(portfolioData.map(c => c.type)).size,
-  }), []);
+    }, 0);
 
-  // Featured stat and others following ApproachStats pattern
-  const featuredStat = useMemo(() => ({
-    value: stats.totalCompanies,
-    label: 'Portfolio Companies',
-    description: 'Innovative ventures across the sports ecosystem, from media platforms to professional clubs, technology solutions, and community development initiatives.',
-  }), [stats.totalCompanies]);
+    const totalFollowers = portfolioData.reduce((sum, company) => {
+      const socialMetrics = company.metrics?.filter(m => 
+        m.label.toLowerCase().includes('followers') || 
+        m.label.toLowerCase().includes('reach')
+      ) || [];
+      
+      return sum + socialMetrics.reduce((metricSum, metric) => {
+        const value = metric.value.replace(/[^\d.]/g, '');
+        const num = parseFloat(value);
+        if (metric.value.includes('M')) return metricSum + (num * 1000000);
+        if (metric.value.includes('K')) return metricSum + (num * 1000);
+        return metricSum + num;
+      }, 0);
+    }, 0);
 
-  const otherStats = useMemo(() => [
+    const partnerships = portfolioData.reduce((sum, company) => {
+      return sum + (company.keyPartnerships?.length || 0);
+    }, 0);
+
+    return {
+      totalCompanies: portfolioData.length,
+      totalViews: Math.round(totalViews / 1000000),
+      totalFollowers: Math.round(totalFollowers / 1000),
+      partnerships,
+      sectors: new Set(portfolioData.map(c => c.type)).size,
+    };
+  }, []);
+
+  // Sleek key metrics for sophisticated display
+  const keyMetrics = useMemo(() => [
     {
-      value: Math.round(stats.totalFollowers / 1000),
+      value: stats.totalViews,
+      suffix: 'M+',
+      label: 'Total Views',
+      description: 'Combined content reach'
+    },
+    {
+      value: stats.totalFollowers,
       suffix: 'K+',
-      label: 'Combined Reach',
-      description: 'Social media followers across our portfolio companies'
+      label: 'Social Following',
+      description: 'Engaged community'
     },
     {
-      value: stats.sectors,
-      suffix: '',
-      label: 'Industry Verticals',
-      description: 'Diverse sectors from media to technology'
-    },
-    {
-      value: 85,
-      suffix: '%',
-      label: 'Success Rate',
-      description: 'Companies meeting or exceeding growth targets and strategic milestones'
+      value: stats.partnerships,
+      suffix: '+',
+      label: 'Partnerships',
+      description: 'Strategic alliances'
     }
   ], [stats]);
 
   return (
     <section 
       ref={statsRef}
-      className="relative py-24 overflow-hidden bg-neutral-100"
+      className="relative min-h-screen pt-24 pb-12 overflow-hidden bg-gradient-to-br from-neutral-50 via-white to-blue-50/30"
     >
-      {/* Sophisticated background pattern - Following ApproachStats style */}
-      <div className="absolute inset-0 opacity-20">
-        <svg width="100%" height="100%" className="absolute inset-0">
-          <defs>
-            <pattern id="portfolioStatsGrid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="var(--blue-300)" strokeWidth="1" opacity="0.3"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#portfolioStatsGrid)" />
-        </svg>
+      {/* Sophisticated background elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-100/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-blue-200/10 rounded-full blur-2xl" />
       </div>
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        {/* Header - Typography-focused following ApproachStats pattern */}
+        {/* Sophisticated Hero Header */}
         <motion.div
-          initial={{ opacity: 0, x: -100 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-          className="mb-20"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center mb-20"
         >
-          <h2 className="text-6xl lg:text-7xl font-black text-emphasis mb-4 tracking-tight leading-tight">
-            PORTFOLIO
-            <span className="block text-secondary text-4xl lg:text-5xl font-light pl-8 mt-2">
-              IMPACT
-            </span>
-          </h2>
+          <div className="inline-flex items-center gap-3 mb-8">
+            <div className="w-12 h-px bg-blue-600"></div>
+            <span className="caption text-blue-600 tracking-wider">PORTFOLIO OVERVIEW</span>
+            <div className="w-12 h-px bg-blue-600"></div>
+          </div>
+          
+          <h1 className="display-hero mb-8 text-balance">
+            Strategic Impact
+          </h1>
+          
+          <p className="body-large text-secondary max-w-2xl mx-auto text-balance leading-relaxed">
+            Transforming soccer through strategic investments in innovative companies across 
+            media, technology, and community development.
+          </p>
         </motion.div>
 
-        {/* Asymmetrical Stats Grid - Following ApproachStats layout */}
-        <div className="grid lg:grid-cols-12 gap-6 lg:gap-8">
-          {/* Large Feature Stat - Company Count */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2 }}
-            className="lg:col-span-6 lg:row-span-2"
-          >
-            <div className="bg-neutral-0 h-full p-8 rounded-2xl relative overflow-hidden border-2 border-neutral-200 hover:shadow-lg transition-all duration-300 shadow-sm">
-              <div className="relative z-10">
-                <div className="text-7xl lg:text-8xl font-black mb-4 text-emphasis">
-                  <AnimatedCounter value={featuredStat.value} duration={2500} />
-                </div>
-                <div className="text-xl font-bold mb-3 text-secondary">{featuredStat.label}</div>
-                <div className="text-base text-muted leading-relaxed">{featuredStat.description}</div>
-              </div>
-              
-              {/* Subtle brand accent */}
-              <div className="absolute bottom-6 right-6">
-                <div className="w-12 h-12 border-2 border-blue-600 rounded-full flex items-center justify-center">
-                  <div className="w-6 h-6 bg-blue-600 rounded-full"></div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Other Stats - Varying sizes for visual interest */}
-          {otherStats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: (index + 1) * 0.2, duration: 1 }}
-              className={index === 2 ? "lg:col-span-6" : "lg:col-span-3"}
-            >
-              <div className={`bg-neutral-0 p-6 h-full border-2 border-neutral-200 relative overflow-hidden rounded-2xl hover:shadow-lg transition-all duration-300 shadow-sm ${
-                index === 2 ? 'flex items-center justify-between' : ''
-              }`}>
-                <div className="relative z-10">
-                  <div className="text-4xl lg:text-5xl font-black text-emphasis mb-3">
-                    <AnimatedCounter 
-                      value={stat.value} 
-                      suffix={stat.suffix}
-                      duration={2500}
-                    />
-                  </div>
-                  <div className="text-base font-semibold text-secondary mb-2">{stat.label}</div>
-                  <div className="text-muted text-sm">{stat.description}</div>
-                </div>
-                
-                {/* Add visual accent for the wide card */}
-                {index === 2 && (
-                  <div className="w-12 h-12 border-2 border-blue-600 rounded-full flex items-center justify-center">
-                    <div className="w-6 h-6 bg-blue-600 rounded-full"></div>
-                  </div>
-                )}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Investment Philosophy Section - More sophisticated than emojis */}
+        {/* Interactive Sector Breakdown */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 1 }}
-          className="mt-16"
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-20"
         >
-          <div className="bg-neutral-0 p-8 rounded-2xl border-2 border-neutral-200 shadow-sm">
-            <h3 className="text-2xl font-black text-emphasis mb-8 text-center">
-              Investment Philosophy
-            </h3>
-            
-            <div className="grid md:grid-cols-3 gap-8">
-              {/* Strategic Focus */}
-              <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 bg-blue-50 rounded-2xl border-2 border-blue-100 flex items-center justify-center">
-                  {/* Typography-based visual */}
-                  <div className="text-2xl font-black text-blue-600">S</div>
-                </div>
-                <h4 className="text-lg font-bold text-secondary mb-2">Strategic Focus</h4>
-                <p className="text-muted text-sm leading-relaxed">
-                  Targeted investments in soccer ecosystem innovation and community development
-                </p>
-              </div>
-
-              {/* Active Partnership */}
-              <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 bg-blue-50 rounded-2xl border-2 border-blue-100 flex items-center justify-center">
-                  {/* Data visualization style */}
-                  <div className="flex space-x-1">
-                    <div className="w-2 h-8 bg-blue-600 rounded-full"></div>
-                    <div className="w-2 h-6 bg-blue-500 rounded-full"></div>
-                    <div className="w-2 h-10 bg-blue-700 rounded-full"></div>
-                  </div>
-                </div>
-                <h4 className="text-lg font-bold text-secondary mb-2">Active Partnership</h4>
-                <p className="text-muted text-sm leading-relaxed">
-                  Hands-on support and strategic guidance for sustainable growth
-                </p>
-              </div>
-
-              {/* Community Impact */}
-              <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 bg-blue-50 rounded-2xl border-2 border-blue-100 flex items-center justify-center">
-                  {/* Network visualization */}
-                  <div className="relative">
-                    <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
-                    <div className="absolute -top-1 -right-2 w-2 h-2 bg-blue-500 rounded-full"></div>
-                    <div className="absolute -bottom-1 -left-2 w-2 h-2 bg-blue-400 rounded-full"></div>
-                    <div className="absolute top-2 right-1 w-1 h-1 bg-blue-300 rounded-full"></div>
-                  </div>
-                </div>
-                <h4 className="text-lg font-bold text-secondary mb-2">Community Impact</h4>
-                <p className="text-muted text-sm leading-relaxed">
-                  Building lasting value beyond financial returns through ecosystem development
-                </p>
-              </div>
-            </div>
+          <div className="card-glass p-12">
+            <InteractiveSectorChart
+              onSectorHover={(sector) => console.log('Hovered:', sector)}
+              onSectorClick={(sector) => setSelectedSector(sector.sector)}
+            />
           </div>
         </motion.div>
 
-        {/* Bottom indicator - Following ApproachStats pattern */}
+        {/* Key Metrics Grid */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="mt-16 text-center"
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="grid md:grid-cols-3 gap-6 mb-20"
         >
-          <div className="inline-flex items-center space-x-4 px-6 py-3 bg-neutral-0 rounded-full border border-neutral-200 shadow-sm">
-            <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
-            <span className="text-secondary font-medium">Transforming Soccer Through Strategic Investment</span>
-            <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
+          {keyMetrics.map((metric, index) => (
+            <motion.div
+              key={metric.label}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ 
+                duration: 0.6, 
+                delay: 0.5 + (index * 0.1),
+                ease: [0.16, 1, 0.3, 1]
+              }}
+              className="group"
+            >
+              <div className="card-sleek p-8 text-center">
+                <motion.div 
+                  className="text-4xl font-black text-blue-600 mb-2"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <AnimatedCounter 
+                    value={metric.value}
+                    suffix={metric.suffix}
+                    duration={2000 + (index * 300)}
+                  />
+                </motion.div>
+                <h3 className="heading-tertiary mb-2 group-hover:text-blue-900 transition-colors duration-300">
+                  {metric.label}
+                </h3>
+                <p className="body-small text-secondary">
+                  {metric.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Investment Philosophy */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center"
+        >
+          <div className="max-w-4xl mx-auto">
+            <h2 className="heading-secondary mb-4 text-balance">
+              Investment Philosophy
+            </h2>
+            <div className="w-24 h-px bg-blue-600 mx-auto mb-12"></div>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  title: "Strategic Focus",
+                  description: "Targeted investments in soccer ecosystem innovation with measurable impact",
+                },
+                {
+                  title: "Active Partnership", 
+                  description: "Hands-on support and strategic guidance for sustainable long-term growth",
+                },
+                {
+                  title: "Community Impact",
+                  description: "Building lasting value beyond financial returns through ecosystem development",
+                }
+              ].map((principle, index) => (
+                <motion.div
+                  key={principle.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ 
+                    duration: 0.6, 
+                    delay: 0.8 + (index * 0.1),
+                    ease: [0.16, 1, 0.3, 1]
+                  }}
+                  className="group"
+                >
+                  <div className="card-sleek p-6 text-center h-full">
+                    <div className="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center mx-auto mb-4 font-black text-lg">
+                      {String(index + 1).padStart(2, '0')}
+                    </div>
+                    <h3 className="heading-tertiary mb-3 group-hover:text-blue-900 transition-colors duration-300">
+                      {principle.title}
+                    </h3>
+                    <p className="body-small text-secondary leading-relaxed">
+                      {principle.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>
