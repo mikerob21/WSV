@@ -44,13 +44,18 @@ const VideoBackground = memo<{ src: string }>(({ src }) => {
     const video = videoRef.current;
     if (!video) return;
 
-    const handleLoadedData = () => {
+    const handleCanPlay = () => {
       setIsLoaded(true);
-      video.play().catch(console.error);
+      video.play().catch(() => {
+        // Silently handle autoplay failures (common in some browsers)
+      });
     };
 
-    video.addEventListener('loadeddata', handleLoadedData);
-    return () => video.removeEventListener('loadeddata', handleLoadedData);
+    video.addEventListener('canplay', handleCanPlay);
+    
+    return () => {
+      video.removeEventListener('canplay', handleCanPlay);
+    };
   }, []);
 
   return (
@@ -61,13 +66,13 @@ const VideoBackground = memo<{ src: string }>(({ src }) => {
         muted
         loop
         playsInline
-        preload="metadata"
-        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+        preload="auto"
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
           isLoaded ? 'opacity-100' : 'opacity-0'
         }`}
         style={{ transform: 'scale(1.02)' }} // Slight scale to prevent edge artifacts
       >
-        <source src={src} type="video/mp4" />
+        <source src="https://res.cloudinary.com/ducuykhid/video/upload/v1754500559/copy_C8DB97E3-61AD-4016-A5F0-02347257FC20_hgh4vr.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       
@@ -138,7 +143,7 @@ const VideoHeroCTAButtons = memo(() => (
 VideoHeroCTAButtons.displayName = 'VideoHeroCTAButtons';
 
 export const VideoHeroSection = memo<VideoHeroSectionProps>(({
-  videoSrc = '/videos/hero.mp4',
+  videoSrc = 'https://res.cloudinary.com/ducuykhid/video/upload/v1754500559/copy_C8DB97E3-61AD-4016-A5F0-02347257FC20_hgh4vr.mp4',
   showScrollIndicator = true,
   className,
   ...props

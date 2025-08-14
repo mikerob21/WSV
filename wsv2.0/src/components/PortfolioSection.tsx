@@ -192,7 +192,7 @@ export default function PortfolioSection() {
             className="text-center mb-8"
           >
             <h2 className="text-xl md:text-2xl font-bold text-neutral-900 mb-2">
-              Elite Portfolio
+              Diverse Portfolio
             </h2>
             <p className="text-sm text-neutral-600 max-w-2xl mx-auto">
               Strategic investments driving soccer ecosystem innovation.
