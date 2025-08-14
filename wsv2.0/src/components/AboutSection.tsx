@@ -3,198 +3,144 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import Image from 'next/image';
 
-const achievements = [
-  { 
-    icon: '🇺🇸', 
-    title: 'USMNT Player', 
-    description: 'International level',
-    image: '/images/about/USMNT.png',
-    hasImage: true
+const pillars = [
+  {
+    title: 'Disruptive Ecosystems',
+    description: 'Designs interconnected ventures controlling market access, yielding rapid scale'
   },
-  { 
-    icon: '🌍', 
-    title: 'Global Career', 
-    description: 'European & Saudi Pro',
-    image: '/images/about/global-career.webp',
-    hasImage: true
+  {
+    title: 'Strategic Execution',
+    description: 'Transforms vision into market reality through precise operational excellence'
   },
-  { 
-    icon: '💼', 
-    title: 'Private Equity', 
-    description: 'Hedge fund success',
-    hasImage: false
+  {
+    title: 'Legacy-Driven Impact',
+    description: 'Builds for enduring value through media, tech, and community ventures'
+  }
+];
+
+const capacities = [
+  {
+    title: 'Strategic Advisor',
+    points: [
+      'Board-level support for venture growth or product-market fit',
+      'Ecosystem design across media, tech, brand, and operations'
+    ]
   },
-  { 
-    icon: '🚀', 
-    title: 'Entrepreneur', 
-    description: 'Scaled JaySocial LLC',
-    hasImage: false
+  {
+    title: 'Fractional Executive',
+    points: [
+      'Interim CEO, COO, or Chief Innovation roles',
+      'Embedding systems, processes, and people to scale'
+    ]
   },
-  { 
-    icon: '📖', 
-    title: 'Published Author', 
-    description: '"The Athlete\'s War"',
-    image: '/images/about/the-athletes-war.jpg',
-    hasImage: true
+  {
+    title: 'Investment & Deal Flow Partner',
+    points: [
+      'Select co-investments in sports, tech, and creator economy',
+      'Due diligence support for PE/VC and family offices'
+    ]
   },
-  { 
-    icon: '🎯', 
-    title: 'Techstars Mentor', 
-    description: 'Strategic advisor',
-    image: '/images/about/techstars.png',
-    hasImage: true
-  },
+  {
+    title: 'Brand & Narrative Architect',
+    points: [
+      'Founder positioning and pitch refinement',
+      'Go-to-market and growth storytelling'
+    ]
+  }
 ];
 
 export default function AboutSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section ref={ref} className="py-12 px-6 lg:px-8 bg-blue-50">
-      <div className="max-w-6xl mx-auto">
+    <section ref={ref} className="py-20 px-6 lg:px-8 bg-neutral-0">
+      <div className="max-w-7xl mx-auto">
+        {/* Three Pillars Section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-6"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-24"
         >
           <motion.h2 
-            className="heading-primary mb-2"
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            className="heading-primary text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5 }}
           >
-            Elite Soccer Experience <span className="text-brand">Meets Strategic Capital</span>
+            Three Pillars
           </motion.h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="body-default max-w-xl mx-auto"
-          >
-            <strong>Jeremiah White III</strong> brings 25+ years professional soccer + private equity success.
-          </motion.p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-4 gap-4 items-start">
-          {/* Achievements Grid */}
-          <div className="lg:col-span-3 grid grid-cols-2 md:grid-cols-3 gap-3">
-            {achievements.map((achievement, index) => (
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {pillars.map((pillar, index) => (
               <motion.div
-                key={achievement.title}
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                transition={{ duration: 0.3, delay: 0.2 + (index * 0.03) }}
-                whileHover={{ scale: 1.02 }}
-                className="group p-4 bg-white rounded-xl border border-blue-200 hover:border-blue-400 transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105 overflow-hidden"
+                key={pillar.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
+                className="relative group"
               >
-                <div className="text-center">
-                  {achievement.hasImage ? (
-                    <div className="relative w-16 h-16 mx-auto mb-3 rounded-xl overflow-hidden shadow-sm">
-                      <Image
-                        src={achievement.image || '/images/placeholder.webp'}
-                        alt={achievement.title}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-300"
-                        sizes="64px"
-                        priority={index < 2} // Prioritize first two images
-                        quality={85}
-                        placeholder="blur"
-                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkrHB0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R+Kic6LKcVaVhBWkjbBEgaehkVgcNSjzjJJgqUWlSvRQBJrrcnNyYMnOVL4JJiHKGpGAaykQcE+OZEBxkdOvhrzCKiqUKKa4kcgHnYaQnMn7kZhLnBNCiAo+qm4rO1+PmAhPmHZnI4jQ7JMBJjPzP7UPJYvJpbD3KjsHWAHf2fM1h/sLr2IECw7hZhEhsGcFjgfCRhRPg=="
-                      />
-                    </div>
-                  ) : (
-                    <div className="text-2xl mb-3">{achievement.icon}</div>
-                  )}
-                  <h3 className="label text-emphasis mb-0.5 group-hover:text-brand transition-colors">
-                    {achievement.title}
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg opacity-0 group-hover:opacity-100 transition duration-300 blur"></div>
+                <div className="relative bg-white p-8 rounded-lg border border-neutral-200">
+                  <div className="absolute top-6 right-6 w-8 h-8 bg-neutral-100 text-neutral-400 rounded flex items-center justify-center caption font-bold">
+                    {index + 1}
+                  </div>
+                  <h3 className="heading-tertiary mb-3 pr-12">
+                    {pillar.title}
                   </h3>
-                  <p className="body-small text-secondary">
-                    {achievement.description}
+                  <p className="body-small">
+                    {pillar.description}
                   </p>
                 </div>
               </motion.div>
             ))}
           </div>
+        </motion.div>
 
-          {/* Investment Range Card */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+        {/* Four Core Capacities Section */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <motion.h2 
+            className="heading-primary text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="relative"
           >
-            <div className="relative p-4 bg-blue-700 rounded-lg overflow-hidden shadow-md">
-              <div className="absolute inset-0 opacity-10">
-                <div className="absolute inset-0 data-texture"></div>
-              </div>
-              
-              <div className="absolute -top-5 -right-5 w-12 h-12 bg-blue-500/30 rounded-full blur-xl"></div>
-              
-              <div className="relative">
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={isInView ? { scale: 1 } : { scale: 0 }}
-                  transition={{ duration: 0.3, delay: 0.4 }}
-                  className="inline-flex items-center px-1.5 py-0.5 bg-blue-500/20 text-blue-200 caption rounded-full mb-2"
-                >
-                  <span className="w-1 h-1 bg-blue-400 rounded-full mr-1 animate-pulse"></span>
-                  Range
-                </motion.div>
-                
-                <motion.h3 
-                  className="label text-inverse mb-1"
-                  initial={{ opacity: 0 }}
-                  animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                  transition={{ delay: 0.5 }}
-                >
-                  Investment Focus
-                </motion.h3>
-                
-                <motion.div 
-                  className="mono-large text-inverse mb-2 font-numeric"
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
-                  transition={{ delay: 0.6, type: "spring" }}
-                >
-                  $100K - $1M
-                </motion.div>
-                
-                <motion.p 
-                  className="body-small text-inverse-secondary mb-3"
-                  initial={{ opacity: 0 }}
-                  animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                  transition={{ delay: 0.7 }}
-                >
-                  Strategic capital for soccer transformation.
-                </motion.p>
+            Partnership Framework
+          </motion.h2>
 
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                  transition={{ delay: 0.8 }}
-                  className="space-y-1"
-                >
-                  {['Tech & AI', 'Clubs', 'Media'].map((focus, index) => (
-                    <motion.div
-                      key={focus}
-                      initial={{ opacity: 0 }}
-                      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                      transition={{ delay: 0.8 + (index * 0.02) }}
-                      className="flex items-center space-x-1.5"
-                    >
-                      <div className="w-0.5 h-0.5 bg-blue-400 rounded-full"></div>
-                      <span className="body-small text-inverse-secondary">{focus}</span>
-                    </motion.div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {capacities.map((capacity, index) => (
+              <motion.div
+                key={capacity.title}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                whileHover={{ y: -2 }}
+                className="bg-neutral-50 p-8 rounded-lg border border-neutral-200 hover:border-blue-300 transition-all duration-300"
+              >
+                <h3 className="heading-tertiary mb-4">
+                  {capacity.title}
+                </h3>
+                <ul className="space-y-2">
+                  {capacity.points.map((point, pointIndex) => (
+                    <li key={pointIndex} className="flex items-start">
+                      <span className="inline-block w-1 h-1 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span className="body-small">
+                        {point}
+                      </span>
+                    </li>
                   ))}
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

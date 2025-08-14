@@ -1,1 +1,1 @@
-export { PremiumNavbar } from './PremiumNavbar';
+export { WSVNavbar } from './WSVNavbar';
