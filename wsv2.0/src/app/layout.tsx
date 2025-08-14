@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { PremiumNavbar } from "@/components/navigation";
+import { WSVNavbar } from "@/components/navigation/WSVNavbar";
 import { ErrorBoundary } from "@/components/ui";
 
 // Enterprise Typography: Premium fonts with high-quality fallbacks
@@ -36,8 +36,8 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <ErrorBoundary>
-          {/* Premium Navigation - Sophisticated and elegant */}
-          <PremiumNavbar />
+          {/* WSV Navigation - Custom Athletic Design */}
+          <WSVNavbar />
           
           {/* Page Content */}
           <main>

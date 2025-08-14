@@ -154,21 +154,21 @@ export const VideoHeroSection = memo<VideoHeroSectionProps>(({
       {/* Video Background */}
       <VideoBackground src={videoSrc} />
 
-      {/* Logo Overlay - Top Center */}
-      <div className="absolute top-20 md:top-24 left-1/2 transform -translate-x-1/2 z-20">
+      {/* Logo Overlay - Elegantly Positioned */}
+      <div className="absolute top-28 md:top-32 left-1/2 transform -translate-x-1/2 z-20">
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           className="relative"
         >
-          <div className="relative w-40 h-40 md:w-48 md:h-48">
+          <div className="relative w-32 h-32 md:w-40 md:h-40">
             <Image
               src="/images/logo.webp"
               alt="White Sports Ventures Logo"
               fill
-              className="object-contain drop-shadow-2xl"
-              sizes="192px"
+              className="object-contain drop-shadow-xl"
+              sizes="160px"
               priority
             />
           </div>
@@ -177,7 +177,7 @@ export const VideoHeroSection = memo<VideoHeroSectionProps>(({
 
       {/* Content Overlay */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center flex flex-col justify-center min-h-screen">
-        <div className="py-20 pt-28 md:pt-32">
+        <div className="py-20 pt-40 md:pt-44">
           <VideoHeroTitle />
           <VideoHeroSubtitle />
           <VideoHeroCTAButtons />
