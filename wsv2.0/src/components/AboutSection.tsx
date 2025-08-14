@@ -56,7 +56,7 @@ export default function AboutSection() {
 
   return (
     <section ref={ref} className="py-20 px-6 lg:px-8 bg-neutral-0">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto uppercase">
         {/* Three Pillars Section */}
         <motion.div
           initial={{ opacity: 0 }}

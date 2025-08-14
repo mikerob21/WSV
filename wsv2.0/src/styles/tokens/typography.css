@@ -4,14 +4,20 @@
 
 :root {
   /* ===== FONT FAMILIES ===== */
-  --font-display: 'Sohne', 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-interface: 'Maison Neue', 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
-  --font-system: 'Basis Grotesque Pro', 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+  /* Headers - Cousine (monospace font for section titles) */
+  --font-display: 'Cousine';
   
-  /* Legacy Support */
-  --font-primary: var(--font-interface);
-  --font-secondary: var(--font-system);
-  --font-mono: var(--font-system);
+  /* Subheadings - Arya (sans-serif for card titles and smaller headings) */
+  --font-interface: 'Arya';
+  
+  /* Body Text - Signika Negative (sans-serif for all paragraph text) */
+  --font-body: 'Signika Negative';
+  --font-system: 'Signika Negative';
+  
+  /* Legacy Support - Map to new system */
+  --font-primary: var(--font-body);
+  --font-secondary: var(--font-interface);
+  --font-mono: var(--font-display);
   --font-editorial: var(--font-display);
 
   /* ===== FONT WEIGHTS ===== */
@@ -55,13 +61,14 @@
    SEMANTIC TYPOGRAPHY CLASSES
    ========================================================================== */
 
-/* Display Typography - Hero and Major Headlines */
+/* Display Typography - Hero and Major Headlines (Cousine) */
 .display-hero {
   font-family: var(--font-display);
-  font-weight: var(--weight-black);
+  font-weight: var(--weight-bold);
   font-size: clamp(3.5rem, 8vw, 6rem);
   line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tighter);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--neutral-900);
   text-wrap: balance;
 }
@@ -71,28 +78,31 @@
   font-weight: var(--weight-bold);
   font-size: clamp(2.5rem, 6vw, 4rem);
   line-height: var(--leading-snug);
-  letter-spacing: var(--tracking-tight);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--neutral-900);
   text-wrap: balance;
 }
 
-/* Heading Typography - Content Structure */
+/* Heading Typography - Section Headers (Cousine) and Subheadings (Arya) */
 .heading-primary {
-  font-family: var(--font-interface);
+  font-family: var(--font-display);
   font-weight: var(--weight-bold);
   font-size: clamp(1.875rem, 4vw, 2.5rem);
   line-height: var(--leading-snug);
-  letter-spacing: var(--tracking-tight);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--neutral-900);
   text-wrap: balance;
 }
 
 .heading-secondary {
   font-family: var(--font-interface);
-  font-weight: var(--weight-semibold);
+  font-weight: var(--weight-bold);
   font-size: clamp(1.5rem, 3vw, 2rem);
   line-height: var(--leading-normal);
-  letter-spacing: var(--tracking-normal);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   color: var(--neutral-800);
   text-wrap: balance;
 }
@@ -102,47 +112,51 @@
   font-weight: var(--weight-medium);
   font-size: clamp(1.25rem, 2.5vw, 1.5rem);
   line-height: var(--leading-normal);
-  letter-spacing: var(--tracking-normal);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--neutral-700);
 }
 
-/* Body Typography - Content Reading */
+/* Body Typography - Content Reading (Signika Negative) */
 .body-large {
-  font-family: var(--font-interface);
+  font-family: var(--font-body);
   font-weight: var(--weight-regular);
   font-size: clamp(1.125rem, 2vw, 1.25rem);
   line-height: var(--leading-relaxed);
-  letter-spacing: var(--tracking-normal);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
   color: var(--neutral-700);
   text-wrap: pretty;
 }
 
 .body-default {
-  font-family: var(--font-interface);
+  font-family: var(--font-body);
   font-weight: var(--weight-regular);
   font-size: var(--text-base);
   line-height: var(--leading-relaxed);
-  letter-spacing: var(--tracking-normal);
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
   color: var(--neutral-600);
   text-wrap: pretty;
 }
 
 .body-small {
-  font-family: var(--font-interface);
+  font-family: var(--font-body);
   font-weight: var(--weight-regular);
   font-size: var(--text-sm);
   line-height: var(--leading-normal);
-  letter-spacing: var(--tracking-normal);
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
   color: var(--neutral-500);
 }
 
 /* Utility Typography - UI Elements */
 .caption {
-  font-family: var(--font-system);
+  font-family: var(--font-body);
   font-weight: var(--weight-medium);
   font-size: var(--text-xs);
   line-height: var(--leading-snug);
-  letter-spacing: var(--tracking-wide);
+  letter-spacing: 0.05em;
   color: var(--neutral-500);
   text-transform: uppercase;
 }
@@ -152,27 +166,30 @@
   font-weight: var(--weight-medium);
   font-size: var(--text-sm);
   line-height: var(--leading-normal);
-  letter-spacing: var(--tracking-normal);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
   color: var(--neutral-700);
 }
 
-/* Monospace Typography - Code and Data */
+/* Monospace Typography - Now uses Cousine */
 .mono-large {
-  font-family: var(--font-system);
+  font-family: var(--font-display);
   font-weight: var(--weight-medium);
   font-size: var(--text-lg);
   line-height: var(--leading-normal);
-  letter-spacing: var(--tracking-normal);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   color: var(--neutral-800);
   font-variant-numeric: tabular-nums;
 }
 
 .mono-default {
-  font-family: var(--font-system);
+  font-family: var(--font-display);
   font-weight: var(--weight-regular);
   font-size: var(--text-base);
   line-height: var(--leading-relaxed);
-  letter-spacing: var(--tracking-normal);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--neutral-700);
   font-variant-numeric: tabular-nums;
 }
@@ -232,8 +249,9 @@
 /* Font Family Utilities */
 .font-display { font-family: var(--font-display); }
 .font-interface { font-family: var(--font-interface); }
+.font-body { font-family: var(--font-body); }
 .font-system { font-family: var(--font-system); }
-.font-mono { font-family: var(--font-mono); }
+.font-mono { font-family: var(--font-display); }
 
 /* Special Typography Effects */
 .font-numeric { 

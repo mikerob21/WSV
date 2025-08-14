@@ -89,11 +89,11 @@ const AboutExpertise = memo<AboutExpertiseProps>(() => {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <h2 id="expertise-heading" className="text-3xl lg:text-4xl font-black text-emphasis leading-tight mb-3">
+          <h2 id="expertise-heading" className="heading-primary mb-3">
             Expertise & Offerings
           </h2>
           <div className="w-12 h-0.5 bg-blue-600 rounded-full mb-4"></div>
-          <p className="text-base text-muted max-w-2xl leading-relaxed">
+          <p className="body-default text-muted max-w-2xl">
             Three decades of experience across soccer, finance, and entrepreneurship
           </p>
         </motion.div>
@@ -106,7 +106,7 @@ const AboutExpertise = memo<AboutExpertiseProps>(() => {
             transition={{ duration: 0.6 }}
             className="mb-8"
           >
-            <h3 className="text-2xl font-bold text-emphasis mb-6">Career Journey</h3>
+            <h3 className="heading-secondary mb-6">Career Journey</h3>
             
             {/* Clean Timeline Navigation */}
             <div className="relative flex flex-wrap gap-1 p-1 bg-neutral-50 rounded-lg border border-neutral-200">
@@ -133,7 +133,7 @@ const AboutExpertise = memo<AboutExpertiseProps>(() => {
                   key={journey.phase}
                   ref={(el) => (tabRefs.current[index] = el)}
                   onClick={() => handlePhaseClick(index)}
-                  className={`relative flex-1 min-w-0 px-4 py-3 text-sm font-medium rounded-md transition-all duration-300 z-10 ${
+                  className={`relative flex-1 min-w-0 px-4 py-3 label rounded-md transition-all duration-300 z-10 ${
                     activePhase === index
                       ? 'text-white'
                       : 'text-secondary hover:text-emphasis hover:bg-neutral-0/50'
@@ -177,21 +177,21 @@ const AboutExpertise = memo<AboutExpertiseProps>(() => {
                   >
                     <div className="mb-6">
                       <div className="flex items-center gap-3 mb-4">
-                        <div className="w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold text-xs">
+                        <div className="w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center caption font-bold">
                           {String(activePhase + 1).padStart(2, '0')}
                         </div>
                         <div>
-                          <h4 className="text-xl font-bold text-emphasis leading-tight">
+                          <h4 className="heading-tertiary">
                             {careerJourney[activePhase].phase}
                           </h4>
-                          <p className="text-sm text-blue-600 font-semibold">
+                          <p className="label text-blue-600">
                             {careerJourney[activePhase].period}
                           </p>
                         </div>
                       </div>
                     </div>
                     
-                    <p className="text-sm text-secondary leading-relaxed mb-4">
+                    <p className="body-small mb-4">
                       {careerJourney[activePhase].description}
                     </p>
 
@@ -203,7 +203,7 @@ const AboutExpertise = memo<AboutExpertiseProps>(() => {
                           initial={{ opacity: 0, scale: 0.8 }}
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ delay: 0.2 + (index * 0.05) }}
-                          className="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded border border-blue-200"
+                          className="caption text-blue-600 bg-blue-50 px-2 py-1 rounded border border-blue-200"
                         >
                           {achievement}
                         </motion.span>
@@ -214,7 +214,7 @@ const AboutExpertise = memo<AboutExpertiseProps>(() => {
 
                 {/* Metrics */}
                 <div className="bg-neutral-0 p-4 rounded-lg border border-neutral-200">
-                  <div className="text-xs font-semibold text-blue-600 mb-3 uppercase tracking-wide">
+                  <div className="caption text-blue-600 mb-3">
                     Key Metrics
                   </div>
                   <div className="space-y-3">
@@ -226,8 +226,8 @@ const AboutExpertise = memo<AboutExpertiseProps>(() => {
                         transition={{ delay: 0.3 + (index * 0.1) }}
                         className="flex justify-between items-center"
                       >
-                        <span className="text-xs text-muted capitalize">{key}</span>
-                        <span className="text-sm font-bold text-emphasis">{value}</span>
+                        <span className="caption text-muted">{key}</span>
+                        <span className="label text-emphasis">{value}</span>
                       </motion.div>
                     ))}
                   </div>
@@ -243,7 +243,7 @@ const AboutExpertise = memo<AboutExpertiseProps>(() => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h3 className="text-2xl font-bold text-emphasis mb-6">Investment Offerings</h3>
+          <h3 className="heading-secondary mb-6">Investment Offerings</h3>
           
           <div className="grid md:grid-cols-2 gap-4">
             {offerings.map((offering, index) => (
@@ -259,12 +259,12 @@ const AboutExpertise = memo<AboutExpertiseProps>(() => {
                 className="group relative bg-neutral-0 p-6 rounded-xl border border-neutral-200 hover:border-blue-300 transition-all duration-300 cursor-pointer overflow-hidden"
               >
                 {/* Numbered Indicator */}
-                <div className="absolute top-3 right-3 w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold text-xs">
+                <div className="absolute top-3 right-3 w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center caption font-bold">
                   {String(index + 1).padStart(2, '0')}
                 </div>
 
                 <div className="pr-12">
-                  <h4 className="text-lg font-bold text-emphasis mb-3 leading-tight group-hover:text-blue-900 transition-colors duration-300">
+                  <h4 className="heading-tertiary mb-3 group-hover:text-blue-900 transition-colors duration-300">
                     {offering.title}
                   </h4>
                 </div>
@@ -283,7 +283,7 @@ const AboutExpertise = memo<AboutExpertiseProps>(() => {
                       className="flex items-center gap-2 p-2 bg-neutral-0 rounded border border-neutral-200"
                     >
                       <div className="w-1 h-1 bg-blue-600 rounded-full"></div>
-                      <span className="text-xs font-medium text-secondary truncate">
+                      <span className="caption text-secondary truncate">
                         {feature}
                       </span>
                     </motion.div>
@@ -302,7 +302,7 @@ const AboutExpertise = memo<AboutExpertiseProps>(() => {
           className="text-center mt-12"
         >
           <div className="max-w-2xl mx-auto p-5 bg-neutral-0 rounded-lg border border-neutral-200">
-            <p className="text-sm text-secondary leading-relaxed">
+            <p className="body-small">
               Three decades of experience converge to create unique value for soccer ventures through deep industry knowledge, proven investment methodology, and comprehensive ecosystem support.
             </p>
           </div>

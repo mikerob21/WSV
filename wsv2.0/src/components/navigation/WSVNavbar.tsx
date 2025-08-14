@@ -155,7 +155,7 @@ const WSVMobileMenu = memo<{
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.1 }}
             >
-              <span className="text-3xl font-black text-neutral-900 tracking-tight">
+              <span className="text-3xl font-bold font-display text-neutral-900 tracking-tight uppercase">
                 WSV
               </span>
             </motion.div>
@@ -319,7 +319,7 @@ export const WSVNavbar = memo<WSVNavbarProps>(({
             >
               <Link href="/" className="flex items-center">
                 <motion.span
-                  className={`text-2xl font-black tracking-wide transition-colors duration-300 ${
+                  className={`text-2xl font-bold font-display tracking-wide transition-colors duration-300 uppercase ${
                     isHomepage && !isScrolled ? 'text-white' : 'text-neutral-900'
                   }`}
                   whileHover={{ 

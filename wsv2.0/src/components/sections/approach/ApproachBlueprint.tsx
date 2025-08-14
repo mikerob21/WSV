@@ -30,11 +30,11 @@ const ApproachBlueprint = memo<ApproachBlueprintProps>(() => {
           transition={{ duration: 0.6 }}
           className="mb-10"
         >
-          <h2 className="text-3xl lg:text-4xl font-black text-emphasis mb-3 leading-tight">
+          <h2 className="heading-primary text-emphasis mb-3">
             Core Values
           </h2>
           <div className="w-12 h-0.5 bg-blue-600 rounded-full mb-4"></div>
-          <p className="text-base text-muted max-w-2xl leading-relaxed">
+          <p className="body-default text-muted max-w-2xl">
             The fundamental principles that guide our strategic investment approach
           </p>
         </motion.div>
@@ -58,17 +58,17 @@ const ApproachBlueprint = memo<ApproachBlueprintProps>(() => {
               >
                 
                 {/* Value Number */}
-                <div className="absolute top-3 right-3 w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold text-xs">
+                <div className="absolute top-3 right-3 w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center caption">
                   {String(index + 1).padStart(2, '0')}
                 </div>
 
                 {/* Content */}
                 <div className="pr-12">
-                  <h3 className="text-lg font-bold text-emphasis mb-3 leading-tight">
+                  <h3 className="heading-tertiary text-emphasis mb-3">
                     {value.title}
                   </h3>
                   
-                  <p className="text-sm text-secondary leading-relaxed mb-4">
+                  <p className="body-small text-secondary mb-4">
                     {value.description}
                   </p>
 
@@ -83,7 +83,7 @@ const ApproachBlueprint = memo<ApproachBlueprintProps>(() => {
                         className="overflow-hidden"
                       >
                         <div className="border-t border-neutral-200 pt-3">
-                          <p className="text-xs font-medium text-emphasis mb-2">
+                          <p className="caption text-emphasis mb-2">
                             {value.highlight}
                           </p>
                           <div className="flex flex-wrap gap-1.5">
@@ -93,7 +93,7 @@ const ApproachBlueprint = memo<ApproachBlueprintProps>(() => {
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ delay: metricIndex * 0.05 }}
-                                className="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded border border-blue-200"
+                                className="caption text-blue-600 bg-blue-50 px-2 py-1 rounded border border-blue-200"
                               >
                                 {metric}
                               </motion.span>
@@ -133,7 +133,7 @@ const ApproachBlueprint = memo<ApproachBlueprintProps>(() => {
           className="mt-10 text-center"
         >
           <div className="max-w-2xl mx-auto p-5 bg-neutral-0 rounded-lg border border-neutral-200">
-            <p className="text-sm text-secondary leading-relaxed">
+            <p className="body-small text-secondary">
               These core values form the foundation of every partnership, ensuring alignment between our expertise and your vision.
             </p>
           </div>

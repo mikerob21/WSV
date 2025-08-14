@@ -42,11 +42,11 @@ const ApproachVerticals = memo<ApproachVerticalsProps>(() => {
           transition={{ duration: 0.6 }}
           className="mb-10"
         >
-          <h2 className="text-3xl lg:text-4xl font-black text-emphasis mb-3 leading-tight">
+          <h2 className="heading-primary text-emphasis mb-3">
             Investment Focus
           </h2>
           <div className="w-12 h-0.5 bg-blue-600 rounded-full mb-4"></div>
-          <p className="text-base text-muted max-w-2xl leading-relaxed">
+          <p className="body-default text-muted max-w-2xl">
             Strategic verticals driving soccer's digital transformation
           </p>
         </motion.div>
@@ -80,7 +80,7 @@ const ApproachVerticals = memo<ApproachVerticalsProps>(() => {
                 key={vertical.id}
                 ref={(el) => (tabRefs.current[index] = el)}
                 onClick={() => handleTabClick(index)}
-                className={`relative flex-1 min-w-0 px-4 py-3 text-sm font-medium rounded-md transition-all duration-300 z-10 ${
+                className={`relative flex-1 min-w-0 px-4 py-3 label rounded-md transition-all duration-300 z-10 ${
                   activeVertical === index
                     ? 'text-white'
                     : 'text-secondary hover:text-emphasis hover:bg-neutral-0/50'
@@ -175,7 +175,7 @@ const ApproachVerticals = memo<ApproachVerticalsProps>(() => {
                 </motion.div>
                 <div>
                   <motion.h3 
-                    className="text-xl font-bold text-emphasis"
+                    className="heading-tertiary text-emphasis"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
@@ -183,7 +183,7 @@ const ApproachVerticals = memo<ApproachVerticalsProps>(() => {
                     {investmentVerticals[activeVertical].title}
                   </motion.h3>
                   <motion.p 
-                    className="text-sm text-muted"
+                    className="body-small text-muted"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
@@ -194,7 +194,7 @@ const ApproachVerticals = memo<ApproachVerticalsProps>(() => {
               </div>
               
               <motion.p 
-                className="text-sm text-secondary leading-relaxed"
+                className="body-small text-secondary"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
@@ -227,11 +227,11 @@ const ApproachVerticals = memo<ApproachVerticalsProps>(() => {
                       delay: 1
                     }}
                   />
-                  <div className="text-xs font-semibold text-blue-600 uppercase tracking-wide">
+                  <div className="caption text-blue-600">
                     Strategic Focus
                   </div>
                 </div>
-                <p className="text-sm font-medium text-emphasis leading-relaxed group-hover:text-blue-900 transition-colors duration-300">
+                <p className="body-small text-emphasis group-hover:text-blue-900 transition-colors duration-300">
                   {investmentVerticals[activeVertical].highlight}
                 </p>
               </motion.div>
@@ -244,7 +244,7 @@ const ApproachVerticals = memo<ApproachVerticalsProps>(() => {
                 transition={{ duration: 0.5, delay: 0.7 }}
                 whileHover={{ y: -2, scale: 1.02 }}
               >
-                <div className="text-xs font-semibold text-blue-600 mb-3 uppercase tracking-wide">
+                <div className="caption text-blue-600 mb-3">
                   Key Metrics
                 </div>
                 <div className="grid grid-cols-1 gap-2">
@@ -270,7 +270,7 @@ const ApproachVerticals = memo<ApproachVerticalsProps>(() => {
                           delay: 1.5 + (index * 0.2)
                         }}
                       />
-                      <span className="text-sm font-medium text-emphasis group-hover:text-blue-900 transition-colors duration-300">
+                      <span className="body-small text-emphasis group-hover:text-blue-900 transition-colors duration-300">
                         {metric}
                       </span>
                     </motion.div>
@@ -286,7 +286,7 @@ const ApproachVerticals = memo<ApproachVerticalsProps>(() => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 1 }}
             >
-              <div className="text-xs font-semibold text-blue-600 mb-3 uppercase tracking-wide">
+              <div className="caption text-blue-600 mb-3">
                 Investment Features
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -319,7 +319,7 @@ const ApproachVerticals = memo<ApproachVerticalsProps>(() => {
                         delay: 2 + (index * 0.1)
                       }}
                     />
-                    <span className="text-xs font-medium text-secondary truncate group-hover:text-blue-900 transition-colors duration-300">
+                    <span className="caption text-secondary truncate group-hover:text-blue-900 transition-colors duration-300">
                       {feature}
                     </span>
                   </motion.div>
@@ -356,7 +356,7 @@ const ApproachVerticals = memo<ApproachVerticalsProps>(() => {
             
             <div className="relative z-10">
               <motion.h4 
-                className="text-lg font-bold text-emphasis mb-2"
+                className="heading-tertiary text-emphasis mb-2"
                 animate={{
                   color: ["#1f2937", "#2563eb", "#1f2937"]
                 }}
@@ -368,7 +368,7 @@ const ApproachVerticals = memo<ApproachVerticalsProps>(() => {
               >
                 Ready to Transform Soccer?
               </motion.h4>
-              <p className="text-sm text-secondary mb-4 leading-relaxed">
+              <p className="body-small text-secondary mb-4">
                 Join our portfolio of innovative companies shaping the future of the game.
               </p>
               

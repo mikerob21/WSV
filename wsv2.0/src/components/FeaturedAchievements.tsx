@@ -89,10 +89,10 @@ export default function FeaturedAchievements() {
           transition={{ duration: 0.5 }}
           className="text-center mb-8"
         >
-          <h2 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-2">
+          <h2 className="heading-secondary text-neutral-900 mb-2">
             Investment Impact
           </h2>
-          <p className="text-base text-neutral-600 max-w-2xl mx-auto">
+          <p className="body-default text-neutral-600 max-w-2xl mx-auto">
             Measurable growth and success across our portfolio ecosystem.
           </p>
         </motion.div>
@@ -110,23 +110,23 @@ export default function FeaturedAchievements() {
               <div className="bg-white border border-neutral-200 rounded-lg p-4 hover:shadow-md transition-all duration-300">
                 {/* Value with Animation */}
                 <div className="mb-3">
-                  <motion.div className="text-xl md:text-2xl font-bold text-neutral-900 mb-1 leading-tight">
+                  <motion.div className="heading-secondary text-neutral-900 mb-1">
                     {index === 0 ? animatedValues[0] : 
                      index === 1 ? `${animatedValues[1]}M+` :
                      index === 2 ? `$${animatedValues[2]}M` :
                      `${animatedValues[3]}+`}
                   </motion.div>
-                  <div className="text-xs font-semibold text-neutral-500 uppercase tracking-wider">{metric.label}</div>
+                  <div className="caption text-neutral-500">{metric.label}</div>
                 </div>
                 
                 {/* Change Indicator */}
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                  <span className="text-xs text-blue-600 font-medium">{metric.change}</span>
+                  <span className="caption text-blue-600">{metric.change}</span>
                 </div>
                 
                 {/* Description */}
-                <p className="text-xs text-neutral-600 leading-relaxed">{metric.description}</p>
+                <p className="caption text-neutral-600">{metric.description}</p>
               </div>
             </motion.div>
           ))}
@@ -146,9 +146,9 @@ export default function FeaturedAchievements() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                 </svg>
               </div>
-              <h3 className="text-base font-bold text-neutral-900">Rapid Growth</h3>
+              <h3 className="heading-tertiary text-neutral-900">Rapid Growth</h3>
             </div>
-            <p className="text-sm text-neutral-600">Portfolio companies achieving 85%+ average growth rates</p>
+            <p className="body-small text-neutral-600">Portfolio companies achieving 85%+ average growth rates</p>
           </div>
 
           <div className="bg-white border border-neutral-200 rounded-lg p-4">
@@ -158,9 +158,9 @@ export default function FeaturedAchievements() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-base font-bold text-neutral-900">Strategic Focus</h3>
+              <h3 className="heading-tertiary text-neutral-900">Strategic Focus</h3>
             </div>
-            <p className="text-sm text-neutral-600">Targeted investments in soccer technology and media</p>
+            <p className="body-small text-neutral-600">Targeted investments in soccer technology and media</p>
           </div>
 
           <div className="bg-white border border-neutral-200 rounded-lg p-4">
@@ -170,9 +170,9 @@ export default function FeaturedAchievements() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                 </svg>
               </div>
-              <h3 className="text-base font-bold text-neutral-900">Market Leaders</h3>
+              <h3 className="heading-tertiary text-neutral-900">Market Leaders</h3>
             </div>
-            <p className="text-sm text-neutral-600">Companies becoming recognized industry leaders</p>
+            <p className="body-small text-neutral-600">Companies becoming recognized industry leaders</p>
           </div>
         </motion.div>
 
@@ -184,10 +184,10 @@ export default function FeaturedAchievements() {
           className="mt-8 pt-6 border-t border-neutral-200"
         >
           <div className="text-center mb-4">
-            <h3 className="text-lg font-bold text-neutral-900 mb-1">
+            <h3 className="heading-tertiary text-neutral-900 mb-1">
               Gallery
             </h3>
-            <p className="text-sm text-neutral-600">
+            <p className="body-small text-neutral-600">
               Behind the scenes with our portfolio companies
             </p>
           </div>
@@ -208,8 +208,8 @@ export default function FeaturedAchievements() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               <div className="absolute bottom-3 left-3 text-white">
-                <p className="text-sm font-semibold">Drip FC</p>
-                <p className="text-xs opacity-90">Soccer Culture Brand</p>
+                <p className="body-small">Drip FC</p>
+                <p className="caption opacity-90">Soccer Culture Brand</p>
               </div>
             </motion.div>
 
@@ -228,8 +228,8 @@ export default function FeaturedAchievements() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               <div className="absolute bottom-3 left-3 text-white">
-                <p className="text-sm font-semibold">The Town FC</p>
-                <p className="text-xs opacity-90">Professional Soccer Club</p>
+                <p className="body-small">The Town FC</p>
+                <p className="caption opacity-90">Professional Soccer Club</p>
               </div>
             </motion.div>
 
@@ -248,8 +248,8 @@ export default function FeaturedAchievements() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               <div className="absolute bottom-3 left-3 text-white">
-                <p className="text-sm font-semibold">Odunde Sports</p>
-                <p className="text-xs opacity-90">Sports Development Platform</p>
+                <p className="body-small">Odunde Sports</p>
+                <p className="caption opacity-90">Sports Development Platform</p>
               </div>
             </motion.div>
           </div>

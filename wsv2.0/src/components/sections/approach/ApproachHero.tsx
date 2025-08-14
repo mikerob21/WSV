@@ -33,7 +33,7 @@ const ApproachHero = memo<ApproachHeroProps>(() => {
           >
             <div className="inline-flex items-center px-3 py-1.5 bg-neutral-0 border border-neutral-200 rounded-full shadow-sm">
               <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 animate-pulse"></div>
-              <span className="text-xs font-medium text-secondary">Investment Platform</span>
+              <span className="caption text-secondary">Investment Platform</span>
             </div>
           </motion.div>
           
@@ -44,9 +44,9 @@ const ApproachHero = memo<ApproachHeroProps>(() => {
             transition={{ delay: 0.1, duration: 0.6, ease: "easeOut" }}
             className="mb-6"
           >
-            <h1 className="text-4xl lg:text-5xl font-black text-emphasis leading-tight tracking-tight mb-4">
+            <h1 className="display-section text-emphasis mb-4">
               Strategic Investment
-              <span className="block text-3xl lg:text-4xl text-secondary font-light mt-1">
+              <span className="block heading-primary text-secondary mt-1">
                 in Soccer Innovation
               </span>
             </h1>
@@ -61,7 +61,7 @@ const ApproachHero = memo<ApproachHeroProps>(() => {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="mb-8"
           >
-            <p className="text-lg lg:text-xl text-secondary leading-relaxed max-w-3xl mx-auto">
+            <p className="body-large text-secondary max-w-3xl mx-auto">
               We partner with visionary companies transforming soccer through technology, community, and content.
             </p>
           </motion.div>

@@ -58,15 +58,15 @@ function PortfolioModal({ company, isOpen, onClose }: {
                         />
                       </div>
                     ) : (
-                      <div className="text-neutral-500 text-2xl">
+                      <div className="text-neutral-500 heading-secondary">
                         {getCompanyIcon(company.type)}
                       </div>
                     )}
                   </div>
                   <div className="flex-1">
-                    <h2 className="text-3xl font-bold mb-2 text-neutral-900">{company.name}</h2>
-                    <p className="text-neutral-600 mb-3 text-lg">{company.type}</p>
-                    <div className="inline-flex items-center bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm font-medium">
+                    <h2 className="heading-secondary mb-2 text-neutral-900">{company.name}</h2>
+                    <p className="body-large text-neutral-600 mb-3">{company.type}</p>
+                    <div className="inline-flex items-center bg-blue-50 text-blue-700 px-4 py-2 rounded-full label">
                       {company.competitiveAdvantage}
                     </div>
                   </div>
@@ -77,18 +77,18 @@ function PortfolioModal({ company, isOpen, onClose }: {
               <div className="p-6">
                 {/* Description */}
                 <div className="mb-6">
-                  <h3 className="text-lg font-semibold mb-3 text-neutral-900">About</h3>
-                  <p className="text-neutral-700 leading-relaxed">{company.description}</p>
+                  <h3 className="heading-tertiary mb-3 text-neutral-900">About</h3>
+                  <p className="body-default text-neutral-700">{company.description}</p>
                 </div>
                 
                 {/* Metrics Grid */}
                 <div className="mb-6">
-                  <h3 className="text-lg font-semibold mb-3 text-neutral-900">Key Metrics</h3>
+                  <h3 className="heading-tertiary mb-3 text-neutral-900">Key Metrics</h3>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {company.metrics.map((metric, index) => (
                       <div key={index} className="bg-neutral-50 p-4 rounded-lg text-center">
-                        <div className="text-2xl font-bold text-blue-600 mb-1">{metric.value}</div>
-                        <div className="text-sm text-neutral-600">{metric.label}</div>
+                        <div className="heading-secondary text-blue-600 mb-1">{metric.value}</div>
+                        <div className="body-small text-neutral-600">{metric.label}</div>
                       </div>
                     ))}
                   </div>
@@ -96,12 +96,12 @@ function PortfolioModal({ company, isOpen, onClose }: {
                 
                 {/* Recent Achievements */}
                 <div className="mb-6">
-                  <h3 className="text-lg font-semibold mb-3 text-neutral-900">Recent Achievements</h3>
+                  <h3 className="heading-tertiary mb-3 text-neutral-900">Recent Achievements</h3>
                   <div className="space-y-2">
                     {company.recentAchievements.map((achievement, index) => (
                       <div key={index} className="flex items-start gap-2">
                         <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <p className="text-neutral-700 text-sm">{achievement}</p>
+                        <p className="body-small text-neutral-700">{achievement}</p>
                       </div>
                     ))}
                   </div>
@@ -109,10 +109,10 @@ function PortfolioModal({ company, isOpen, onClose }: {
                 
                 {/* Partnerships */}
                 <div className="mb-6">
-                  <h3 className="text-lg font-semibold mb-3 text-neutral-900">Key Partnerships</h3>
+                  <h3 className="heading-tertiary mb-3 text-neutral-900">Key Partnerships</h3>
                   <div className="flex flex-wrap gap-2">
                     {company.keyPartnerships.map((partnership, index) => (
-                      <span key={index} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
+                      <span key={index} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full body-small">
                         {partnership}
                       </span>
                     ))}
@@ -191,10 +191,10 @@ export default function PortfolioSection() {
             transition={{ duration: 0.6 }}
             className="text-center mb-8"
           >
-            <h2 className="text-xl md:text-2xl font-bold text-neutral-900 mb-2">
+            <h2 className="heading-secondary text-neutral-900 mb-2">
               Diverse Portfolio
             </h2>
-            <p className="text-sm text-neutral-600 max-w-2xl mx-auto">
+            <p className="body-small text-neutral-600 max-w-2xl mx-auto">
               Strategic investments driving soccer ecosystem innovation.
             </p>
           </motion.div>
@@ -232,34 +232,34 @@ export default function PortfolioSection() {
                           />
                         </div>
                       ) : (
-                        <div className="text-neutral-400 text-2xl">
+                        <div className="text-neutral-400 heading-secondary">
                           {getCompanyIcon(company.type)}
                         </div>
                       )}
                     </div>
                     
                     {/* Company Name */}
-                    <h3 className="font-bold text-neutral-900 text-base mb-2 group-hover:text-blue-600 transition-colors">
+                    <h3 className="heading-tertiary text-neutral-900 mb-2 group-hover:text-blue-600 transition-colors">
                       {company.name}
                     </h3>
                     
                     {/* Company Type */}
-                    <p className="text-neutral-500 mb-3 text-xs">
+                    <p className="caption text-neutral-500 mb-3">
                       {company.type}
                     </p>
                     
                     {/* Key Metric */}
                     <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-2 mb-3 border border-blue-200">
-                      <div className="text-xl font-bold text-blue-700 mb-1">
+                      <div className="heading-tertiary text-blue-700 mb-1">
                         {company.metrics[0]?.value}
                       </div>
-                      <div className="text-xs text-blue-600 font-medium">
+                      <div className="caption text-blue-600">
                         {company.metrics[0]?.label}
                       </div>
                     </div>
                     
                     {/* Competitive Advantage */}
-                    <div className="inline-flex items-center bg-neutral-100 text-neutral-700 px-3 py-1 rounded-full text-xs font-medium group-hover:bg-blue-100 group-hover:text-blue-700 transition-colors">
+                    <div className="inline-flex items-center bg-neutral-100 text-neutral-700 px-3 py-1 rounded-full caption group-hover:bg-blue-100 group-hover:text-blue-700 transition-colors">
                       {company.competitiveAdvantage}
                     </div>
                   </div>

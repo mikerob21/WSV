@@ -116,7 +116,7 @@ const Contact = memo(() => {
           >
             <motion.h1 
               variants={itemVariants}
-              className="text-6xl lg:text-7xl font-black mb-16 text-balance tracking-tight leading-tight"
+              className="text-6xl lg:text-7xl font-black mb-16 text-balance tracking-tight leading-tight font-display"
             >
               Start the
               <span className="block text-brand">
@@ -165,7 +165,7 @@ const Contact = memo(() => {
           >
             {/* Form Introduction */}
             <motion.div variants={itemVariants} className="text-center mb-12 spacing-fibonacci-3">
-              <h2 className="text-4xl font-black mb-6 text-emphasis">
+              <h2 className="font-display text-4xl mb-6 text-emphasis">
                 Let&apos;s Build Something
                 <span className="block text-brand">Extraordinary</span>
               </h2>

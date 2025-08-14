@@ -15,12 +15,15 @@ const typographyVariants = {
   'body-small': 'body-small',
   'caption': 'caption',
   'label': 'label',
+  'mono-large': 'mono-large',
+  'mono-default': 'mono-default',
 };
 
 const typographyColors = {
   primary: 'text-neutral-900',
   secondary: 'text-neutral-600',
   muted: 'text-neutral-500',
+  emphasis: 'text-neutral-900',
   brand: 'text-brand',
   inverse: 'text-inverse',
   success: 'text-success',
@@ -46,6 +49,8 @@ const defaultComponents: Record<string, ElementType> = {
   'body-small': 'p',
   'caption': 'span',
   'label': 'span',
+  'mono-large': 'code',
+  'mono-default': 'code',
 };
 
 export const Typography = memo(forwardRef<HTMLElement, TypographyProps>(({
@@ -63,15 +68,18 @@ export const Typography = memo(forwardRef<HTMLElement, TypographyProps>(({
   return (
     <Component
       ref={ref}
-      className={cn(1
+      className={cn(
         // Base typography class from design system
-        ,typographyVariants[variant],
+        typographyVariants[variant],
         
         // Color styles
         typographyColors[color],
         
         // Alignment styles
         typographyAlign[align],
+        
+        // Enforce uppercase
+        'uppercase',
         
         // No wrap styles
         noWrap && 'whitespace-nowrap overflow-hidden text-ellipsis',

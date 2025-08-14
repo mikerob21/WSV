@@ -43,9 +43,9 @@ export default function Footer() {
                     sizes="32px"
                   />
                 </div>
-                <span className="text-base font-bold">White Sports Ventures</span>
+                <span className="heading-tertiary">White Sports Ventures</span>
               </div>
-              <p className="text-neutral-400 text-sm max-w-md leading-relaxed">
+              <p className="body-small text-neutral-400 max-w-md">
                 Strategic capital driving soccer ecosystem innovation. Investment range: $100K - $1M.
               </p>
             </div>
@@ -54,13 +54,13 @@ export default function Footer() {
             <div className="flex flex-wrap gap-6 md:gap-8">
               {/* Company Links */}
               <div>
-                <h3 className="text-xs font-semibold mb-2 text-neutral-500 uppercase tracking-wider">Company</h3>
+                <h3 className="caption mb-2 text-neutral-500">Company</h3>
                 <div className="flex flex-col space-y-1">
                   {footerLinks.company.map((link) => (
                     <Link
                       key={link.name}
                       href={link.href}
-                      className="text-neutral-400 hover:text-white transition-colors text-xs"
+                      className="caption text-neutral-400 hover:text-white transition-colors"
                     >
                       {link.name}
                     </Link>
@@ -70,7 +70,7 @@ export default function Footer() {
 
               {/* Connect Links */}
               <div>
-                <h3 className="text-xs font-semibold mb-2 text-neutral-500 uppercase tracking-wider">Connect</h3>
+                <h3 className="caption mb-2 text-neutral-500">Connect</h3>
                 <div className="flex flex-col space-y-1">
                   {footerLinks.connect.map((link) => (
                     <a
@@ -78,7 +78,7 @@ export default function Footer() {
                       href={link.href}
                       target={link.href.startsWith('http') ? '_blank' : undefined}
                       rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="text-neutral-400 hover:text-white transition-colors text-xs"
+                      className="caption text-neutral-400 hover:text-white transition-colors"
                     >
                       {link.name}
                     </a>
@@ -91,8 +91,8 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-neutral-800 py-3">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-3 text-xs">
-            <div className="text-neutral-500">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3 caption">
+            <div className="caption text-neutral-500">
               © {new Date().getFullYear()} White Sports Ventures. All rights reserved. Investment advisory services provided by WSV Capital Management.
             </div>
             
@@ -101,14 +101,14 @@ export default function Footer() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-neutral-500 hover:text-neutral-300 transition-colors"
+                  className="caption text-neutral-500 hover:text-neutral-300 transition-colors"
                 >
                   {link.name}
                 </Link>
               ))}
               <Link
                 href="/contact"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1 rounded text-xs font-medium transition-colors"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1 rounded caption transition-colors"
               >
                 Contact
               </Link>

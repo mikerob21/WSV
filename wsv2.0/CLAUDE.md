@@ -116,13 +116,86 @@ Component.displayName = 'Component';
 
 ### Unified Design System Standards
 
-### Typography Hierarchy (Professional Dominance)
-- **Heading Primary**: `text-3xl lg:text-4xl font-black text-emphasis leading-tight` for section headers
-- **Heading Secondary**: `text-2xl font-bold text-emphasis` for subsection titles  
-- **Body Text**: `text-base text-secondary leading-relaxed` for descriptions
-- **Labels**: `text-sm font-medium text-secondary` for categories and tags
-- **Metrics**: `text-2xl font-black text-emphasis` for statistical displays
-- **Captions**: `text-xs font-medium text-muted` for supplementary information
+## Typography System Standards (Strict Enforcement)
+
+### Font Hierarchy - MANDATORY COMPLIANCE
+- **Headers (Cousine)**: ALL section titles, page headers, primary headings
+  - Font: `'Cousine', monospace` - NO EXCEPTIONS
+  - Usage: `display-hero`, `display-section`, `heading-primary`
+  - Classes: `text-3xl lg:text-4xl font-bold text-emphasis leading-tight`
+  
+- **Subheadings (Arya)**: Card titles, component headers, secondary headings
+  - Font: `'Arya', sans-serif` - NO EXCEPTIONS
+  - Usage: `heading-secondary`, `heading-tertiary`, all card titles
+  - Classes: `text-lg font-bold text-emphasis` for cards, `text-2xl font-bold` for sections
+  
+- **Body (Signika Negative)**: ALL paragraph text, descriptions, content
+  - Font: `'Signika Negative', sans-serif` - NO EXCEPTIONS
+  - Usage: `body-large`, `body-default`, `body-small`, all paragraph text
+  - Classes: `text-base text-secondary leading-relaxed` for descriptions
+
+### Typography Enforcement Rules
+- **NEVER** use system fonts, browser defaults, or any fonts not specified above
+- **NEVER** add new font families without explicit architectural approval
+- **NEVER** override font-family in component styles - use only design tokens
+- **ALWAYS** use CSS variables: `var(--font-display)`, `var(--font-interface)`, `var(--font-body)`
+- **PROHIBITED FONTS**: Inter, Sohne, Maison Neue, Plus Jakarta Sans, JetBrains Mono, SF Pro Display, Basis Grotesque Pro, Monaco, Inconsolata - DO NOT USE
+
+### Typography Usage Patterns
+- **Labels**: `text-sm font-medium text-secondary` using Arya font
+- **Metrics**: `text-2xl font-bold text-emphasis` using Cousine for numbers
+- **Captions**: `text-xs font-medium text-muted` using Signika Negative
+
+## UPPERCASE ENFORCEMENT - MANDATORY
+
+### Global Uppercase Rules
+- **ALL TEXT** in the application MUST be uppercase - NO EXCEPTIONS
+- **ENFORCED** at multiple levels for absolute compliance:
+  - Global CSS rule: `* { text-transform: uppercase !important; }`
+  - Body element: `text-transform: uppercase;`
+  - All typography classes include `text-transform: uppercase;`
+  - Typography component adds `uppercase` class
+  
+### Implementation Standards
+- **NEVER** use `normal-case` or `lowercase` classes
+- **NEVER** override text-transform property
+- **ALWAYS** adjust letter-spacing for uppercase readability:
+  - Headers: `0.05em` to `0.1em`
+  - Body text: `0.025em` to `0.05em`
+  - Captions: `0.03em` to `0.05em`
+  
+### Prohibited Practices
+- **DO NOT** use `text-transform: none` or `text-transform: lowercase`
+- **DO NOT** create exceptions for any text elements
+- **DO NOT** disable uppercase for form inputs or placeholders
+
+## SEMANTIC TYPOGRAPHY ENFORCEMENT - MANDATORY
+
+### Font System Compliance Rules
+- **NEVER** use raw Tailwind text sizing classes with font weights:
+  - ❌ PROHIBITED: `text-xl font-bold`, `text-2xl font-semibold`, `text-3xl font-black`
+  - ✅ REQUIRED: Use semantic classes only
+  
+### Semantic Typography Mapping (STRICT COMPLIANCE)
+- **Headers (Cousine)**: 
+  - `heading-primary` for main section titles
+  - `display-hero`, `display-section` for hero elements
+- **Subheadings (Arya)**:
+  - `heading-secondary` for subsection titles
+  - `heading-tertiary` for card titles and smaller headings
+- **Body Text (Signika Negative)**:
+  - `body-large` for prominent descriptions
+  - `body-default` for standard paragraph text
+  - `body-small` for smaller descriptions
+- **UI Elements**:
+  - `label` for form labels and UI text
+  - `caption` for small supplementary text
+
+### Enforcement Standards
+- **ALWAYS** use semantic typography classes instead of utility combinations
+- **NEVER** mix raw text sizing (`text-lg`) with font weights (`font-bold`)
+- **MANDATORY** font compliance ensures proper Cousine/Arya/Signika Negative usage
+- **VIOLATION** of these rules breaks the font system and is not permitted
 
 ### Interactive Component Patterns (From Approach Page Excellence)
 - **Numbered Cards**: Use ApproachBlueprint pattern with `absolute top-3 right-3 w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold text-xs`
@@ -307,6 +380,13 @@ const OptimizedComponent = memo<Props>(({ data, onAction }) => {
 3. **Implement** consistent spacing scale
 4. **Add** proper animation classes
 5. **Test** responsive behavior across devices
+
+### Typography System Implementation
+1. **Font Loading**: Fonts are loaded via Google Fonts in `app/layout.tsx`
+2. **Font Variables**: All fonts MUST use CSS variables from `typography.css`
+3. **Component Usage**: ONLY use Typography component or semantic classes
+4. **Direct Usage PROHIBITED**: Never use font-family directly in components
+5. **Validation**: Run `npm run lint` to check for font violations
 
 ## Deployment & Production
 

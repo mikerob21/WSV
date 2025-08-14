@@ -94,7 +94,7 @@ const VideoHeroTitle = memo(() => (
     {...HERO_ANIMATIONS.title}
     className="mb-6"
   >
-    <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold text-white leading-relaxed tracking-normal">
+    <h1 className="heading-secondary text-white">
       <span className="block mb-1">
         Powering the Future
       </span>
@@ -109,7 +109,7 @@ VideoHeroTitle.displayName = 'VideoHeroTitle';
 
 const VideoHeroSubtitle = memo(() => (
   <motion.div {...HERO_ANIMATIONS.subtitle} className="mb-12">
-    <p className="text-base md:text-lg max-w-3xl mx-auto text-white/90 leading-relaxed font-normal">
+    <p className="body-large max-w-3xl mx-auto text-white/90">
       White Sports Ventures invests in and incubates soccer ventures, leveraging media, AI, and community to drive growth across the entire soccer ecosystem.
     </p>
   </motion.div>
@@ -125,7 +125,7 @@ const VideoHeroCTAButtons = memo(() => (
     <motion.button
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className="px-6 py-3 bg-white text-blue-900 hover:bg-blue-50 border-0 font-medium rounded-lg text-base transition-colors duration-300 shadow-lg"
+      className="px-6 py-3 bg-white text-blue-900 hover:bg-blue-50 border-0 rounded-lg body-default transition-colors duration-300 shadow-lg"
     >
       Explore Portfolio
     </motion.button>
@@ -133,7 +133,7 @@ const VideoHeroCTAButtons = memo(() => (
     <motion.button
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className="px-6 py-3 border-2 border-white text-white hover:bg-white hover:text-blue-900 font-medium rounded-lg text-base transition-all duration-300"
+      className="px-6 py-3 border-2 border-white text-white hover:bg-white hover:text-blue-900 rounded-lg body-default transition-all duration-300"
     >
       Connect With Us
     </motion.button>

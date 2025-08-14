@@ -24,10 +24,10 @@ const ApproachPhilosophy = memo<ApproachPhilosophyProps>(() => {
         >
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div>
-              <h2 className="text-3xl lg:text-4xl font-black text-emphasis mb-3 leading-tight">
+              <h2 className="heading-primary text-emphasis mb-3">
                 Partnership Philosophy
               </h2>
-              <p className="text-base text-secondary leading-relaxed">
+              <p className="body-default text-secondary">
                 Strategic partnership through proven expertise and methodical execution
               </p>
             </div>
@@ -43,13 +43,13 @@ const ApproachPhilosophy = memo<ApproachPhilosophyProps>(() => {
                   className="text-center"
                 >
                   <div className="bg-neutral-50 p-4 rounded-lg border border-neutral-200 hover:shadow-sm transition-all duration-300">
-                    <div className="text-2xl font-black text-emphasis mb-1">
+                    <div className="heading-secondary text-emphasis mb-1">
                       {stat.value}
                     </div>
-                    <div className="text-xs font-medium text-secondary mb-1">
+                    <div className="caption text-secondary mb-1">
                       {stat.label}
                     </div>
-                    <div className="text-xs text-muted">
+                    <div className="caption text-muted">
                       {stat.description}
                     </div>
                   </div>
@@ -65,7 +65,7 @@ const ApproachPhilosophy = memo<ApproachPhilosophyProps>(() => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h3 className="text-2xl font-bold text-emphasis mb-6">Our Methodology</h3>
+          <h3 className="heading-secondary text-emphasis mb-6">Our Methodology</h3>
           
           {/* Timeline Container */}
           <div className="relative">
@@ -94,19 +94,19 @@ const ApproachPhilosophy = memo<ApproachPhilosophyProps>(() => {
                   {/* Step Card */}
                   <div className="bg-neutral-50 p-5 rounded-lg border border-neutral-200 hover:shadow-sm transition-all duration-300 ml-10">
                     <div className="flex items-center justify-between mb-3">
-                      <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded border border-blue-200">
+                      <span className="caption text-blue-600 bg-blue-50 px-2 py-1 rounded border border-blue-200">
                         {step.step}
                       </span>
-                      <span className="text-xs text-muted">
+                      <span className="caption text-muted">
                         {step.duration}
                       </span>
                     </div>
                     
-                    <h4 className="text-base font-bold text-emphasis mb-2 leading-tight">
+                    <h4 className="heading-tertiary text-emphasis mb-2">
                       {step.title}
                     </h4>
                     
-                    <p className="text-sm text-secondary leading-relaxed">
+                    <p className="body-small text-secondary">
                       {step.description}
                     </p>
                   </div>
@@ -124,7 +124,7 @@ const ApproachPhilosophy = memo<ApproachPhilosophyProps>(() => {
           className="mt-12 text-center"
         >
           <div className="max-w-3xl mx-auto p-6 bg-gradient-to-r from-neutral-50 to-neutral-100/50 rounded-lg border border-neutral-200">
-            <p className="text-base text-secondary leading-relaxed">
+            <p className="body-default text-secondary">
               We combine deep soccer expertise with proven investment methodology to accelerate your venture's path to market leadership.
             </p>
           </div>
