@@ -103,11 +103,11 @@ const AboutEcosystem = memo<AboutEcosystemProps>(() => {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <h2 id="ecosystem-heading" className="text-3xl lg:text-4xl font-black text-emphasis leading-tight mb-3">
+          <h2 id="ecosystem-heading" className="heading-primary mb-3">
             Ecosystem & Partnership
           </h2>
           <div className="w-12 h-0.5 bg-blue-600 rounded-full mb-4"></div>
-          <p className="text-base text-muted max-w-2xl leading-relaxed">
+          <p className="body-large max-w-2xl">
             Four interconnected pillars creating exponential value for portfolio companies
           </p>
         </motion.div>
@@ -120,7 +120,7 @@ const AboutEcosystem = memo<AboutEcosystemProps>(() => {
             transition={{ duration: 0.6 }}
             className="mb-8"
           >
-            <h3 className="text-2xl font-bold text-emphasis mb-6">Ecosystem Pillars</h3>
+            <h3 className="heading-secondary mb-6">Ecosystem Pillars</h3>
             
             {/* Clean Pillar Navigation */}
             <div className="relative flex flex-wrap gap-1 p-1 bg-neutral-50 rounded-lg border border-neutral-200 overflow-hidden">
@@ -195,17 +195,17 @@ const AboutEcosystem = memo<AboutEcosystemProps>(() => {
                           {String(activePillar + 1).padStart(2, '0')}
                         </div>
                         <div>
-                          <h4 className="text-xl font-bold text-emphasis leading-tight">
+                          <h4 className="heading-tertiary">
                             {ecosystemPillars[activePillar].title}
                           </h4>
-                          <p className="text-sm text-blue-600 font-semibold">
+                          <p className="label text-blue-600">
                             {ecosystemPillars[activePillar].metric}
                           </p>
                         </div>
                       </div>
                     </div>
                     
-                    <p className="text-sm text-secondary leading-relaxed mb-4">
+                    <p className="body-small mb-4">
                       {ecosystemPillars[activePillar].description}
                     </p>
 
@@ -220,7 +220,7 @@ const AboutEcosystem = memo<AboutEcosystemProps>(() => {
                           className="flex items-center gap-2 p-2 bg-neutral-50 rounded border border-neutral-200"
                         >
                           <div className="w-1 h-1 bg-blue-600 rounded-full"></div>
-                          <span className="text-xs font-medium text-secondary">
+                          <span className="caption">
                             {detail}
                           </span>
                         </motion.div>
@@ -231,7 +231,7 @@ const AboutEcosystem = memo<AboutEcosystemProps>(() => {
 
                 {/* Clean Metrics Display */}
                 <div className="bg-neutral-0 p-4 rounded-lg border border-neutral-200">
-                  <div className="text-xs font-semibold text-blue-600 mb-3 uppercase tracking-wide">
+                  <div className="caption text-blue-600 mb-3">
                     Key Metrics
                   </div>
                   <div className="space-y-3">
@@ -247,8 +247,8 @@ const AboutEcosystem = memo<AboutEcosystemProps>(() => {
                         transition={{ duration: 0.4, delay: 0.3 + (index * 0.1) }}
                         className="flex justify-between items-center"
                       >
-                        <span className="text-xs text-muted capitalize">{key}</span>
-                        <span className="text-sm font-bold text-emphasis">{value}</span>
+                        <span className="caption text-neutral-500 capitalize">{key}</span>
+                        <span className="label text-neutral-900">{value}</span>
                       </motion.div>
                     ))}
                   </div>
@@ -264,7 +264,7 @@ const AboutEcosystem = memo<AboutEcosystemProps>(() => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h3 className="text-2xl font-bold text-emphasis mb-6">Why Partner with WSV</h3>
+          <h3 className="heading-secondary mb-6">Why Partner with WSV</h3>
           
           <div className="grid md:grid-cols-2 gap-4">
             {partnershipBenefits.map((benefit, index) => (
@@ -291,10 +291,10 @@ const AboutEcosystem = memo<AboutEcosystemProps>(() => {
                   </div>
 
                   <div className="pr-12">
-                    <h4 className="text-lg font-bold text-emphasis mb-3 leading-tight group-hover:text-blue-900 transition-colors duration-300">
+                    <h4 className="heading-tertiary mb-3 group-hover:text-blue-900 transition-colors duration-300">
                       {benefit.title}
                     </h4>
-                    <p className="text-sm text-secondary leading-relaxed">
+                    <p className="body-small">
                       {benefit.description}
                     </p>
                   </div>
@@ -320,7 +320,7 @@ const AboutEcosystem = memo<AboutEcosystemProps>(() => {
           className="text-center mt-12"
         >
           <div className="max-w-2xl mx-auto p-5 bg-neutral-0 rounded-lg border border-neutral-200">
-            <p className="text-sm text-secondary leading-relaxed">
+            <p className="body-small">
               Partner with us to transform your soccer venture through our comprehensive ecosystem of technology, media, infrastructure, and expertise.
             </p>
           </div>

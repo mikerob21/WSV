@@ -94,11 +94,11 @@ const VideoHeroTitle = memo(() => (
     {...HERO_ANIMATIONS.title}
     className="mb-6"
   >
-    <h1 className="heading-secondary text-white">
-      <span className="block mb-1">
+    <h1 className="heading-primary ">
+      <span className="block text-white mb-1">
         Powering the Future
       </span>
-      <span className="block">
+      <span className="block text-white">
         of Soccer in America
       </span>
     </h1>
@@ -109,7 +109,7 @@ VideoHeroTitle.displayName = 'VideoHeroTitle';
 
 const VideoHeroSubtitle = memo(() => (
   <motion.div {...HERO_ANIMATIONS.subtitle} className="mb-12">
-    <p className="body-large max-w-3xl mx-auto text-white/90">
+    <p className="font-body text-md leading-relaxed tracking-wide uppercase max-w-3xl mx-auto text-white/90">
       White Sports Ventures invests in and incubates soccer ventures, leveraging media, AI, and community to drive growth across the entire soccer ecosystem.
     </p>
   </motion.div>
@@ -159,26 +159,6 @@ export const VideoHeroSection = memo<VideoHeroSectionProps>(({
       {/* Video Background */}
       <VideoBackground src={videoSrc} />
 
-      {/* Logo Overlay - Elegantly Positioned */}
-      <div className="absolute top-28 md:top-32 left-1/2 transform -translate-x-1/2 z-20">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative"
-        >
-          <div className="relative w-32 h-32 md:w-40 md:h-40">
-            <Image
-              src="/images/logo.webp"
-              alt="White Sports Ventures Logo"
-              fill
-              className="object-contain drop-shadow-xl"
-              sizes="160px"
-              priority
-            />
-          </div>
-        </motion.div>
-      </div>
 
       {/* Content Overlay */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center flex flex-col justify-center min-h-screen">

@@ -39,7 +39,7 @@ export default function Footer() {
                     src="/images/logo.webp"
                     alt="White Sports Ventures Logo"
                     fill
-                    className="object-contain"
+                    className="object-contain brightness-0 invert"
                     sizes="32px"
                   />
                 </div>

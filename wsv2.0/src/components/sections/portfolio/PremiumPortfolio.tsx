@@ -58,17 +58,17 @@ const CompanyTile = memo<CompanyTileProps>(({ company, index }) => {
           <div className="absolute inset-0 p-5 flex flex-col justify-end">
             {/* Header */}
             <div className="mb-3">
-              <h3 className="text-base font-semibold text-white mb-1 leading-tight">
+              <h3 className="heading-tertiary !text-white mb-1">
                 {company.name}
               </h3>
-              <p className="text-neutral-200 text-xs font-medium uppercase tracking-wider">
+              <p className="caption !text-neutral-200">
                 {company.type}
               </p>
             </div>
             
             {/* Company Description - Full Length */}
             <div className="flex-1 mb-4 overflow-hidden">
-              <p className="text-white text-sm leading-relaxed">
+              <p className="body-small !text-white">
                 {company.description}
               </p>
             </div>
@@ -78,8 +78,8 @@ const CompanyTile = memo<CompanyTileProps>(({ company, index }) => {
               {/* Key Metric */}
               {primaryMetric && (
                 <div className="text-white">
-                  <div className="text-sm font-semibold">{primaryMetric.value}</div>
-                  <div className="text-xs text-neutral-300">{primaryMetric.label}</div>
+                  <div className="label !text-white">{primaryMetric.value}</div>
+                  <div className="caption !text-neutral-300">{primaryMetric.label}</div>
                 </div>
               )}
               
@@ -89,7 +89,7 @@ const CompanyTile = memo<CompanyTileProps>(({ company, index }) => {
                   href={company.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white hover:text-blue-300 transition-colors duration-200 flex items-center gap-1 text-sm font-medium ml-4"
+                  className="!text-white hover:!text-blue-300 transition-colors duration-200 flex items-center gap-1 label ml-4"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <span>Visit</span>
@@ -177,10 +177,10 @@ const PremiumPortfolio = memo(() => {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-4xl"
           >
-            <h1 className="text-3xl lg:text-4xl font-semibold text-neutral-900 mb-4 tracking-tight">
+            <h1 className="heading-primary mb-4">
               Our Portfolio
             </h1>
-            <p className="text-lg text-neutral-600 font-light leading-relaxed">
+            <p className="body-large">
               Twelve innovative companies transforming soccer through technology, 
               culture, and community impact.
             </p>
@@ -199,7 +199,7 @@ const PremiumPortfolio = memo(() => {
                   <button
                     key={sector}
                     onClick={() => setSelectedSector(sector)}
-                    className="relative px-6 py-4 text-sm font-medium transition-all duration-300"
+                    className="relative px-6 py-4 label transition-all duration-300"
                   >
                     <span className={`${
                       selectedSector === sector
@@ -227,7 +227,7 @@ const PremiumPortfolio = memo(() => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex items-center justify-between mb-12"
           >
-            <div className="text-sm text-neutral-500">
+            <div className="body-small text-neutral-500">
               {filteredCompanies.length} companies
               {selectedSector !== 'All' && ` in ${selectedSector}`}
             </div>

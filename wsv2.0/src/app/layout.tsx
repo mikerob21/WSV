@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { WSVNavbar } from "@/components/navigation/WSVNavbar";
 import { ErrorBoundary } from "@/components/ui";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "White Sports Ventures | Elite Soccer Venture Capital",
@@ -35,6 +36,9 @@ export default function RootLayout({
           <main>
             {children}
           </main>
+          
+          {/* Footer */}
+          <Footer />
         </ErrorBoundary>
       </body>
     </html>

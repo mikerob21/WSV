@@ -8,7 +8,7 @@ interface ApproachHeroProps extends ComponentProps {}
 
 const ApproachHero = memo<ApproachHeroProps>(() => {
   return (
-    <section className="relative py-16 lg:py-20 overflow-hidden bg-gradient-to-br from-neutral-50 via-neutral-0 to-neutral-50">
+    <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-20 overflow-hidden bg-gradient-to-br from-neutral-50 via-neutral-0 to-neutral-50">
       {/* Subtle geometric background */}
       <div className="absolute inset-0 opacity-[0.02]">
         <svg width="100%" height="100%" className="absolute inset-0">

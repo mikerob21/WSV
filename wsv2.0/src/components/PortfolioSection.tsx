@@ -200,7 +200,7 @@ export default function PortfolioSection() {
           </motion.div>
 
           {/* Carousel Container */}
-          <div className="relative overflow-hidden rounded-2xl bg-white/60 backdrop-blur-sm border border-neutral-200/50 p-5 shadow-lg">
+          <div className="relative overflow-hidden rounded-2xl p-5">
             <motion.div
               key={currentIndex}
               initial={{ x: 100, opacity: 0 }}

@@ -11,7 +11,7 @@ export default function Home() {
       <AboutSection />
       <PortfolioSection />
       <FeaturedAchievements />
-      <Footer />
+
     </div>
   );
 }

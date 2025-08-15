@@ -16,7 +16,7 @@ const AboutHero = memo<AboutHeroProps>(() => {
   ], []);
 
   return (
-    <section className="relative py-16 lg:py-20 overflow-hidden bg-white">
+    <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-20 overflow-hidden bg-white">
       
       {/* Subtle Background Pattern */}
       <div className="absolute inset-0 opacity-[0.01]">
